@@ -33,6 +33,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/js/**")
                 .addResourceLocations("classpath:/static/js/");
 
+        registry.addResourceHandler("/static/css/**")
+                .addResourceLocations("classpath:/static/css/");
+
+        registry.addResourceHandler("/static/img/**")
+                .addResourceLocations("classpath:/static/img/");
+
+        registry.addResourceHandler("/static/fonts/**")
+                .addResourceLocations("classpath:/static/fonts/");
+
+
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }

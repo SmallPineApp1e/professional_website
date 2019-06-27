@@ -56,7 +56,7 @@ public class TeacherController {
     })
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Msg updateTeacherById(@PathVariable Integer id, Teacher teacher){
-
+        System.out.println(teacher);
         boolean updateSuccess = teacherService.updateTeacherById(teacher);
         if (updateSuccess) {
             return Msg.success();

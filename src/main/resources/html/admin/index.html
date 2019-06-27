@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>后台管理页面</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+
+    <link type="text/css" rel="stylesheet" href="/static/css/jquery-ui-1.10.4.custom.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/animate.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/all.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/style-responsive.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/zabuto_calendar.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/pace.css">
+
+</head>
+
+<body>
+<div>
+    <!--BEGIN TOPBAR-->
+    <div id="header-topbar-option-demo" class="page-header-topbar">
+        <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3"
+             class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target=".sidebar-collapse"
+                        class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span
+                        class="icon-bar"></span><span class="icon-bar"></span><span
+                        class="icon-bar"></span></button>
+                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span
+                        class="logo-text">后台管理页面</span><span style="display: none"
+                                                             class="logo-text-icon">µ</span></a></div>
+            <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                <form id="topbar-search" action="" method="" class="hidden-sm hidden-xs">
+                    <div class="input-icon right text-white"><a href="#"><i class="fa fa-search"></i></a><input
+                            type="text" placeholder="请输入内容" class="form-control text-white"/></div>
+                </form>
+
+                <ul class="nav navbar navbar-top-links navbar-right mbn">
+                    <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><span
+                            id="loginname"
+                            class="hidden-xs">蒙家辉</span>&nbsp;<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-user pull-right">
+                            <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
+                            <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>My Inbox</a></li>
+                            <li><a href="#"><i class="fa fa-tasks"></i>My Tasks</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-lock"></i>修改密码</a></li>
+                            <li><a href="Login.html"><i class="fa fa-key"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <!--END TOPBAR-->
+    <div id="wrapper">
+        <!--BEGIN SIDEBAR MENU-->
+        <nav id="sidebar" role="navigation" data-step="2"
+             data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;" data-position="right"
+             class="navbar-default navbar-static-side">
+            <div class="sidebar-collapse menu-scroll">
+                <ul id="side-menu" class="nav">
+
+                    <div class="clearfix"></div>
+                    <li class="active"><a href="dashboard.html"><i class="fa fa-tachometer fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">个人信息</span></a></li>
+                    <li><a href="Layout.html"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">Layouts</span></a>
+
+                    </li>
+                    <li><a href="UIElements.html"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">UI Elements</span></a>
+
+                    </li>
+                    <li><a href="Forms.html"><i class="fa fa-edit fa-fw">
+                        <div class="icon-bg bg-violet"></div>
+                    </i><span class="menu-title">Forms</span></a>
+
+                    </li>
+                    <li><a href="Tables.html"><i class="fa fa-th-list fa-fw">
+                        <div class="icon-bg bg-blue"></div>
+                    </i><span class="menu-title">Tables</span></a>
+
+                    </li>
+                    <li><a href="DataGrid.html"><i class="fa fa-database fa-fw">
+                        <div class="icon-bg bg-red"></div>
+                    </i><span class="menu-title">Data Grids</span></a>
+
+                    </li>
+                    <li><a href="Pages.html"><i class="fa fa-file-o fa-fw">
+                        <div class="icon-bg bg-yellow"></div>
+                    </i><span class="menu-title">Pages</span></a>
+
+                    </li>
+                    <li><a href="Extras.html"><i class="fa fa-gift fa-fw">
+                        <div class="icon-bg bg-grey"></div>
+                    </i><span class="menu-title">Extras</span></a>
+
+                    </li>
+                    <li><a href="Dropdown.html"><i class="fa fa-sitemap fa-fw">
+                        <div class="icon-bg bg-dark"></div>
+                    </i><span class="menu-title">Multi-Level Dropdown</span></a>
+
+                    </li>
+                    <li><a href="Email.html"><i class="fa fa-envelope-o">
+                        <div class="icon-bg bg-primary"></div>
+                    </i><span class="menu-title">Email</span></a>
+
+                    </li>
+                    <li><a href="Charts.html"><i class="fa fa-bar-chart-o fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Charts</span></a>
+
+                    </li>
+                    <li><a href="Animation.html"><i class="fa fa-slack fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Animations</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!--END SIDEBAR MENU-->
+
+        <!--BEGIN PAGE WRAPPER-->
+        <div id="page-wrapper">
+            <!--BEGIN TITLE & BREADCRUMB PAGE-->
+            <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                <div class="page-header pull-left">
+                    <div class="page-title">
+                        个人信息
+                    </div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    </li>
+                    <li class="hidden"><a href="#">个人信息</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    </li>
+                    <li class="active">个人信息</li>
+                </ol>
+                <div class="clearfix">
+                </div>
+            </div>
+            <!--END TITLE & BREADCRUMB PAGE-->
+            <!--BEGIN CONTENT-->
+            <div class="page-content">
+
+                <table width=800 style="margin:0 auto;border-collapse:separate; border-spacing:0px 10px;">
+                    <tbody>
+                    <tr>
+                        <td><label for="teacherName">姓名</label></td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="teacherName" onfocus="reverse(this);" onblur="notnull(this)">
+                                    <span id="teacherNameerror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">邮箱</label></td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="teacherEmail" onfocus="reverse(this);" onblur="notnull(this)">
+                                    <span id="teacherEmailerror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">出生地</label></td>
+                        <td colspan="2">
+
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="teacherBorn" onfocus="reverse(this);" onblur="notnull(this)">
+                                    <span id="teacherBornerror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">职业</label></td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="teacherJob" onfocus="reverse(this);" onblur="notnull(this)">
+                                    <span id="teacherJoberror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">毕业院校</label></td>
+                        <td colspan="2">
+                            <div class="form-group">
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="teacherGraduation" onfocus="reverse(this);" onblur="notnull(this)">
+                                    <span id="teacherGraduationerror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">职称</label></td>
+                        <td colspan="2">
+
+                            <div class="form-group">
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="teacherPosition" onfocus="reverse(this);" onblur="notnull(this)">
+                                    <span id="teacherPositionerror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">主要研究领域和方向</label></td>
+                        <td colspan="2">
+
+                            <div class="form-group">
+
+                                <div class="col-sm-10">
+                                    <textarea rows="10" class="form-control" id="teacherResearch" onfocus="reverse(this);" onblur="notnull(this)"></textarea>
+                                    <span id="teacherResearcherror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teachBackgrounds">教育背景</label></td>
+                        <td align="left">
+                            <ul id="teachBackgrounds">
+
+                            </ul>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" id="addteachBackgrounds">添加教育背景</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">科研工作</label></td>
+                        <td colspan="2">
+                            <div class="form-group">
+
+                                <div class="col-sm-10">
+                                    <textarea rows="10" class="form-control" id="teacherScientificResearch" onfocus="reverse(this);" onblur="notnull(this)"></textarea>
+                                    <span id="teacherScientificResearcherror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="teacherName">获奖情况</label></td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                <textarea rows="5" class="form-control"
+                                          id="teacherAwardIntroduction" onfocus="reverse(this);" onblur="notnull(this)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;获得广东海洋大学讲课比赛一等奖，校级教学成果奖二等奖，校级教学质量优秀奖，校级师德先进个人，校级优秀教师，校级优秀班主任和校级优秀党员等12项校级奖励，指导学生参加第七届和第八届挑战杯大赛获得二等奖和优秀奖。</textarea>
+                                    <span id="teacherAwardIntroductionerror" class="help-block"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="left">
+                            <div class="form-group">
+                                <ul id="awards">
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" id="addteachAwards">添加获奖信息</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <button type="button" class="btn btn-primary btn-lg active" id="updateinformation">保存修改</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!--END CONTENT-->
+            <!--BEGIN FOOTER-->
+            <div id="footer">
+                <div class="copyright">
+                    <a href="#">点击可直接跳转到广东海洋大学电子信息工程特色专业网站</a></div>
+            </div>
+            <!--END FOOTER-->
+        </div>
+        <!--END PAGE WRAPPER-->
+    </div>
+</div>
+<!-- BackgroundModal -->
+<div class="modal fade" id="BackgroundModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">添加教育背景</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="backgroundStartTime" class="control-label">起始时间</label>
+                    <input type="date" id="backgroundStartTime">
+                </div>
+                <div class="form-group">
+                    <label for="backgroundEndTime" class="control-label">结束时间</label>
+                    <input type="date" id="backgroundEndTime">
+                </div>
+                <div class="form-group">
+                    <label for="backgroundContent">背景内容</label>
+                    <input type="text" class="form-control" id="backgroundContent" placeholder="请至少输入1个字符">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="addbackground">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--AwardModal-->
+<div class="modal fade" id="AwardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">添加获奖信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="awardsTime" class="control-label">获奖时间</label>
+                    <input type="month" id="awardsTime">
+                </div>
+                <div class="form-group">
+                    <label for="awardsName">获奖名</label>
+                    <input type="text" class="form-control" id="awardsName" placeholder="请至少输入1个字符">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="addbackground">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/jquery-ui.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-hover-dropdown.js"></script>
+<script src="/static/js/html5shiv.js"></script>
+<script src="/static/js/respond.min.js"></script>
+<script src="/static/js/jquery.metisMenu.js"></script>
+<script src="/static/js/jquery.slimscroll.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
+<script src="/static/js/icheck.min.js"></script>
+<script src="/static/js/custom.min.js"></script>
+
+<script src="/static/js/jquery.menu.js"></script>
+<script src="/static/js/pace.min.js"></script>
+<script src="/static/js/holder.js"></script>
+<script src="/static/js/responsive-tabs.js"></script>
+
+<script src="/static/js/zabuto_calendar.min.js"></script>
+<script src="/static/js/index.js"></script>
+</html>

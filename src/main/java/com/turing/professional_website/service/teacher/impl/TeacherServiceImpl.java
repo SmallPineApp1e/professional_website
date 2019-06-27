@@ -69,7 +69,7 @@ public class TeacherServiceImpl implements TeacherService {
         TeacherExample teacherExample = new TeacherExample();
         teacherExample.createCriteria().andTeacherIdEqualTo(teacher.getTeacherId());
         int row = teacherMapper.updateByExample(teacher, teacherExample);
-        return (row == 0);
+        return (row != 0);
 
     }
 }

@@ -122,4 +122,22 @@ public class Teacher {
     public void setTeacherAwardIntroduction(String teacherAwardIntroduction) {
         this.teacherAwardIntroduction = teacherAwardIntroduction == null ? null : teacherAwardIntroduction.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "teacherId=" + teacherId +
+                ", teacherName='" + teacherName + '\'' +
+                ", teacherEmail='" + teacherEmail + '\'' +
+                ", teacherBorn='" + teacherBorn + '\'' +
+                ", teacherJob='" + teacherJob + '\'' +
+                ", teacherGraduation='" + teacherGraduation + '\'' +
+                ", teacherPosition='" + teacherPosition + '\'' +
+                ", teacherResearch='" + teacherResearch + '\'' +
+                ", teacherScientificResearch='" + teacherScientificResearch + '\'' +
+                ", teacherAwardIntroduction='" + teacherAwardIntroduction + '\'' +
+                ", awards=" + awards +
+                ", teachBackgrounds=" + teachBackgrounds +
+                '}';
+    }
 }
