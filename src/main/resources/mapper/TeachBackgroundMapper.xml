@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.turing.professional_website.dao.TeachBackgroundMapper" >
+  <resultMap id="BaseResultMap" type="com.turing.professional_website.entity.TeachBackground" >
+    <result column="background_id" property="backgroundId" jdbcType="INTEGER" />
+    <result column="background_start_time" property="backgroundStartTime" jdbcType="DATE" />
+    <result column="background_end_time" property="backgroundEndTime" jdbcType="DATE" />
+    <result column="background_content" property="backgroundContent" jdbcType="VARCHAR" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    background_id, background_start_time, background_end_time, background_content, teacher_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.turing.professional_website.entity.TeachBackgroundExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teach_background
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.turing.professional_website.entity.TeachBackgroundExample" >
+    delete from teach_background
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.turing.professional_website.entity.TeachBackground" >
+    insert into teach_background (background_id, background_start_time, background_end_time, 
+      background_content, teacher_id)
+    values (#{backgroundId,jdbcType=INTEGER}, #{backgroundStartTime,jdbcType=DATE}, #{backgroundEndTime,jdbcType=DATE}, 
+      #{backgroundContent,jdbcType=VARCHAR}, #{teacherId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.turing.professional_website.entity.TeachBackground" >
+    insert into teach_background
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="backgroundId != null" >
+        background_id,
+      </if>
+      <if test="backgroundStartTime != null" >
+        background_start_time,
+      </if>
+      <if test="backgroundEndTime != null" >
+        background_end_time,
+      </if>
+      <if test="backgroundContent != null" >
+        background_content,
+      </if>
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="backgroundId != null" >
+        #{backgroundId,jdbcType=INTEGER},
+      </if>
+      <if test="backgroundStartTime != null" >
+        #{backgroundStartTime,jdbcType=DATE},
+      </if>
+      <if test="backgroundEndTime != null" >
+        #{backgroundEndTime,jdbcType=DATE},
+      </if>
+      <if test="backgroundContent != null" >
+        #{backgroundContent,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.turing.professional_website.entity.TeachBackgroundExample" resultType="java.lang.Integer" >
+    select count(*) from teach_background
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teach_background
+    <set >
+      <if test="record.backgroundId != null" >
+        background_id = #{record.backgroundId,jdbcType=INTEGER},
+      </if>
+      <if test="record.backgroundStartTime != null" >
+        background_start_time = #{record.backgroundStartTime,jdbcType=DATE},
+      </if>
+      <if test="record.backgroundEndTime != null" >
+        background_end_time = #{record.backgroundEndTime,jdbcType=DATE},
+      </if>
+      <if test="record.backgroundContent != null" >
+        background_content = #{record.backgroundContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teach_background
+    set background_id = #{record.backgroundId,jdbcType=INTEGER},
+      background_start_time = #{record.backgroundStartTime,jdbcType=DATE},
+      background_end_time = #{record.backgroundEndTime,jdbcType=DATE},
+      background_content = #{record.backgroundContent,jdbcType=VARCHAR},
+      teacher_id = #{record.teacherId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

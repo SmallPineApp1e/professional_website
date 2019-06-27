@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+  #数据源
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/professional_website?characterEncoding=UTF-8&serverTimezone=UTC
+    type: com.alibaba.druid.pool.DruidDataSource
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+  mvc:
+    #配置静态资源的路径
+    static-path-pattern: /resources/**
+    view:
+      #配置访问页面的前缀
+      prefix: /html/
+      #配置访问页面的后缀
+      suffix: .html
+      resources:
+        static-locations: /resources/
+    favicon:
+      enabled: false
+#整合mybatis
+mybatis:
+  type-aliases-package: com.turing.turing.entity
+  mapper-locations: classpath:mapper/*.xml
+pagehelper:
+  reasonable: true
+  helper-dialect: mysql

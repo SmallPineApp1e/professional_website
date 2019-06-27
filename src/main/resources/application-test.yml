@@ -1,0 +1,30 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    username: root
+    password: 1030jie
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.79.73.140:3306/turing-test?characterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSourceC3P0Adapter
+  http:
+    encoding:
+      charset: UTF-8
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  mvc:
+    static-path-pattern: /resources/**
+    view:
+      prefix: /html/
+      suffix: .html
+    favicon:
+      enabled: false
+    resources:
+      static-locations: /resources/
+mybatis:
+  type-aliases-package: com.turing.turing.entity
+  mapper-locations: classpath:mapper/*.xml
+pagehelper:
+  reasonable: true
+  helper-dialect: mysql
