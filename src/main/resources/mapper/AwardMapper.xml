@@ -88,10 +88,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.turing.professional_website.entity.Award">
-    insert into awards (awards_id, awards_time, awards_name, 
+  <insert id="insert" parameterType="com.turing.professional_website.entity.Award" useGeneratedKeys="true">
+    insert into awards (awards_id, awards_time, awards_name,
       teacher_id)
-    values (#{awardsId,jdbcType=INTEGER}, #{awardsTime,jdbcType=DATE}, #{awardsName,jdbcType=VARCHAR}, 
+    values (#{awardsId,jdbcType=INTEGER}, #{awardsTime,jdbcType=DATE}, #{awardsName,jdbcType=VARCHAR},
       #{teacherId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.turing.professional_website.entity.Award">

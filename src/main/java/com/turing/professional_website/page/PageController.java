@@ -1,5 +1,6 @@
 package com.turing.professional_website.page;
 
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2019-06-26-22:28
  */
 @Controller
+@Api(tags = "页面跳转接口")
 public class PageController {
 
     @ResponseBody

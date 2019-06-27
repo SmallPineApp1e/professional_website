@@ -1,12 +1,14 @@
 package com.turing.professional_website.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 public class Award {
     private Integer awardsId;
     @JsonFormat(pattern = "yyyy", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy")
     private Date awardsTime;
 
     private String awardsName;

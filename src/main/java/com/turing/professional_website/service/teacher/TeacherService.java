@@ -13,4 +13,5 @@ public interface TeacherService {
     public Teacher login(String username, String password);
 
     public boolean updateTeacherById(Teacher teacher);
+
 }

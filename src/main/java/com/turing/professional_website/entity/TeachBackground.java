@@ -1,14 +1,17 @@
 package com.turing.professional_website.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 public class TeachBackground {
     private Integer backgroundId;
     @JsonFormat(pattern = "yyyy-MM", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM")
     private Date backgroundStartTime;
     @JsonFormat(pattern = "yyyy-MM", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM")
     private Date backgroundEndTime;
 
     private String backgroundContent;
