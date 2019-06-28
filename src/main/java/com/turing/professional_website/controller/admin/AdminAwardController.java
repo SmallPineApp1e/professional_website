@@ -1,7 +1,7 @@
-package com.turing.professional_website.controller.teacher;
+package com.turing.professional_website.controller.admin;
 
 import com.turing.professional_website.entity.Award;
-import com.turing.professional_website.service.teacher.AwardService;
+import com.turing.professional_website.service.admin.AdminAwardService;
 import com.turing.professional_website.util.Msg;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/teacher/award")
 @Api(tags = "后台教师获奖情况管理接口")
-public class AwardController {
+public class AdminAwardController {
 
     @Autowired
-    AwardService awardService;
+    AdminAwardService adminAwardService;
 
     @ApiOperation(value = "添加获奖信息", notes = "注意实体类的属性名")
     @ApiImplicitParams({
@@ -32,7 +32,7 @@ public class AwardController {
     @PostMapping(value = "")
     public Msg addAwardService(Award award){
 
-        boolean addSuccess = awardService.addAward(award);
+        boolean addSuccess = adminAwardService.addAward(award);
         if(addSuccess){
             return Msg.success();
         }else{
@@ -45,7 +45,7 @@ public class AwardController {
     @DeleteMapping(value = "/{id}")
     public Msg delAwardService(@PathVariable Integer id){
 
-        boolean delSuccess = awardService.delAward(id);
+        boolean delSuccess = adminAwardService.delAward(id);
         if(delSuccess){
             return Msg.success();
         }else{

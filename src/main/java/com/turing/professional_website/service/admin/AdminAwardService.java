@@ -1,4 +1,4 @@
-package com.turing.professional_website.service.teacher;
+package com.turing.professional_website.service.admin;
 
 import com.turing.professional_website.entity.Award;
 
@@ -7,7 +7,7 @@ import com.turing.professional_website.entity.Award;
  * @date 2019-06-27-21:51
  *
  */
-public interface AwardService {
+public interface AdminAwardService {
     /**
      * 添加获奖信息
      * @param award 获奖信息实体类

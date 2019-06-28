@@ -1,7 +1,7 @@
-package com.turing.professional_website.controller.teacher;
+package com.turing.professional_website.controller.admin;
 
 import com.turing.professional_website.entity.Teacher;
-import com.turing.professional_website.service.teacher.TeacherService;
+import com.turing.professional_website.service.admin.AdminService;
 import com.turing.professional_website.util.Msg;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 @ResponseBody
 @CrossOrigin(allowCredentials="true",maxAge = 3600)
 @RequestMapping(value = "/teacher")
-public class TeacherController {
+public class AdminController {
 
     @Autowired
-    TeacherService teacherService;
+    AdminService adminService;
 
     /**
      * 根据id查询教师信息
@@ -34,7 +34,7 @@ public class TeacherController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Msg getTeacherById(@PathVariable Integer id, HttpServletResponse response) {
 
-        Teacher teacher = teacherService.findTeacherById(id);
+        Teacher teacher = adminService.findTeacherById(id);
         Msg msg = new Msg(200, "处理成功!");
         msg.add("teacher", teacher);
         return msg;
@@ -57,7 +57,7 @@ public class TeacherController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Msg updateTeacherById(@PathVariable Integer id, Teacher teacher){
         System.out.println(teacher);
-        boolean updateSuccess = teacherService.updateTeacherById(teacher);
+        boolean updateSuccess = adminService.updateTeacherById(teacher);
         if (updateSuccess) {
             return Msg.success();
         }else{
@@ -84,7 +84,7 @@ public class TeacherController {
                             @RequestParam(name = "password") String password,
                             HttpServletRequest request) {
 
-        Teacher teacher = teacherService.login(username, password);
+        Teacher teacher = adminService.login(username, password);
         Msg msg = new Msg();
         if (teacher == null) {
             msg.setCode(100);
@@ -99,12 +99,33 @@ public class TeacherController {
         }
     }
 
+    /**
+     * 获取登陆的教师id
+     * @param request
+     * @param response
+     * @return
+     */
     @ApiOperation(value = "获取登陆的教师id", notes = "暂无")
     @RequestMapping(value = "/getTeacherId", method = RequestMethod.GET)
     public Msg getTeacherId(HttpServletRequest request, HttpServletResponse response){
 
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         return Msg.success().add("teacherId", teacher.getTeacherId());
+
+    }
+
+    /**
+     * 退出登录
+     * @param request
+     * @return
+     */
+    @ApiOperation(value = "退出登录")
+    @PostMapping(value = "/logout")
+    public Msg logout(HttpServletRequest request){
+
+        request.getSession().removeAttribute("teacher");
+        Msg msg = new Msg(200, "登出成功!");
+        return msg;
 
     }
 

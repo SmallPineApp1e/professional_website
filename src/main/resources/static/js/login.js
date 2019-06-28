@@ -27,7 +27,7 @@ $(document).ready(function() {
             return false;
         }
         $.ajax({
-            url:"/teacher/login",
+            url:"/admin/login",
             type:"POST",
             dataType:"JSON",
             data:{username:username,password:password},

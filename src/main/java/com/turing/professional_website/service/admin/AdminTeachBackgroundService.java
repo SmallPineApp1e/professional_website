@@ -1,4 +1,4 @@
-package com.turing.professional_website.service.teacher;
+package com.turing.professional_website.service.admin;
 
 import com.turing.professional_website.entity.TeachBackground;
 
@@ -6,7 +6,7 @@ import com.turing.professional_website.entity.TeachBackground;
  * @author Jack
  * @date 2019-06-27-21:40
  */
-public interface TeachBackgroundService {
+public interface AdminTeachBackgroundService {
     /**
      * 添加背景信息
      * @param teachBackground 背景信息实体类

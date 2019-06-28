@@ -20,7 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
         if (teacher == null){
-            response.sendRedirect("/pageLogin");
+            response.sendRedirect("/html/login.html");
             return false;
         }else{
             return true;

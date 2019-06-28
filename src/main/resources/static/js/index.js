@@ -6,7 +6,7 @@
 var teacherId;
 $(document).ready(function () {
     $.ajax({
-        url: "/teacher/getTeacherId",
+        url: "/admin/getTeacherId",
         type: "GET",
         success: function (data) {
             console.log(data);
@@ -24,7 +24,7 @@ $(document).ready(function () {
  */
 function build_information(id) {
     $.ajax({
-        url: "/teacher/" + id,
+        url: "/admin/" + id,
         dataType: "JSON",
         success: function (data) {
             console.log(data);
@@ -51,7 +51,7 @@ function build_information(id) {
                         }
                         else {
                             $.ajax({
-                                url: "/teacher/teachBack/" + item.backgroundId,
+                                url: "/admin/teachBack/" + item.backgroundId,
                                 type: 'POST',
                                 data: { _method: "DELETE" },
                                 success: function (data) {
@@ -78,7 +78,7 @@ function build_information(id) {
                         }
                         else {
                             $.ajax({
-                                url: "/teacher/award/" + item.awardsId,
+                                url: "/admin/award/" + item.awardsId,
                                 type: 'POST',
                                 data: { _method: "DELETE" },
                                 success: function (data) {
@@ -122,7 +122,7 @@ $("#addteachBackgrounds").click(function () {
             var backgroundContent = $("#backgroundContent").val();
             console.log(backgroundStartTime);
             $.ajax({
-                url: "/teacher/teachBack",
+                url: "/admin/teachBack",
                 type: "POST",
                 dataType: "JSON",
                 data: { backgroundStartTime: backgroundStartTime, backgroundEndTime: backgroundEndTime, backgroundContent: backgroundContent, teacherId: teacherId },
@@ -158,7 +158,7 @@ $("#addteachAwards").click(function () {
             var awardsName = $("#awardsName").val();
             console.log(awardsTime);
             $.ajax({
-                url: "/teacher/award",
+                url: "/admin/award",
                 type: "POST",
                 dataType: "JSON",
                 data: { awardsTime: awardsTime, awardsName: awardsName, teacherId: teacherId },
@@ -226,7 +226,7 @@ $("#updateinformation").click(function updateinformation() {
         var teacherResearch = $("#teacherResearch").val();
         var teacherScientificResearch = $("#teacherScientificResearch").val();
         $.ajax({
-            url: "/teacher/" + teacherId,
+            url: "/admin/" + teacherId,
             dataType: "JSON",
             type: "POST",
             data: {

@@ -1,9 +1,9 @@
-package com.turing.professional_website.service.teacher.impl;
+package com.turing.professional_website.service.admin.impl;
 
 import com.turing.professional_website.dao.AwardMapper;
 import com.turing.professional_website.entity.Award;
 import com.turing.professional_website.entity.AwardExample;
-import com.turing.professional_website.service.teacher.AwardService;
+import com.turing.professional_website.service.admin.AdminAwardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @date 2019-06-27-21:52
  */
 @Service
-public class AwardServiceImpl implements AwardService {
+public class AdminAwardServiceImpl implements AdminAwardService {
 
     @Autowired
     AwardMapper awardMapper;

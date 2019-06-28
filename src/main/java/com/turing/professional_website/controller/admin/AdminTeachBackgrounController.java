@@ -1,7 +1,7 @@
-package com.turing.professional_website.controller.teacher;
+package com.turing.professional_website.controller.admin;
 
 import com.turing.professional_website.entity.TeachBackground;
-import com.turing.professional_website.service.teacher.TeachBackgroundService;
+import com.turing.professional_website.service.admin.AdminTeachBackgroundService;
 import com.turing.professional_website.util.Msg;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.*;
 @ResponseBody
 @RequestMapping("/teacher/teachBack")
 @Api(tags = "后台教师教育背景管理接口")
-public class TeachBackgrounController {
+public class AdminTeachBackgrounController {
 
     @Autowired
-    TeachBackgroundService teachBackgroundService;
+    AdminTeachBackgroundService adminTeachBackgroundService;
 
     @ApiOperation(value = "添加背景信息", notes = "注意实体类的属性名和时间的格式")
     @ApiImplicitParams({
@@ -39,7 +39,7 @@ public class TeachBackgrounController {
     @PostMapping(value = "")
     public Msg insertBackground(TeachBackground teachBackground){
 
-        boolean addSuccess = teachBackgroundService.addTeachBackground(teachBackground);
+        boolean addSuccess = adminTeachBackgroundService.addTeachBackground(teachBackground);
         if(addSuccess){
             return Msg.success();
         }else{
@@ -57,7 +57,7 @@ public class TeachBackgrounController {
     @ApiImplicitParam(name = "id", value = "删除的背景信息id号", dataType = "int", paramType = "query", required = true)
     @DeleteMapping(value = "/{id}")
     public Msg deleteBackground(@PathVariable Integer id){
-        boolean delSuccess = teachBackgroundService.delTeachBackground(id);
+        boolean delSuccess = adminTeachBackgroundService.delTeachBackground(id);
         if(delSuccess){
             return Msg.success();
         }else{

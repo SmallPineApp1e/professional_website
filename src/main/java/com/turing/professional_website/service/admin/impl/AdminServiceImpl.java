@@ -1,11 +1,11 @@
-package com.turing.professional_website.service.teacher.impl;
+package com.turing.professional_website.service.admin.impl;
 
 import com.turing.professional_website.dao.AdminMapper;
 import com.turing.professional_website.dao.AwardMapper;
 import com.turing.professional_website.dao.TeachBackgroundMapper;
 import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.*;
-import com.turing.professional_website.service.teacher.TeacherService;
+import com.turing.professional_website.service.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @Service
-public class TeacherServiceImpl implements TeacherService {
+public class AdminServiceImpl implements AdminService {
 
     @Autowired
     TeacherMapper teacherMapper;

@@ -1,4 +1,4 @@
-package com.turing.professional_website.service.teacher;
+package com.turing.professional_website.service.admin;
 
 import com.turing.professional_website.entity.Teacher;
 
@@ -6,7 +6,7 @@ import com.turing.professional_website.entity.Teacher;
  * @author Jack
  * @date 2019-06-26-17:48
  */
-public interface TeacherService {
+public interface AdminService {
 
     public Teacher findTeacherById(Integer id);
 

@@ -1,9 +1,9 @@
-package com.turing.professional_website.service.teacher.impl;
+package com.turing.professional_website.service.admin.impl;
 
 import com.turing.professional_website.dao.TeachBackgroundMapper;
 import com.turing.professional_website.entity.TeachBackground;
 import com.turing.professional_website.entity.TeachBackgroundExample;
-import com.turing.professional_website.service.teacher.TeachBackgroundService;
+import com.turing.professional_website.service.admin.AdminTeachBackgroundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @date 2019-06-27-21:40
  */
 @Service
-public class TeachBackgroundImpl implements TeachBackgroundService {
+public class AdminTeachBackgroundImpl implements AdminTeachBackgroundService {
 
     @Autowired
     TeachBackgroundMapper teachBackgroundMapper;
