@@ -42,15 +42,64 @@ function build_information(id) {
                 $("#loginname").text(teacher.teacherName);
                 $("#teacherAwardIntroduction").text(teacher.teacherAwardIntroduction);
                 $.each(teacher.teachBackgrounds, function (index, item) {
-                    $("<li></li>").append(item.backgroundStartTime + "-" + item.backgroundEndTime + " " + item.backgroundContent).appendTo($("#teachBackgrounds"))
+                    //叉叉
+                    var closebtn = $("<button type='button'  style=color:red; class='close' aria-albel='Close'></button>").append("&times;");
+                    //绑定事件
+                    closebtn.click(function(){
+                        if (!confirm("你确认要删除此背景吗")) {
+                            return false;
+                        }
+                        else {
+                            $.ajax({
+                                url: "/teacher/teachBack/" + item.backgroundId,
+                                type: 'POST',
+                                data: { _method: "DELETE" },
+                                success: function (data) {
+                                    console.log(data);
+                                    if (data.code == 200) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    //如果不是不会前端，谁会这么写呢，哭了
+                    var div = $("<div style=clear:both></div>")
+                    $("<li style=float:left></li>").append(item.backgroundStartTime + "-" + item.backgroundEndTime + " " + item.backgroundContent).append(closebtn).appendTo($("#teachBackgrounds"));
+                    div.appendTo($("#teachBackgrounds"));
                 });
                 $.each(teacher.awards, function (index, item) {
-                    $("<li></li>").append(item.awardsName + "," + item.awardsTime).appendTo($("#awards"));
+                    //叉叉
+                    var closebtn = $("<button type='button' style=color:red;   class='close' aria-albel='Close'></button>").append("&times;");
+                    //绑定事件
+                    closebtn.click(function(){
+                        if (!confirm("你确认要删除此获奖吗")) {
+                            return false;
+                        }
+                        else {
+                            $.ajax({
+                                url: "/teacher/award/" + item.awardsId,
+                                type: 'POST',
+                                data: { _method: "DELETE" },
+                                success: function (data) {
+                                    console.log(data);
+                                    if (data.code == 200) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    //如果不是不会前端，谁会这么写呢，哭了
+                    var div = $("<div style=clear:both></div>");
+                    $("<li  style=float:left></li>").append(item.awardsName + "," + item.awardsTime).append(closebtn).appendTo($("#awards"));
+                    div.appendTo($("#awards"));
                 });
             }
         },
     });
 }
+
 
 /**
  * 添加教育背景的模态框
@@ -58,6 +107,33 @@ function build_information(id) {
 $("#addteachBackgrounds").click(function () {
     $("#BackgroundModal").modal({
         backdrop: "static"
+    });
+    /**
+     * 添加背景
+     */
+    $("#addbackground").click(function () {
+        var x = notnull($("#backgroundContent")) && notnull($("#backgroundStartTime")) && notnull($("#backgroundEndTime"));
+        if (!x) {
+            alert("文本框不可以为空");
+        }
+        else {
+            var backgroundStartTime = $("#backgroundStartTime").val();
+            var backgroundEndTime = $("#backgroundEndTime").val();
+            var backgroundContent = $("#backgroundContent").val();
+            console.log(backgroundStartTime);
+            $.ajax({
+                url: "/teacher/teachBack",
+                type: "POST",
+                dataType: "JSON",
+                data: { backgroundStartTime: backgroundStartTime, backgroundEndTime: backgroundEndTime, backgroundContent: backgroundContent, teacherId: teacherId },
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 200) {
+                        window.location.reload();
+                    }
+                }
+            })
+        }
     });
 });
 
@@ -68,7 +144,44 @@ $("#addteachAwards").click(function () {
     $("#AwardModal").modal({
         backdrop: "static"
     });
+
+    /**
+     * 添加获奖情况
+     */
+    $("#addaward").click(function () {
+        var x = notnull($("#awardsTime")) && notnull($("#awardsName"));
+        if (!x) {
+            alert("文本框不可以为空");
+        }
+        else {
+            var awardsTime = format($("#awardsTime").val());
+            var awardsName = $("#awardsName").val();
+            console.log(awardsTime);
+            $.ajax({
+                url: "/teacher/award",
+                type: "POST",
+                dataType: "JSON",
+                data: { awardsTime: awardsTime, awardsName: awardsName, teacherId: teacherId },
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 200) {
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+    });
+
 })
+
+/**
+ * 格式化时间
+ * @param str
+ */
+function format(str) {
+    var index = str.indexOf("-");
+    return str.substring(0, index);
+}
 
 /**
  * 文本框的非空校验
@@ -103,33 +216,34 @@ $("#updateinformation").click(function updateinformation() {
     if (!x) {
         alert("文本框不可以为空");
     } else {
-        var teacherAwardIntroduction=$("#teacherAwardIntroduction").val();
-        var teacherBorn=$("#teacherBorn").val();
-        var teacherEmail=$("#teacherEmail").val();
-        var teacherGraduation=$("#teacherGraduation").val();
-        var teacherJob=$("#teacherJob").val();
-        var teacherName=$("#teacherName").val();
-        var teacherPosition=$("#teacherPosition").val();
-        var teacherResearch=$("#teacherResearch").val();
-        var teacherScientificResearch=$("#teacherScientificResearch").val();
+        var teacherAwardIntroduction = $("#teacherAwardIntroduction").val();
+        var teacherBorn = $("#teacherBorn").val();
+        var teacherEmail = $("#teacherEmail").val();
+        var teacherGraduation = $("#teacherGraduation").val();
+        var teacherJob = $("#teacherJob").val();
+        var teacherName = $("#teacherName").val();
+        var teacherPosition = $("#teacherPosition").val();
+        var teacherResearch = $("#teacherResearch").val();
+        var teacherScientificResearch = $("#teacherScientificResearch").val();
         $.ajax({
-            url:"/teacher/"+teacherId,
-            dataType:"JSON",
-            type:"POST",
-            data:{_method:"PUT",
-                teacherId:teacherId,
-                teacherAwardIntroduction:teacherAwardIntroduction,
-                teacherBorn:teacherBorn,
-                teacherEmail:teacherEmail,
-                teacherGraduation:teacherGraduation,
-                teacherJob:teacherJob,
-                teacherName:teacherName,
-                teacherPosition:teacherPosition,
-                teacherResearch:teacherResearch,
-                teacherScientificResearch:teacherScientificResearch,
+            url: "/teacher/" + teacherId,
+            dataType: "JSON",
+            type: "POST",
+            data: {
+                _method: "PUT",
+                teacherId: teacherId,
+                teacherAwardIntroduction: teacherAwardIntroduction,
+                teacherBorn: teacherBorn,
+                teacherEmail: teacherEmail,
+                teacherGraduation: teacherGraduation,
+                teacherJob: teacherJob,
+                teacherName: teacherName,
+                teacherPosition: teacherPosition,
+                teacherResearch: teacherResearch,
+                teacherScientificResearch: teacherScientificResearch,
             },
-            success:function(data){
-                if(data.code==200){
+            success: function (data) {
+                if (data.code == 200) {
                     window.location.reload();
                 }
             }
