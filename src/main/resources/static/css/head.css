@@ -1,0 +1,154 @@
+.warp {
+    width: 1000px;
+    margin: 0px auto;
+}
+
+.head {
+    background: url("/static/img/show(1).jpg") no-repeat;
+    height: 260px;
+    background-size: 100% 170px;
+}
+
+.head_top {
+    padding: 0 0 0 75px;
+}
+
+.head_top ul li {
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 10px;
+    list-style-type: none;
+}
+
+.head_top ul li a {
+    color: #5581F2;
+    text-decoration: none
+}
+
+.clear {
+    clear: both;
+    display: inline;
+}
+
+/*网站导航栏*/
+.head_nav {
+    border-bottom: 1px solid;
+    text-align: center;
+    display: inline;
+    float: left;
+    padding-top: 150px;
+    width: 100%;
+}
+
+.nav {
+    padding-top: 5px;
+    text-align: center;
+}
+
+/*下拉按钮样式*/
+.dropbtn {
+    background-color: white;
+    color: darkcyan;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropbtn-2 {
+    background-color: white;
+    color: darkcyan;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/*二级下拉菜单的位置*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/*三级下拉菜单的位置*/
+.dropdown-2 {
+    position: relative;
+}
+
+/*二级下拉内容(默认隐藏)*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    border-radius: 8%;
+}
+
+
+/*三级下拉菜单内容(默认隐藏)*/
+.dropdown-content-2 {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    right: -160px;
+    top: 0;
+    border-radius: 8%;
+}
+
+/*二级下拉菜单的链接*/
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    color: darkcyan;
+}
+
+/*三级下拉菜单的链接*/
+.dropdown-content-2 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    color: darkcyan;
+}
+
+/*鼠标移上去后修改下拉菜单链接颜色*/
+.dropdown-content a:hover {
+    background-color: skyblue
+}
+
+.dropdown-content-2 a:hover {
+    background-color: skyblue
+}
+
+/*鼠标移上去后显示二级下拉菜单*/
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*当下拉内容显示后修改下拉按钮的背景颜色*/
+.dropdown:hover .dropbtn {
+    background-color: skyblue;
+}
+
+/*鼠标移上去二级下拉菜单按钮后, 显示三级下拉菜单*/
+.dropdown-2:hover .dropdown-content-2 {
+    display: block;
+}
+
+/*当三级下拉菜单内容显示后修改二级下拉菜单按钮的背景颜色*/
+.dropdown-2:hover .dropbtn-2 {
+    background-color: skyblue;
+}

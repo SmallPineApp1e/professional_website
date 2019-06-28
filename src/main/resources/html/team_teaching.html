@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/head.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/time.js"></script>
+    <title>师资队伍</title>
+    <style>
+        /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
+        .body {
+            overflow: hidden;
+        }
+
+        /*左边导航栏*/
+        .sidebar-left {
+            width: 32%;
+            height: 100%;
+            border-color: lightblue;
+            border-style: solid;
+            padding: 25px;
+            float: left;
+        }
+
+        .sidebar-left ul li {
+            padding-top: 10px;
+            font-size: 16px;
+        }
+
+        .sidebar-left ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-left ul li a:hover {
+            color: lightblue;
+        }
+
+        /*左边导航栏的标题*/
+        #title-left {
+            border-bottom: solid lightblue 2px;
+            width: 100%;
+        }
+
+        #title-left strong {
+            font-size: 18px;
+        }
+
+        /*右边导航栏*/
+        .sidebar-right {
+            width: 65%;
+            height: 100%;
+            border-color: lightblue;
+            border-style: solid;
+            padding: 25px;
+            float: right;
+        }
+
+        /*右边导航栏的标题*/
+        .title-right {
+            background: linear-gradient(to bottom, white, lightblue);
+            font-size: 18px;
+            color: black;
+        }
+
+        /*内容*/
+        .content {
+            font-size: 18px;
+            text-indent: 2em;
+            padding-top: 20px;
+        }
+
+        /*底部版权信息*/
+        .footer {
+            background-color: #E3F0F0;
+            height: 88px;
+            margin-top: 10px;
+        }
+
+        .footer p {
+            text-align: center;
+            line-height: 27px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="warp">
+        <div class="head">
+            <div class="head_top">
+                <ul>
+                    <li><a href="http://www.gdou.edu.cn/" target="_blank">学校主页</a></li>
+                    <li><a href="http://210.38.137.114/dxxy/index.php" target="_blank">学院主页</a></li>
+                </ul>
+            </div>
+            <div class="head_nav">
+                <div class="dropdown">
+                    <button class="dropbtn">网站首页</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">专业概况</button>
+                    <div class="dropdown-content">
+                        <a href="#">专业负责人</a>
+                        <a href="#">专业简介</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">专业建设</button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-2">
+                            <a class="dropbtn-2" href="//www.runoob.com">特色专业建设</a>
+                            <div class="dropdown-content-2">
+                                <a href="#">制度建设</a>
+                                <a href="#">申报情况</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-2">
+                            <a class="dropbtn-2" href="//www.runoob.com">双一流专业建设 </a>
+                            <div class="dropdown-content-2">
+                                <a href="#">制度建设</a>
+                                <a href="#">申报情况</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">师资队伍</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">培养方案</button>
+                    <div class="dropdown-content">
+                        <a href="#">卓越方案</a>
+                        <a href="#">普通方案</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">教学资源</button>
+                    <div class="dropdown-content">
+                        <a href="//www.runoob.com">教学大纲</a>
+                        <a href="//www.runoob.com">授课计划</a>
+                        <a href="//www.runoob.com">精品精课</a>
+                        <a href="//www.runoob.com">教学课件</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">实践创新</button>
+                    <div class="dropdown-content">
+                        <a href="#">图灵智能创新团队</a>
+                        <a href="#">机器人创新团队</a>
+                    </div>
+
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">教研成果</button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-2">
+                            <a class="dropbtn-2">教学成果</a>
+                            <div class="dropdown-content-2">
+                                <a href="#">论文发表</a>
+                                <a href="#">教学材料</a>
+                                <a href="#">获奖情况</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-2">
+                            <a class="dropbtn-2">科研成果</a>
+                            <div class="dropdown-content-2">
+                                <a href="#">论文发表</a>
+                                <a href="#">精品项目</a>
+                                <a href="#">软著专利</a>
+                                <a href="#">科研奖项</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">专业认证</button>
+                    <div class="dropdown-content">
+                        <a href="#">认证文件</a>
+                        <a href="#">认证政策</a>
+                        <a href="#">认证申报书</a>
+                        <a href="#">认证方案</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">社会评价</button>
+                    <div class="dropdown-content">
+                        <a href="#">企业评价</a>
+                        <a href="#">新闻报告</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">知名校友</button>
+                </div>
+            </div>
+
+
+            <div>
+                <table width="1000" height="50">
+                    <tbody>
+                        <tr>
+                            <td align="left" id="time"></td>
+                            <td align="right">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="search">全文检索</label>
+                                        <input type="text" id="search" placeholder="请输入内容...">
+                                        <button class="btn btn-default" type="submit">检索</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="body">
+                <!-- 左边导航栏 -->
+                <div class="sidebar-left">
+                    <div id="title-left">
+                        <strong>师资队伍</strong>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">建设举措</a>
+                        </li>
+                        <li>
+                            <a href="#">取得成效</a>
+                        </li>
+                        <li>
+                            <a href="#">教学名师</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 右边导航栏 -->
+                <div class="sidebar-right">
+                    <div class="title-right">
+                        <strong>建设举措</strong>
+                    </div>
+                    <div class="content">
+                        ①打造专业业务与学术水平并重型师资队伍。以学科建设为动力，建立一支
+                        师德高尚、教学能力强、崇尚学术、富有创新能力高水平教师队伍。一是依托海
+                        洋特色信息与通信工程一级培育学科平台以及农业工程与信息化技术二级学科
+                        硕士点，加强教师团队学术水平建设，逐步形成了团队特色和亮点；二是以海洋
+                        物联网、人工智能、北斗定位导航、移动互联网技术等专业有深厚渊源的热点技
+                        术，培育新的学术骨干，组建新的学术团队，培养复合创新型人才。
+                    </div>
+                    <div class="content">
+                        ②打造新工科方向的复合工程型“金课”团队。设立面向企业创新人才的客
+                        座教授和研究员岗位，选聘实践经验丰富的行业或企业高级专家到学校任教或兼
+                        职，建立稳定兼职教师队伍；制定和规范教师的兼职办法，引导教师到企业兼职。
+                        通过制定政策规定年轻教师在工业界进行 1 年的博士后工作，获到行业领军企业
+                        进行实地工作 1 年，全面增强团队的工程实践意识和解决实际问题的能力。
+                    </div>
+                    <br />
+                    <div class="title-right">
+                        <strong>取得成效</strong>
+                    </div>
+                    <div class="content">
+                        近三年，团队 2017 年开始负责农业工程与信息化技术硕士点建设，2018 年
+                        立项信息与通信工程学科。依托这两个平台，本专业建设了电子信息工程特色专
+                        业建设团队、电子技术基础课程教学团队、智慧海洋传感网及其装备工程技术研
+                        究中心团队，目前发展状态良好。
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>版权所有：广东海洋大学 © 电子信息与工程学院电子信息工程特色专业 地址：广东省湛江市麻章区海大路1号</p>
+            </div>
+        </div>
+</body>
+
+</html>
