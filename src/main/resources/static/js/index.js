@@ -4,9 +4,12 @@
  */
 
 var teacherId;
+/**
+ * 获取登录的教师id
+ */
 $(document).ready(function () {
     $.ajax({
-        url: "/admin/getTeacherId",
+        url: "/teacher/getTeacherId",
         type: "GET",
         success: function (data) {
             console.log(data);
@@ -24,7 +27,7 @@ $(document).ready(function () {
  */
 function build_information(id) {
     $.ajax({
-        url: "/admin/" + id,
+        url: "/teacher/" + id,
         dataType: "JSON",
         success: function (data) {
             console.log(data);
@@ -45,13 +48,13 @@ function build_information(id) {
                     //叉叉
                     var closebtn = $("<button type='button'  style=color:red; class='close' aria-albel='Close'></button>").append("&times;");
                     //绑定事件
-                    closebtn.click(function(){
+                    closebtn.click(function () {
                         if (!confirm("你确认要删除此背景吗")) {
                             return false;
                         }
                         else {
                             $.ajax({
-                                url: "/admin/teachBack/" + item.backgroundId,
+                                url: "/teacher/teachBack/" + item.backgroundId,
                                 type: 'POST',
                                 data: { _method: "DELETE" },
                                 success: function (data) {
@@ -72,13 +75,13 @@ function build_information(id) {
                     //叉叉
                     var closebtn = $("<button type='button' style=color:red;   class='close' aria-albel='Close'></button>").append("&times;");
                     //绑定事件
-                    closebtn.click(function(){
+                    closebtn.click(function () {
                         if (!confirm("你确认要删除此获奖吗")) {
                             return false;
                         }
                         else {
                             $.ajax({
-                                url: "/admin/award/" + item.awardsId,
+                                url: "/teacher/award/" + item.awardsId,
                                 type: 'POST',
                                 data: { _method: "DELETE" },
                                 success: function (data) {
@@ -122,7 +125,7 @@ $("#addteachBackgrounds").click(function () {
             var backgroundContent = $("#backgroundContent").val();
             console.log(backgroundStartTime);
             $.ajax({
-                url: "/admin/teachBack",
+                url: "/teacher/teachBack",
                 type: "POST",
                 dataType: "JSON",
                 data: { backgroundStartTime: backgroundStartTime, backgroundEndTime: backgroundEndTime, backgroundContent: backgroundContent, teacherId: teacherId },
@@ -158,7 +161,7 @@ $("#addteachAwards").click(function () {
             var awardsName = $("#awardsName").val();
             console.log(awardsTime);
             $.ajax({
-                url: "/admin/award",
+                url: "/teacher/award",
                 type: "POST",
                 dataType: "JSON",
                 data: { awardsTime: awardsTime, awardsName: awardsName, teacherId: teacherId },
@@ -226,7 +229,7 @@ $("#updateinformation").click(function updateinformation() {
         var teacherResearch = $("#teacherResearch").val();
         var teacherScientificResearch = $("#teacherScientificResearch").val();
         $.ajax({
-            url: "/admin/" + teacherId,
+            url: "/teacher/" + teacherId,
             dataType: "JSON",
             type: "POST",
             data: {
@@ -250,3 +253,19 @@ $("#updateinformation").click(function updateinformation() {
         });
     }
 });
+
+/**
+ * 退出登录
+ */
+$("#signout").click(function () {
+    $.ajax({
+        url:"/teacher/logout",
+        dataType:"JSON",
+        type:"POST",
+        success:function(data){
+            if(data.code==200){
+                window.location.href="/html/login.html"
+            }
+        }
+    });
+})
