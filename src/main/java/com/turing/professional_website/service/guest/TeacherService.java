@@ -20,6 +20,6 @@ public interface TeacherService {
      * 获取教师详细信息
      * @return
      */
-    public Teacher findTeacherInfo(String teacherName);
+    public Teacher findTeacherInfo(Integer teacherId);
 
 }
