@@ -33,10 +33,10 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Teacher findTeacherInfo(String teacherName) {
+    public Teacher findTeacherInfo(Integer teacherId) {
 
         TeacherExample teacherExample = new TeacherExample();
-        teacherExample.createCriteria().andTeacherNameEqualTo(teacherName);
+        teacherExample.createCriteria().andTeacherIdEqualTo(teacherId);
         List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
         if(teachers.size()!=0){
             Teacher teacher = teachers.get(0);

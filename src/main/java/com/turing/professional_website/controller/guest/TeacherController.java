@@ -4,12 +4,10 @@ import com.turing.professional_website.entity.Teacher;
 import com.turing.professional_website.service.guest.TeacherService;
 import com.turing.professional_website.util.Msg;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,10 +35,11 @@ public class TeacherController {
     }
 
     @ApiOperation(value = "获取教师详细信息", notes = "注意传递的属性名")
-    @GetMapping(value = "/teacherInfo")
-    public Msg findTeacherInfo(@RequestParam(name = "teacherName") String teacherName){
+    @ApiImplicitParam(name = "teacherId",value = "教师id号", dataType = "Integer", paramType = "path", required = true)
+    @GetMapping(value = "/teacherInfo/{teacherId}")
+    public Msg findTeacherInfo(@PathVariable Integer teacherId){
 
-        Teacher teacher = teacherService.findTeacherInfo(teacherName);
+        Teacher teacher = teacherService.findTeacherInfo(teacherId);
         Msg msg = new Msg(200, "处理成功");
         msg.getExtended().put("teacher", teacher);
         return msg;
