@@ -1,6 +1,7 @@
 package com.turing.professional_website.configuration;
 
 import com.turing.professional_website.Interceptor.LoginInterceptor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -13,6 +14,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Value("${teacher.requestImgPath}")
+    private String requestImgPath;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/teacher*")
@@ -43,7 +48,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/fonts/");
 
         registry.addResourceHandler("/static/icon/**")
-                .addResourceLocations("classpath:/static/icon/");
+                .addResourceLocations(requestImgPath);
+
+        registry.addResourceHandler("/error/**")
+                .addResourceLocations("classpath:/error/");
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");

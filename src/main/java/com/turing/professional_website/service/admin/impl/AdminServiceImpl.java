@@ -6,9 +6,14 @@ import com.turing.professional_website.dao.TeachBackgroundMapper;
 import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.*;
 import com.turing.professional_website.service.admin.AdminService;
+import com.turing.professional_website.util.ImageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,6 +32,10 @@ public class AdminServiceImpl implements AdminService {
     TeachBackgroundMapper teachBackgroundMapper;
     @Autowired
     AdminMapper adminMapper;
+    @Value("${teacher.ImgPath}")
+    String imgDir;
+    @Autowired
+    ImageUtil imageUtil;
 
     @Override
     public Teacher findTeacherById(Integer id) {
@@ -64,12 +73,44 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean updateTeacherById(Teacher teacher) {
+    public boolean updateTeacherById(Teacher teacher, MultipartFile img) {
 
-        TeacherExample teacherExample = new TeacherExample();
-        teacherExample.createCriteria().andTeacherIdEqualTo(teacher.getTeacherId());
-        int row = teacherMapper.updateByExample(teacher, teacherExample);
-        return (row != 0);
-
+        //判断是否图片
+        if (imageUtil.isPhoto(img)){
+            //获取数据库中教师目前的头像, 判断是否为同一张头像, 若是则不用更新
+            TeacherExample teacherExample = new TeacherExample();
+            teacherExample.createCriteria().andTeacherIdEqualTo(teacher.getTeacherId());
+            List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
+            String oldImg = teachers.get(0).getTeacherImg();
+            //当前存在数据库的图片名字
+            String oldImgName = oldImg.substring(oldImg.lastIndexOf("/")+1);
+            //上传过来的文件名
+            String newImgName = img.getOriginalFilename();
+            if (!oldImgName.equals(newImgName)){
+                //获取图片后缀名
+                String suffix = imageUtil.getSuffix(img);
+                //获取图片UUID唯一标识名
+                String prefix = imageUtil.getUUIDName();
+                //组合成新的文件名
+                String fileName = prefix + suffix;
+                //生成新的文件的绝对路径
+                String fileRealPath = imgDir + fileName;
+                //生成新的文件并上传
+                File uploadFile = new File(fileRealPath);
+                try {
+                    imageUtil.uploadPhoto(img, uploadFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                teacher.setTeacherImg("/static/icon/"+fileName);
+            }else{
+                teacher.setTeacherImg(oldImg);
+            }
+            int row = teacherMapper.updateByExample(teacher, teacherExample);
+            return (row != 0);
+        }else{
+            //不是图片
+            return false;
+        }
     }
 }

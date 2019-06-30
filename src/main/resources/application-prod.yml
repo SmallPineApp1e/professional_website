@@ -31,3 +31,6 @@ mybatis:
 pagehelper:
   reasonable: true
   helper-dialect: mysql
+teacher:
+  ImgPath: /profession_website/upload/img/
+  requestImgPath: /profession_website/upload/img/
