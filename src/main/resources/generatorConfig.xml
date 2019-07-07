@@ -37,13 +37,13 @@
         <!--指定每个表的生成策略-->
 <!--        <table tableName="admin" domainObjectName="Admin"></table>-->
 <!--        <table tableName="awards" domainObjectName="Award"></table>-->
-        <table tableName="teach_background" domainObjectName="TeachBackground">
-            <columnOverride column="background_content" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        </table>
-<!--        <table tableName="admin" domainObjectName="Teacher">-->
-<!--            <columnOverride column="teacher_research" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
-<!--            <columnOverride column="teacher_scientific_research" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
-<!--            <columnOverride column="teacher_award_introduction" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+<!--        <table tableName="teach_background" domainObjectName="TeachBackground">-->
+<!--            <columnOverride column="background_content" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
 <!--        </table>-->
+        <table tableName="teacher" domainObjectName="Teacher">
+            <columnOverride column="teacher_research" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="teacher_scientific_research" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="teacher_award_introduction" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
     </context>
 </generatorConfiguration>

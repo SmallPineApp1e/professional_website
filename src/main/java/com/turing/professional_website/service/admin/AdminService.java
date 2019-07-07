@@ -1,6 +1,7 @@
 package com.turing.professional_website.service.admin;
 
 import com.turing.professional_website.entity.Teacher;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Jack
@@ -12,6 +13,6 @@ public interface AdminService {
 
     public Teacher login(String username, String password);
 
-    public boolean updateTeacherById(Teacher teacher);
+    public boolean updateTeacherById(Teacher teacher, MultipartFile file);
 
 }

@@ -23,6 +23,8 @@ public class Teacher {
 
     private String teacherAwardIntroduction;
 
+    private String teacherImg;
+
     private List<Award> awards;
 
     private List<TeachBackground> teachBackgrounds;
@@ -123,21 +125,11 @@ public class Teacher {
         this.teacherAwardIntroduction = teacherAwardIntroduction == null ? null : teacherAwardIntroduction.trim();
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "teacherId=" + teacherId +
-                ", teacherName='" + teacherName + '\'' +
-                ", teacherEmail='" + teacherEmail + '\'' +
-                ", teacherBorn='" + teacherBorn + '\'' +
-                ", teacherJob='" + teacherJob + '\'' +
-                ", teacherGraduation='" + teacherGraduation + '\'' +
-                ", teacherPosition='" + teacherPosition + '\'' +
-                ", teacherResearch='" + teacherResearch + '\'' +
-                ", teacherScientificResearch='" + teacherScientificResearch + '\'' +
-                ", teacherAwardIntroduction='" + teacherAwardIntroduction + '\'' +
-                ", awards=" + awards +
-                ", teachBackgrounds=" + teachBackgrounds +
-                '}';
+    public String getTeacherImg() {
+        return teacherImg;
+    }
+
+    public void setTeacherImg(String teacherImg) {
+        this.teacherImg = teacherImg == null ? null : teacherImg.trim();
     }
 }

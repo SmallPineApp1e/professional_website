@@ -6,6 +6,7 @@ import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.*;
 import com.turing.professional_website.service.guest.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,9 @@ public class TeacherServiceImpl implements TeacherService {
     TeachBackgroundMapper teachBackgroundMapper;
     @Autowired
     AwardMapper awardMapper;
+
+    @Value("${teacher.ImgPath}")
+    private String ImgDir;
 
     @Override
     public List<Teacher> findAllTeachers() {

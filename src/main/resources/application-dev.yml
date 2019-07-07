@@ -4,9 +4,9 @@ spring:
   #数据源
   datasource:
     username: root
-    password: root
+    password: 1030jie
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/professional_website?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://120.79.73.140:3306/professional_website?characterEncoding=UTF-8&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
   http:
     encoding:
@@ -31,3 +31,6 @@ mybatis:
 pagehelper:
   reasonable: true
   helper-dialect: mysql
+teacher:
+  ImgPath: D:\upload\img\
+  requestImgPath: file:D:\upload\img\

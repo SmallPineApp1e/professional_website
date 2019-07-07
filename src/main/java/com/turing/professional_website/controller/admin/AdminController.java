@@ -3,9 +3,14 @@ package com.turing.professional_website.controller.admin;
 import com.turing.professional_website.entity.Teacher;
 import com.turing.professional_website.service.admin.AdminService;
 import com.turing.professional_website.util.Msg;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +28,8 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+    @Value("${teacher.ImgPath}")
+    private String imgPath;
 
     /**
      * 根据id查询教师信息
@@ -31,7 +38,7 @@ public class AdminController {
      */
     @ApiOperation(value = "根据id查询教师信息", notes = "暂无需注意的事项")
     @ApiImplicitParam(name = "id", value = "教师id", paramType = "path", dataType = "int", required = true)
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public Msg getTeacherById(@PathVariable Integer id, HttpServletResponse response) {
 
         Teacher teacher = adminService.findTeacherById(id);
@@ -41,7 +48,7 @@ public class AdminController {
 
     }
 
-    @ApiOperation(value = "根据id修改教师信息", notes = "id必须要在路径上, 另外教师的所有信息不能为空,奖项和教育背景是数组集合类型")
+    @ApiOperation(value = "根据id修改教师信息", notes = "id必须要在路径上, 另外教师的所有信息不能为空,奖项和教育背景是数组集合类型,")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "teacherId", value = "教师id", paramType = "query", dataType = "int", required = true),
             @ApiImplicitParam(name = "teacherName", value = "教师名字", paramType = "query", dataType = "String", required = true),
@@ -52,12 +59,13 @@ public class AdminController {
             @ApiImplicitParam(name = "teacherPosition", value = "教师职称", paramType = "query", dataType = "int", required = true),
             @ApiImplicitParam(name = "teacherResearch", value = "教师主要研究方向", paramType = "query", dataType = "int", required = true),
             @ApiImplicitParam(name = "teacherScientificResearch", value = "教师科研工作", paramType = "query", dataType = "int", required = true),
-            @ApiImplicitParam(name = "teacherAwardIntroduction", value = "教师获奖主要介绍", paramType = "query", dataType = "int", required = true)
+            @ApiImplicitParam(name = "teacherAwardIntroduction", value = "教师获奖主要介绍", paramType = "query", dataType = "int", required = true),
+            @ApiImplicitParam(name = "img", value = "教师图片", paramType = "query", dataType = "file", required = false)
     })
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Msg updateTeacherById(@PathVariable Integer id, Teacher teacher){
-        System.out.println(teacher);
-        boolean updateSuccess = adminService.updateTeacherById(teacher);
+    @PutMapping(value = "/{id}")
+    public Msg updateTeacherById(@PathVariable Integer id, Teacher teacher, @RequestParam(value = "img") MultipartFile img){
+
+        boolean updateSuccess = adminService.updateTeacherById(teacher, img);
         if (updateSuccess) {
             return Msg.success();
         }else{
@@ -79,7 +87,7 @@ public class AdminController {
             @ApiImplicitParam(name = "username", value = "账号", paramType = "query", dataType = "string", required = true),
             @ApiImplicitParam(name = "password", value = "密码", paramType = "query", dataType = "string", required = true)
     })
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping(value = "/login")
     public Msg teacherLogin(@RequestParam(name = "username") String username,
                             @RequestParam(name = "password") String password,
                             HttpServletRequest request) {
@@ -106,7 +114,7 @@ public class AdminController {
      * @return
      */
     @ApiOperation(value = "获取登陆的教师id", notes = "暂无")
-    @RequestMapping(value = "/getTeacherId", method = RequestMethod.GET)
+    @GetMapping(value = "/getTeacherId")
     public Msg getTeacherId(HttpServletRequest request, HttpServletResponse response){
 
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");

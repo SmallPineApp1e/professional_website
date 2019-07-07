@@ -1,21 +1,29 @@
 package com.turing.professional_website.util;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * @author Jack
  * @date 2019-03-23-21:58
  */
+@Component
 public class ImageUtil {
+
+    @Value("${teacher.ImgPath}")
+    private String imgPath;
+
     /**
      * 判断文件是否为图片
      * @param file
      * @return
      */
-    public static boolean isPhoto(MultipartFile file){
+    public boolean isPhoto(MultipartFile file){
 
         String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
         return ".jpg".equalsIgnoreCase(suffix) || ".jpeg".equalsIgnoreCase(suffix) ||
@@ -26,16 +34,16 @@ public class ImageUtil {
 
     /**
      * 将图片存储到本地
-     * @param pathName 路径名
      * @param file 文件
      * @return
      */
-    public static void uploadPhoto(String pathName, MultipartFile file, File uploadFile) throws IOException {
-
-        File filePath = new File(pathName);
+    public void uploadPhoto(MultipartFile file, File uploadFile) throws IOException {
+        //判断文件夹是否存在
+        File filePath = new File(imgPath);
         if(!filePath.exists()){
             filePath.mkdirs();
         }
+        //上传文件
         file.transferTo(uploadFile);
 
     }
@@ -45,10 +53,18 @@ public class ImageUtil {
      * @param file
      * @return
      */
-    public static String getSuffix(MultipartFile file){
+    public String getSuffix(MultipartFile file){
 
         return file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 
+    }
+
+    /**
+     * 获取UUID作为文件新名字, 16位长度
+     * @return
+     */
+    public String getUUIDName(){
+        return UUID.randomUUID().toString().replace("-", "").substring(0, 16);
     }
 
 }

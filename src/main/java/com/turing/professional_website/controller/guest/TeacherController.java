@@ -23,6 +23,8 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
+
+
     @ApiOperation(value = "获取所有教师的名字+照片接口", notes = "照片名字就是拼接教师名字加图片后缀名")
     @GetMapping(value = "/teachers")
     public Msg findAllTeachers(){
@@ -38,7 +40,6 @@ public class TeacherController {
     @ApiImplicitParam(name = "teacherId",value = "教师id号", dataType = "Integer", paramType = "path", required = true)
     @GetMapping(value = "/teacherInfo/{teacherId}")
     public Msg findTeacherInfo(@PathVariable Integer teacherId){
-
         Teacher teacher = teacherService.findTeacherInfo(teacherId);
         Msg msg = new Msg(200, "处理成功");
         msg.getExtended().put("teacher", teacher);
