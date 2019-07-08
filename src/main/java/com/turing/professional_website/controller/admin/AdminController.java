@@ -60,12 +60,11 @@ public class AdminController {
             @ApiImplicitParam(name = "teacherResearch", value = "教师主要研究方向", paramType = "query", dataType = "int", required = true),
             @ApiImplicitParam(name = "teacherScientificResearch", value = "教师科研工作", paramType = "query", dataType = "int", required = true),
             @ApiImplicitParam(name = "teacherAwardIntroduction", value = "教师获奖主要介绍", paramType = "query", dataType = "int", required = true),
-            @ApiImplicitParam(name = "img", value = "教师图片", paramType = "query", dataType = "file", required = false)
     })
     @PutMapping(value = "/{id}")
-    public Msg updateTeacherById(@PathVariable Integer id, Teacher teacher, @RequestParam(value = "img") MultipartFile img){
+    public Msg updateTeacherById(@PathVariable Integer id, Teacher teacher){
 
-        boolean updateSuccess = adminService.updateTeacherById(teacher, img);
+        boolean updateSuccess = adminService.updateTeacherById(id, teacher);
         if (updateSuccess) {
             return Msg.success();
         }else{
@@ -74,8 +73,24 @@ public class AdminController {
 
     }
 
-
     /**
+     * 根据id更新教师的头像
+     * @param id 教师id
+     * @param img 图片
+     * @return
+     */
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "教师id", paramType = "path", dataType = "int", required = true),
+            @ApiImplicitParam(name = "img", value = "教师头像", paramType = "query", dataType = "MultipartFile", required = true,
+            allowMultiple = true)
+    })
+    @PutMapping(value = "/icon/{id}")
+    public Msg updateTeacherIconById(@PathVariable Integer id, @RequestParam(value = "img")MultipartFile img){
+        boolean updateIconSuccess = adminService.updateTeacherIconById(id, img);
+        return updateIconSuccess? Msg.success() : Msg.fail();
+    }
+
+   /**
      * 教师登陆接口
      * @param username  账号
      * @param password  密码

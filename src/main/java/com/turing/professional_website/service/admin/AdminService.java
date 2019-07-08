@@ -13,6 +13,8 @@ public interface AdminService {
 
     public Teacher login(String username, String password);
 
-    public boolean updateTeacherById(Teacher teacher, MultipartFile file);
+    public boolean updateTeacherById(Integer id, Teacher teacher);
+
+    public boolean updateTeacherIconById(Integer id, MultipartFile img);
 
 }

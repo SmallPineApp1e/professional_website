@@ -73,19 +73,34 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean updateTeacherById(Teacher teacher, MultipartFile img) {
+    public boolean updateTeacherById(Integer id, Teacher teacher) {
+        TeacherExample teacherExample = new TeacherExample();
+        teacherExample.createCriteria().andTeacherIdEqualTo(id);
+        List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
+        //获取教师的图片
+        String teacherImg = teachers.get(0).getTeacherImg();
+        teacher.setTeacherImg(teacherImg);
+        int row = teacherMapper.updateByExample(teacher, teacherExample);
+        return (row != 0);
+    }
 
+    @Override
+    public boolean updateTeacherIconById(Integer id, MultipartFile img) {
+
+        Teacher teacher = null;
         //判断是否图片
         if (imageUtil.isPhoto(img)){
             //获取数据库中教师目前的头像, 判断是否为同一张头像, 若是则不用更新
             TeacherExample teacherExample = new TeacherExample();
-            teacherExample.createCriteria().andTeacherIdEqualTo(teacher.getTeacherId());
+            teacherExample.createCriteria().andTeacherIdEqualTo(id);
             List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
-            String oldImg = teachers.get(0).getTeacherImg();
+            teacher = teachers.get(0);
+            String oldImg = teacher.getTeacherImg();
             //当前存在数据库的图片名字
             String oldImgName = oldImg.substring(oldImg.lastIndexOf("/")+1);
             //上传过来的文件名
             String newImgName = img.getOriginalFilename();
+            //判断是否上传同一张照片
             if (!oldImgName.equals(newImgName)){
                 //获取图片后缀名
                 String suffix = imageUtil.getSuffix(img);
