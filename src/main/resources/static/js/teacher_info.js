@@ -56,7 +56,7 @@ function build_teacher_information(teacher) {
     $("#teacherPosition").text(" - 职称:" + teacher.teacherPosition);
     $("#teacherResearch").text(teacher.teacherResearch);
     $("#teacherScientificResearch").text(teacher.teacherScientificResearch);
-
+    $("#teacherImg").attr("src",teacher.teacherImg);
 }
 
 /**

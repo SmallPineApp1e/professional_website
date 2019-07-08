@@ -44,6 +44,10 @@ function build_information(id) {
                 $("#teacherGraduation").val(teacher.teacherGraduation);
                 $("#loginname").text(teacher.teacherName);
                 $("#teacherAwardIntroduction").text(teacher.teacherAwardIntroduction);
+                var img=document.getElementsByName("teacherImg");
+                for(var i=0;i<img.length;i++){
+                    img[i].src=teacher.teacherImg;
+                }
                 $.each(teacher.teachBackgrounds, function (index, item) {
                     //叉叉
                     var closebtn = $("<button type='button'  style=color:red; class='close' aria-albel='Close'></button>").append("&times;");
@@ -178,6 +182,41 @@ $("#addteachAwards").click(function () {
 })
 
 /**
+ * 修改头像模态框
+ */
+$("#updateteacherImg").click(function () {
+    $("#TeacherImgModal").modal({
+        backdrop: "static"
+    });
+    $("#updateImg").click(function(){
+        var img=document.getElementById("file").files[0];
+        var formdata=new FormData();
+        if(img.size>5242880){
+            alert("图片大小不能超过5m");
+            return false;
+        }
+        else{
+            formdata.append("img",img);
+        }
+        formdata.append("teacherId",teacherId);
+        formdata.append("_method","PUT");
+        $.ajax({
+            url:"/teacher/"+teacherId,
+            type:"POST",
+            dataType:"JSON",
+            data:formdata,
+            async: false,
+            processData: false,
+            contentType: false,
+            success:function(data){
+                console.log(data);
+            }
+        });
+    })
+
+});
+
+/**
  * 格式化时间
  * @param str
  */
@@ -269,3 +308,20 @@ $("#signout").click(function () {
         }
     });
 })
+
+/**
+ * 图片的预览
+ */
+ofReader=new FileReader();
+ofReader.onload=function(oFREvent){
+    document.getElementById("img").src=oFREvent.target.result;
+};
+
+function loadImageFile(){
+    if(document.getElementById("file").files.length==0){
+        alert("请选择照片");
+        return;
+    }
+    var oFile=document.getElementById("file").files[0];
+    ofReader.readAsDataURL(oFile);
+}
