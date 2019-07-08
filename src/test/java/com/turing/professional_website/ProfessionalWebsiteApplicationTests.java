@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.File;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -27,6 +28,12 @@ public class ProfessionalWebsiteApplicationTests {
         String old_photo = teachers.get(0).getTeacherImg();
         System.out.println(old_photo.substring(old_photo.lastIndexOf("/")+1));
 
+    }
+
+    @Test
+    public void delete(){
+        File file=new File("D:\\upload\\img\\c26319a785764920.png");
+        file.delete();
     }
 
 }

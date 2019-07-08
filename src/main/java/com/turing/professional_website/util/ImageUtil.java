@@ -49,6 +49,24 @@ public class ImageUtil {
     }
 
     /**
+     * 删除文件
+     * @param filename 文件名
+     */
+    public void deletePhoto(String filename){
+        File filePath=new File(imgPath,filename);
+        filePath.delete();
+    }
+
+    /**
+     * 获取文件名
+     * @param path 数据库中的相对路径
+     * @return 带后缀的文件名
+     */
+    public String getFileName(String path){
+        return path.substring(path.lastIndexOf("/")+1);
+    }
+
+    /**
      * 获得图片的后缀名 包括"." 例如.jpg
      * @param file
      * @return

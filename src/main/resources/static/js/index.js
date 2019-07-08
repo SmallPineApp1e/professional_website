@@ -191,17 +191,11 @@ $("#updateteacherImg").click(function () {
     $("#updateImg").click(function(){
         var img=document.getElementById("file").files[0];
         var formdata=new FormData();
-        if(img.size>5242880){
-            alert("图片大小不能超过5m");
-            return false;
-        }
-        else{
-            formdata.append("img",img);
-        }
+        formdata.append("img",img);
         formdata.append("teacherId",teacherId);
         formdata.append("_method","PUT");
         $.ajax({
-            url:"/teacher/"+teacherId,
+            url:"/teacher/icon/"+teacherId,
             type:"POST",
             dataType:"JSON",
             data:formdata,
@@ -210,6 +204,9 @@ $("#updateteacherImg").click(function () {
             contentType: false,
             success:function(data){
                 console.log(data);
+                if(data.code==200){
+                    window.location.reload();
+                }
             }
         });
     })
@@ -320,6 +317,10 @@ ofReader.onload=function(oFREvent){
 function loadImageFile(){
     if(document.getElementById("file").files.length==0){
         alert("请选择照片");
+        return;
+    }
+    if(document.getElementById("file").files[0].size>5242800){
+        alert("上传的图片不能大于5M");
         return;
     }
     var oFile=document.getElementById("file").files[0];

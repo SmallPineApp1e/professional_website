@@ -10,6 +10,7 @@ import com.turing.professional_website.util.ImageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
@@ -113,6 +115,8 @@ public class AdminServiceImpl implements AdminService {
                 //生成新的文件并上传
                 File uploadFile = new File(fileRealPath);
                 try {
+                    System.out.println(imgDir+imageUtil.getFileName(teacher.getTeacherImg()));
+                    imageUtil.deletePhoto(imageUtil.getFileName(teacher.getTeacherImg()));
                     imageUtil.uploadPhoto(img, uploadFile);
                 } catch (IOException e) {
                     e.printStackTrace();
