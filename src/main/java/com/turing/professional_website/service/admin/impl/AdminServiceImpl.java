@@ -7,12 +7,14 @@ import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.*;
 import com.turing.professional_website.service.admin.AdminService;
 import com.turing.professional_website.util.ImageUtil;
+import com.turing.professional_website.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -64,7 +66,7 @@ public class AdminServiceImpl implements AdminService {
     public Teacher login(String username, String password) {
 
         AdminExample adminExample = new AdminExample();
-        adminExample.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(password);
+        adminExample.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(MD5Util.getHexPassword(password));
         List<Admin> admins = adminMapper.selectByExample(adminExample);
         if(admins.isEmpty()){
             return null;
@@ -129,6 +131,37 @@ public class AdminServiceImpl implements AdminService {
             return (row != 0);
         }else{
             //不是图片
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updatePassword(HttpServletRequest request, Integer id, String oldPassword, String newPassword) {
+
+        AdminExample adminExample = new AdminExample();
+        adminExample.createCriteria().andTeacherIdEqualTo(id);
+        //获取MD5加密后的原始密码
+        String hexOldPassword = MD5Util.getHexPassword(oldPassword);
+        List<Admin> admins = adminMapper.selectByExample(adminExample);
+        if(admins.size()!=0){
+            Admin admin = admins.get(0);
+            //密码比对
+            if(admin.getPassword().equals(hexOldPassword)){
+                String hexNewPassword = MD5Util.getHexPassword(newPassword);
+                //设置新密码
+                admin.setPassword(hexNewPassword);
+                //更新管理员密码
+                int row = adminMapper.updateByExample(admin, adminExample);
+                if(row != 0){
+                    request.getSession().removeAttribute("teacher");
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
             return false;
         }
     }

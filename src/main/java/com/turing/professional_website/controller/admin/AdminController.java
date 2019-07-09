@@ -79,6 +79,7 @@ public class AdminController {
      * @param img 图片
      * @return
      */
+    @ApiOperation(value = "根据id更新教师头像", notes = "文件上传的属性名称为img")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "教师id", paramType = "path", dataType = "int", required = true),
             @ApiImplicitParam(name = "img", value = "教师头像", paramType = "query", dataType = "MultipartFile", required = true,
@@ -88,6 +89,28 @@ public class AdminController {
     public Msg updateTeacherIconById(@PathVariable Integer id, @RequestParam(value = "img")MultipartFile img){
         boolean updateIconSuccess = adminService.updateTeacherIconById(id, img);
         return updateIconSuccess? Msg.success() : Msg.fail();
+    }
+
+    /**
+     * 根据教师id修改密码
+     * @param id 教师id
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @return
+     */
+    @ApiOperation(value = "根据教师id修改密码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "oldPassword", value = "旧密码", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "newPassword", value = "新密码", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "id", value = "教师id", dataType = "Integer", paramType = "path", required = true)
+    })
+    @PutMapping(value = "/updatePass/{id}")
+    public Msg updateAdminPassword(@PathVariable Integer id, @RequestParam(value = "oldPassword") String oldPassword,
+                                   @RequestParam(value = "newPassword") String newPassword, HttpServletRequest request){
+
+        boolean updateSuccess = adminService.updatePassword(request, id, oldPassword, newPassword);
+        return updateSuccess? Msg.success().add("success", "密码修改成功!请重新登录"):Msg.fail().add("fail", "密码修改失败!");
+
     }
 
    /**
@@ -151,7 +174,5 @@ public class AdminController {
         return msg;
 
     }
-
-
 
 }

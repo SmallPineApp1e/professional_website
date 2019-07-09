@@ -1,5 +1,7 @@
 package com.turing.professional_website.util;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
  * @date 2019-03-23-10:45
  */
 
+@Component
 public class MD5Util {
 
     public static String getHexPassword(String password){

@@ -3,6 +3,7 @@ package com.turing.professional_website;
 import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.Teacher;
 import com.turing.professional_website.entity.TeacherExample;
+import com.turing.professional_website.util.MD5Util;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,12 @@ public class ProfessionalWebsiteApplicationTests {
     public void delete(){
         File file=new File("D:\\upload\\img\\c26319a785764920.png");
         file.delete();
+    }
+
+    @Test
+    public void md5(){
+        String hexPassword = MD5Util.getHexPassword("mengjiahui");
+        System.out.println(hexPassword);
     }
 
 }
