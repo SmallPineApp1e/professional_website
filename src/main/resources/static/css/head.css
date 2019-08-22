@@ -47,6 +47,10 @@
     text-align: center;
 }
 
+.nav-tabs {
+    margin-bottom: 3px;
+}
+
 /*下拉按钮样式*/
 .dropbtn {
     background-color: white;
