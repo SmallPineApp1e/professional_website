@@ -15,6 +15,7 @@ $(document).ready(function () {
             console.log(data);
             if (data.code == 200) {
                 teacherId = data.extended.teacherId;
+                build_icon(teacherId);
                 build_information(teacherId);
             }
         }
@@ -42,12 +43,9 @@ function build_information(id) {
                 $("#teacherEmail").val(teacher.teacherEmail);
                 $("#teacherBorn").val(teacher.teacherBorn);
                 $("#teacherGraduation").val(teacher.teacherGraduation);
-                $("#loginname").text(teacher.teacherName);
+
                 $("#teacherAwardIntroduction").text(teacher.teacherAwardIntroduction);
-                var img=document.getElementsByName("teacherImg");
-                for(var i=0;i<img.length;i++){
-                    img[i].src=teacher.teacherImg;
-                }
+
                 $.each(teacher.teachBackgrounds, function (index, item) {
                     //叉叉
                     var closebtn = $("<button type='button'  style=color:red; class='close' aria-albel='Close'></button>").append("&times;");

@@ -4,7 +4,7 @@
 }
 
 .head {
-    background: url("/static/img/show(1).jpg") no-repeat;
+    background: url("/static/img/back.png") no-repeat;
     height: 260px;
     background-size: 100% 170px;
 }
@@ -23,7 +23,7 @@
 }
 
 .head_top ul li a {
-    color: #5581F2;
+    color: white;
     text-decoration: none
 }
 
