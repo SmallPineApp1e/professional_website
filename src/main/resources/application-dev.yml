@@ -34,3 +34,7 @@ pagehelper:
 teacher:
   ImgPath: D:\upload\img\
   requestImgPath: file:D:\upload\img\
+#打印sql语句
+logging:
+  level:
+    com.turing.professional_website.dao : debug

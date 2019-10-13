@@ -10,6 +10,7 @@ import com.turing.professional_website.util.ImageUtil;
 import com.turing.professional_website.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,6 +43,7 @@ public class AdminServiceImpl implements AdminService {
     ImageUtil imageUtil;
 
     @Override
+    @Cacheable(cacheNames = {"teacher"})
     public Teacher findTeacherById(Integer id) {
         TeacherExample teacherExample = new TeacherExample();
         teacherExample.createCriteria().andTeacherIdEqualTo(id);
