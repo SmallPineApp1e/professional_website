@@ -21,4 +21,5 @@ public interface AdminService {
 
     public boolean updatePassword(HttpServletRequest request, Integer id, String oldPassword, String newPassword);
 
+    boolean addTeacher(Teacher teacher);
 }

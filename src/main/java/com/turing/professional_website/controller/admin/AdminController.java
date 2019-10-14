@@ -47,6 +47,13 @@ public class AdminController {
         return msg;
 
     }
+    @ApiOperation(value = "新增教师", notes = "暂无需注意的事项")
+    @PostMapping("")
+    public Msg addTeacher(Teacher teacher){
+
+        boolean addSuccess = adminService.addTeacher(teacher);
+        return addSuccess ? Msg.success() : Msg.fail();
+    }
 
     @ApiOperation(value = "根据id修改教师信息", notes = "id必须要在路径上, 另外教师的所有信息不能为空,奖项和教育背景是数组集合类型,")
     @ApiImplicitParams({

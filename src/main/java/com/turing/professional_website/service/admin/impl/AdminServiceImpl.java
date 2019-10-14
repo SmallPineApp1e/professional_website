@@ -167,4 +167,12 @@ public class AdminServiceImpl implements AdminService {
             return false;
         }
     }
+
+    @Override
+    public boolean addTeacher(Teacher teacher) {
+        teacher.setTeacherImg("/static/icon/1.png");
+        int row = teacherMapper.insert(teacher);
+        return row != 0;
+
+    }
 }
