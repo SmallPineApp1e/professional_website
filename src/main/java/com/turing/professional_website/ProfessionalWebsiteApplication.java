@@ -7,7 +7,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableCaching
 public class ProfessionalWebsiteApplication {
 
     public static void main(String[] args) {

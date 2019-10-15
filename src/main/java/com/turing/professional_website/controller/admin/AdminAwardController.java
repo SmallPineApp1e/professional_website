@@ -30,25 +30,25 @@ public class AdminAwardController {
             @ApiImplicitParam(name = "teacherId", value = "教师的id", dataType = "int", paramType = "query", required = true)
     })
     @PostMapping(value = "")
-    public Msg addAwardService(Award award){
-
+    public Msg addAwardService(Award award) {
         boolean addSuccess = adminAwardService.addAward(award);
-        if(addSuccess){
+        if (addSuccess) {
             return Msg.success();
-        }else{
+        } else {
             return Msg.fail();
         }
 
     }
+
     @ApiOperation(value = "删除获奖信息", notes = "注意id跟在路径后面")
     @ApiImplicitParam(name = "id", value = "删除的获奖id号", dataType = "int", paramType = "query", required = true)
     @DeleteMapping(value = "/{id}")
-    public Msg delAwardService(@PathVariable Integer id){
+    public Msg delAwardService(@PathVariable Integer id) {
 
         boolean delSuccess = adminAwardService.delAward(id);
-        if(delSuccess){
+        if (delSuccess) {
             return Msg.success();
-        }else{
+        } else {
             return Msg.fail();
         }
 

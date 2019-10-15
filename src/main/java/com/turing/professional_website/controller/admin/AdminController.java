@@ -1,5 +1,7 @@
 package com.turing.professional_website.controller.admin;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.turing.professional_website.entity.Teacher;
 import com.turing.professional_website.service.admin.AdminService;
 import com.turing.professional_website.util.Msg;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author Jack
@@ -180,6 +183,19 @@ public class AdminController {
         Msg msg = new Msg(200, "登出成功!");
         return msg;
 
+    }
+
+    /**
+     * 获取全部教师
+     * @param pn 当前处在分页中的第几页
+     * @return
+     */
+    @GetMapping(value = "/teacher")
+    public Msg getTeachers(@RequestParam(value="pn",defaultValue = "1")Integer pn){
+        PageHelper.startPage(pn,5);
+        List<Teacher> teachers=adminService.getTeachers();
+        PageInfo<Teacher> pageInfo=new PageInfo<>(teachers,5);
+        return Msg.success().add("pageinfo",pageInfo);
     }
 
 }

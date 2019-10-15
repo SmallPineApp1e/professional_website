@@ -5,6 +5,7 @@ import com.turing.professional_website.entity.Award;
 import com.turing.professional_website.entity.AwardExample;
 import com.turing.professional_website.service.admin.AdminAwardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 /**

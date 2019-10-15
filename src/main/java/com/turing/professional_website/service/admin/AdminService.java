@@ -4,6 +4,7 @@ import com.turing.professional_website.entity.Teacher;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author Jack
@@ -22,4 +23,6 @@ public interface AdminService {
     public boolean updatePassword(HttpServletRequest request, Integer id, String oldPassword, String newPassword);
 
     boolean addTeacher(Teacher teacher);
+
+    List<Teacher> getTeachers();
 }

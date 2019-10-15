@@ -17,6 +17,7 @@ public class ImageUtil {
 
     @Value("${teacher.ImgPath}")
     private String imgPath;
+    private String defaultImgPath="/static/icon/1.png";
 
     /**
      * 判断文件是否为图片
@@ -53,6 +54,7 @@ public class ImageUtil {
      * @param filename 文件名
      */
     public void deletePhoto(String filename){
+        if(filename.equals(defaultImgPath)) return;
         File filePath=new File(imgPath,filename);
         filePath.delete();
     }

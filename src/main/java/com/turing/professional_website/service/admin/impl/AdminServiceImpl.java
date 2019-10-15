@@ -43,7 +43,6 @@ public class AdminServiceImpl implements AdminService {
     ImageUtil imageUtil;
 
     @Override
-    @Cacheable(cacheNames = {"teacher"})
     public Teacher findTeacherById(Integer id) {
         TeacherExample teacherExample = new TeacherExample();
         teacherExample.createCriteria().andTeacherIdEqualTo(id);
@@ -174,5 +173,13 @@ public class AdminServiceImpl implements AdminService {
         int row = teacherMapper.insert(teacher);
         return row != 0;
 
+    }
+
+    @Override
+    @Cacheable(cacheNames = "{teacher}")
+    public List<Teacher> getTeachers() {
+        TeacherExample teacherExample=new TeacherExample();
+        TeacherExample.Criteria criteria=teacherExample.createCriteria();
+        return teacherMapper.selectByExample(teacherExample);
     }
 }

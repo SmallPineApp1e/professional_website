@@ -73,7 +73,10 @@
                     <li><a href="updatepassword.html"><i class="fa fa-th-list fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">修改密码</span></a>
-
+                    </li>
+                    <li><a href="teacher.html"><i class="fa fa-th-list fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">教师管理</span></a>
                     </li>
                 </ul>
             </div>
@@ -224,7 +227,7 @@
                             <div class="form-group">
                                 <div class="col-sm-10">
                                 <textarea rows="5" class="form-control"
-                                          id="teacherAwardIntroduction" onfocus="reverse(this);" onblur="notnull(this)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;获得广东海洋大学讲课比赛一等奖，校级教学成果奖二等奖，校级教学质量优秀奖，校级师德先进个人，校级优秀教师，校级优秀班主任和校级优秀党员等12项校级奖励，指导学生参加第七届和第八届挑战杯大赛获得二等奖和优秀奖。</textarea>
+                                          id="teacherAwardIntroduction"></textarea>
                                     <span id="teacherAwardIntroductionerror" class="help-block"></span>
                                 </div>
                             </div>
@@ -295,21 +298,25 @@
         </div>
     </div>
 </div>
-<!--AwardModal-->
 <div class="modal fade" id="AwardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">修改头像</h4>
+                <h4 class="modal-title" id="myModalLabel">添加获奖信息</h4>
             </div>
             <div class="modal-body">
-               <table align=center>
-                   <tbody>
-                       <tr><td><img  width=200 height=200 name="teacherImg" src=""></td></tr>
-                   </tbody>
-               </table>
+                <div class="form-group">
+                    <label for="awardsTime" class="control-label">获奖时间</label>
+                    <input type="month" id="awardsTime" class="form-control" onblur="notnull(this);" onfocus="reverse(this);">
+                    <span  class="help-block"></span>
+                </div>
+                <div class="form-group">
+                    <label for="awardsName">获奖名</label>
+                    <input type="text" class="form-control" id="awardsName" placeholder="请至少输入1个字符" onblur="notnull(this);" onfocus="reverse(this);">
+                    <span  class="help-block"></span>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
