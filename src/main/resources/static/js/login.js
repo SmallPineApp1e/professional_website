@@ -61,3 +61,14 @@ $(document).ready(function() {
         $("#p").removeAttr("style");
     })
 });
+
+/**
+ * 回车快捷登录
+ */
+$(document).keyup(function(e){
+    switch(e.keyCode) {
+        case 13:
+            $("#login").click();
+            return;
+    }
+})

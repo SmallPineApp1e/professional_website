@@ -6,6 +6,7 @@ import com.turing.professional_website.entity.*;
 import com.turing.professional_website.service.guest.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class TeacherServiceImpl implements TeacherService {
     private String ImgDir;
 
     @Override
+    @Cacheable(cacheNames = {"teachers"})
     public List<Teacher> findAllTeachers() {
 
         List<Teacher> teachers = teacherMapper.selectByExample(null);
@@ -34,6 +36,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    @Cacheable(cacheNames = {"teacher"})
     public Teacher findTeacherInfo(Integer teacherId) {
 
         TeacherExample teacherExample = new TeacherExample();
