@@ -25,17 +25,7 @@ public class Teacher {
 
     private String teacherImg;
 
-    private List<Award> awards;
-
     private List<TeachBackground> teachBackgrounds;
-
-    public List<Award> getAwards() {
-        return awards;
-    }
-
-    public void setAwards(List<Award> awards) {
-        this.awards = awards;
-    }
 
     public List<TeachBackground> getTeachBackgrounds() {
         return teachBackgrounds;

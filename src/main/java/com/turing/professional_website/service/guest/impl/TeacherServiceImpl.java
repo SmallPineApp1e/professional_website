@@ -1,6 +1,5 @@
 package com.turing.professional_website.service.guest.impl;
 
-import com.turing.professional_website.dao.AwardMapper;
 import com.turing.professional_website.dao.TeachBackgroundMapper;
 import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.*;
@@ -22,8 +21,6 @@ public class TeacherServiceImpl implements TeacherService {
     TeacherMapper teacherMapper;
     @Autowired
     TeachBackgroundMapper teachBackgroundMapper;
-    @Autowired
-    AwardMapper awardMapper;
 
     @Value("${teacher.ImgPath}")
     private String ImgDir;
@@ -49,11 +46,6 @@ public class TeacherServiceImpl implements TeacherService {
             teachBackgroundExample.createCriteria().andTeacherIdEqualTo(teacher.getTeacherId());
             List<TeachBackground> teachBackgrounds = teachBackgroundMapper.selectByExample(teachBackgroundExample);
             teacher.setTeachBackgrounds(teachBackgrounds);
-            //获取获奖情况
-            AwardExample awardExample = new AwardExample();
-            awardExample.createCriteria().andTeacherIdEqualTo(teacher.getTeacherId());
-            List<Award> awards = awardMapper.selectByExample(awardExample);
-            teacher.setAwards(awards);
             return teacher;
         }else{
             return null;

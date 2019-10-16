@@ -52,7 +52,7 @@ public class AdminController {
     }
     @ApiOperation(value = "新增教师", notes = "暂无需注意的事项")
     @PostMapping("")
-    public Msg addTeacher(Teacher teacher){
+    public Msg addTeacher(@RequestBody Teacher teacher){
 
         boolean addSuccess = adminService.addTeacher(teacher);
         return addSuccess ? Msg.success() : Msg.fail();

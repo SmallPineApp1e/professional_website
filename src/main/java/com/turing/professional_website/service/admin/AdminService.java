@@ -12,15 +12,15 @@ import java.util.List;
  */
 public interface AdminService {
 
-    public Teacher findTeacherById(Integer id);
+    Teacher findTeacherById(Integer id);
 
-    public Teacher login(String username, String password);
+    Teacher login(String username, String password);
 
-    public boolean updateTeacherById(Integer id, Teacher teacher);
+    boolean updateTeacherById(Integer id, Teacher teacher);
 
-    public boolean updateTeacherIconById(Integer id, MultipartFile img);
+    boolean updateTeacherIconById(Integer id, MultipartFile img);
 
-    public boolean updatePassword(HttpServletRequest request, Integer id, String oldPassword, String newPassword);
+    boolean updatePassword(HttpServletRequest request, Integer id, String oldPassword, String newPassword);
 
     boolean addTeacher(Teacher teacher);
 

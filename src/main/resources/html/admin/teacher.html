@@ -27,6 +27,13 @@
             background: #428BCA;
             border-color: #428BCA;
         }
+        .time{
+            width: 125px;
+            height: 26px;
+        }
+        .backgroundContent{
+            width: 356px
+        }
     </style>
 </head>
 
@@ -166,7 +173,7 @@
                             <div class="form-group">
                                 <label for="teacherName" class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" required class="form-control" id="teacherName" onblur="notnull(this)" onfocus="reverse(this)">
+                                    <input type="text" class="form-control" id="teacherName" onblur="notnull(this)" onfocus="reverse(this)">
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -199,28 +206,30 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button>+</button>
+                                <button type="button" onclick="insertNewBackground()">+</button>
+                                <button type="button" onclick="delNewBackground()">-</button>
                                 <label class="col-sm-2 control-label">教育背景</label>
                                 <div class="col-sm-10" id="teacherBackgroundInputArea">
-                                    起始时间<input style="width: 125px;height: 26px;" type="date" value="2015-09-24"  id="start_time" onfocus="reverse(this)">
-                                    结束时间<input style="width: 125px;height: 26px" type="date" value="2015-09-24"  id="end_time" onfocus="reverse(this)">
-
-                                    <div>毕业院校</div>
-                                    <input style="width: 356px" type="text" id="content" onblur="notnull(this)" onfocus="reverse(this)">
+                                    <div id="area0">
+                                        起始时间<input class="time" type="date" value="2015-09-24"  id="backgroundStartTime0" onfocus="reverse(this)">
+                                        结束时间<input class="time" type="date" value="2015-09-24"  id="backgroundEndTime0" onfocus="reverse(this)">
+                                        <div>毕业院校</div>
+                                        <input class="backgroundContent" type="text" id="backgroundContent0" onblur="notnull(this)" onfocus="reverse(this)">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="teacherPosition" class="col-sm-2 control-label">职称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="teacherPosition" onblur="notnull(this)" onfocus="reverse(this)">
                                     <span class="help-block"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="teacherPositionerror" class="col-sm-2 control-label">职称</label>
+                                <label for="teacherResearch" class="col-sm-2 control-label">主要研究领域和方向</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="teacherPositionerror" onblur="notnull(this)" onfocus="reverse(this)">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="teacherResearcherror" class="col-sm-2 control-label">主要研究领域和方向</label>
-                                <div class="col-sm-10">
-                                    <textarea rows="10" class="form-control" id="teacherResearcherror" onblur="notnull(this)" onfocus="reverse(this)"></textarea>
+                                    <textarea rows="10" class="form-control" id="teacherResearch" onblur="notnull(this)" onfocus="reverse(this)"></textarea>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -232,9 +241,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="teacherAwardIntroduction" class="col-sm-2 control-label">获奖情况</label>
+                                <label class="col-sm-2 control-label">获奖情况</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="5" class="form-control" id="teacherAwardIntroduction" onblur="notnull(this)" onfocus="reverse(this)"></textarea>
+                                    <textarea rows="10" class="form-control" id="teacherAwardIntroduction" onblur="notnull(this)" onfocus="reverse(this)"></textarea>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -242,7 +251,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary" id="addTeacherBtn">提交</button>
+                        <button type="button" class="btn btn-primary" onclick="addTeacher()">提交</button>
                     </div>
                 </div>
             </div>

@@ -132,6 +132,84 @@ function reverse(node) {
     $(node).parent().parent().removeClass("has-error");
     $(node).next("span").text("");
 }
-$("#addTeacherBtn").click(function(){
 
-})
+var totalBackgrounds = 1;
+
+/**
+ * 点击按钮后新增教育背景填写框
+ */
+function insertNewBackground(){
+
+    var startTimeInput = $("<input class=\"time\" type=\"date\" value=\"2015-09-24\" onfocus=\"reverse(this)\">");
+    startTimeInput.attr("id","backgroundStartTime" + totalBackgrounds);
+    var endTimeInput = $("<input class=\"time\" type=\"date\" value=\"2015-09-24\" onfocus=\"reverse(this)\">");
+    endTimeInput.attr("id","backgroundEndTime" + totalBackgrounds);
+    var graduateText = $("<div>毕业院校</div>");
+    var backgroundContent = $("<input class=\"backgroundContent\" type=\"text\" onblur=\"notnull(this)\" onfocus=\"reverse(this)\">")
+    backgroundContent.attr("id","backgroundContent" + totalBackgrounds);
+    var helpBlock = $("<span class=\"help-block\"></span>");
+    var area = $("<div></div>");
+    var areaId = "area" + totalBackgrounds;
+    area.attr("id", areaId);
+    area.append("起始时间",startTimeInput,"结束时间",endTimeInput,graduateText,backgroundContent,helpBlock);
+    $("#teacherBackgroundInputArea").append(area);
+    totalBackgrounds += 1;
+}
+
+/**
+ * 点击按钮后删除教育背景填写框
+ */
+function delNewBackground() {
+    if(totalBackgrounds === 1){
+        alert("至少要填写一项您的教育背景！");
+        return ;
+    }
+    var areaId = "#area" + (totalBackgrounds - 1);
+    $(areaId).remove();
+    totalBackgrounds -= 1;
+}
+
+/**
+ * 添加教师
+ */
+function addTeacher() {
+
+    var teacherBackgroundsArray = new Array(totalBackgrounds);
+    for (var index = 0; index < teacherBackgroundsArray.length; index++){
+        var backgroundStartTimeId = "#backgroundStartTime"+index;
+        var backgroundEndTimeId = "#backgroundEndTime"+index;
+        var backgroundContentId = "#backgroundContent"+index;
+        var background = {
+            backgroundStartTime : $(backgroundStartTimeId).val(),
+            backgroundEndTime : $(backgroundEndTimeId).val(),
+            backgroundContent : $(backgroundContentId).val()
+        };
+        teacherBackgroundsArray[index] = background;
+    }
+    var data = {
+        teacherName : $("#teacherName").val(),
+        teacherEmail : $("#teacherEmail").val(),
+        teacherBorn : $("#teacherBorn").val(),
+        teacherJob : $("#teacherJob").val(),
+        teacherGraduation : $("#teacherGraduation").val(),
+        teacherPosition : $("#teacherPosition").val(),
+        teacherResearch : $("#teacherResearch").val(),
+        teacherScientificResearch: $("#teacherScientificResearch").val(),
+        teacherAwardIntroduction: $("#teacherAwardIntroduction").val(),
+        teachBackgrounds: teacherBackgroundsArray
+    }
+    $.ajax({
+        method: "POST",
+        url: "/teacher",
+        dataType: "JSON",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success:function (result) {
+            alert(result.msg);
+            window.location.reload();
+        },
+        error:function (result) {
+            alert(result.msg);
+        }
+    })
+}

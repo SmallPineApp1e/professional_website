@@ -1,7 +1,6 @@
 package com.turing.professional_website.service.admin.impl;
 
 import com.turing.professional_website.dao.AdminMapper;
-import com.turing.professional_website.dao.AwardMapper;
 import com.turing.professional_website.dao.TeachBackgroundMapper;
 import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.*;
@@ -31,8 +30,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     TeacherMapper teacherMapper;
-    @Autowired
-    AwardMapper awardMapper;
+//    @Autowired
+//    AwardMapper awardMapper;
     @Autowired
     TeachBackgroundMapper teachBackgroundMapper;
     @Autowired
@@ -46,17 +45,14 @@ public class AdminServiceImpl implements AdminService {
     public Teacher findTeacherById(Integer id) {
         TeacherExample teacherExample = new TeacherExample();
         teacherExample.createCriteria().andTeacherIdEqualTo(id);
-        AwardExample awardExample = new AwardExample();
-        awardExample.createCriteria().andTeacherIdEqualTo(id);
+
         TeachBackgroundExample teachBackgroundExample = new TeachBackgroundExample();
         teachBackgroundExample.createCriteria().andTeacherIdEqualTo(id);
         List<TeachBackground> teachBackgrounds = teachBackgroundMapper.selectByExample(teachBackgroundExample);
         List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
-        List<Award> awards = awardMapper.selectByExample(awardExample);
         if(teachers.isEmpty()){
             return null;
         }else{
-            teachers.get(0).setAwards(awards);
             teachers.get(0).setTeachBackgrounds(teachBackgrounds);
             return teachers.get(0);
         }
@@ -171,6 +167,10 @@ public class AdminServiceImpl implements AdminService {
     public boolean addTeacher(Teacher teacher) {
         teacher.setTeacherImg("/static/icon/1.png");
         int row = teacherMapper.insert(teacher);
+        teacher.getTeachBackgrounds().forEach(teachBackground -> {
+            teachBackground.setTeacherId(teacher.getTeacherId());
+            teachBackgroundMapper.insert(teachBackground);
+        });
         return row != 0;
 
     }
@@ -179,7 +179,6 @@ public class AdminServiceImpl implements AdminService {
     @Cacheable(cacheNames = "{teacher}")
     public List<Teacher> getTeachers() {
         TeacherExample teacherExample=new TeacherExample();
-        TeacherExample.Criteria criteria=teacherExample.createCriteria();
         return teacherMapper.selectByExample(teacherExample);
     }
 }

@@ -97,7 +97,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.turing.professional_website.entity.Teacher" >
+  <insert id="insert" parameterType="com.turing.professional_website.entity.Teacher" useGeneratedKeys="true" keyProperty="teacherId" keyColumn="teacher_id">
     insert into teacher (teacher_id, teacher_name, teacher_email, 
       teacher_born, teacher_job, teacher_graduation, 
       teacher_position, teacher_research, teacher_scientific_research, 
