@@ -121,6 +121,7 @@ function build_teacher_detail_information(data){
     console.log(data);
     var teacher=data.extended.teacher;
     $("#showTeacherName").val(teacher.teacherName);
+    document.getElementById("showTeacherImg").src=teacher.teacherImg;
     $("#showTeacherJob").val(teacher.teacherJob);
     $("#showTeacherPosition").val(teacher.teacherPosition);
     $("#showTeacherResearch").val(teacher.teacherResearch);
@@ -129,8 +130,12 @@ function build_teacher_detail_information(data){
     $("#showTeacherEmail").val(teacher.teacherEmail);
     $("#showTeacherBorn").val(teacher.teacherBorn);
     $("#showTeacherGraduation").val(teacher.teacherGraduation);
-
     $("#showTeacherAwardIntroduction").text(teacher.teacherAwardIntroduction);
+    $.each(teacher.teachBackgrounds,function(index,item){
+        var div = $("<div style=clear:both></div>")
+        $("<li style=float:left></li>").append(item.backgroundStartTime + "-" + item.backgroundEndTime + " " + item.backgroundContent).appendTo($("#showTeacherBackground"));
+        div.appendTo($("#showTeacherBackground"));
+    })
 }
 
 $("#addTeacher").click(function () {

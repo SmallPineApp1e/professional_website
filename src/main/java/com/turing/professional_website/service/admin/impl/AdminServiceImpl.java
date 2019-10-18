@@ -176,7 +176,6 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    @Cacheable(cacheNames = "{teacher}")
     public List<Teacher> getTeachers() {
         TeacherExample teacherExample=new TeacherExample();
         return teacherMapper.selectByExample(teacherExample);
