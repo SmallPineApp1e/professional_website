@@ -1,0 +1,60 @@
+        /*轮播图*/
+        #lunbo {
+            width: 100%;
+            height: 109px;
+            border: 0px solid #000;
+            position: relative;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        #list {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            -webkit-animation: 10s move infinite linear;
+            width: 290%;
+        }
+
+        #list li {
+            list-style: none;
+            width: 170px;
+            height: 140px;
+            border: 1px solid #fff;
+            color: #fff;
+            font: 50px/98px Arial;
+            text-align: center;
+            float: left;
+        }
+
+        @-webkit-keyframes move {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -850px;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -850px;
+            }
+        }
+
+        #lunbo:hover #list {
+            -webkit-animation-play-state: paused;
+            /*动画暂停播放*/
+        }
+
+        img {
+            width: 165px;
+            height: 104px;
+        }

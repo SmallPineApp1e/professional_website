@@ -23,9 +23,16 @@ $(document).ready(function () {
 })
 
 function showTeamInfo(teamId){
-    $("#team-introduction").html("");
-    $("#teacher-content").html("");
-    $("student-content").html("");
+    var teamNameArea = $("#team-name");
+    var teamIntroductionArea = $("#team-introduction");
+    var teacherContentArea = $("#teacher-content");
+    var studentContentArea = $("#student-content");
+    var teamAchievementArea = $("#team-achievement");
+    teamNameArea.html("");
+    teamIntroductionArea.html("");
+    teacherContentArea.html("");
+    studentContentArea.html("");
+    teamAchievementArea.html("");
     $.ajax({
         type: "GET",
         url: "/guest/team/"+teamId,
@@ -33,6 +40,39 @@ function showTeamInfo(teamId){
             var team = result.extended.team;
             var teamName = team.teamName;
             var teamIntroduction = team.teamIntroduction;
+            teamNameArea.append(teamName);
+            teamIntroductionArea.append(teamIntroduction);
+            var teachers = team.teachers;
+            var a_label;
+            $.each(teachers, function(index, teacher){
+                var teacherId = teacher.teacherId;
+                var teacherName = teacher.teacherName;
+                a_label = $("<a style='margin-right:15px'></a>").append(teacherName);
+                a_label.attr('href','/html/teacher_info.html?teacherId='+teacherId);
+                teacherContentArea.append(a_label);
+            });
+            var teamMembers = team.teamMembers;
+            $.each(teamMembers, function(index, teamMember){
+                var memberId = teamMember.memberId;
+                var memberName = teamMember.memberName;
+                a_label = $("<a style='margin-right:15px'></a>").append(memberName);
+                a_label.attr('href','#');
+                studentContentArea.append(a_label);
+            });
+            var teamAchievements = team.teamAchievements;
+            $.each(teamAchievements, function(index, teamAchievement){
+                var achievementContent = teamAchievement.achievementContent;
+                var teamAchievementPhotos = teamAchievement.teamAchievementPhotos;
+                var achivContentArea = $("<div></div>").append(achievementContent);
+                var eachTeamAchievementArea = $("<div style='margin-top:10px'></div>");
+                $.each(teamAchievementPhotos, function(index, photo){
+                    var photoPath = photo.photoPath;
+                    var img_label = $("<img>").attr('src', photoPath);
+                    eachTeamAchievementArea.append(img_label);
+                });
+                eachTeamAchievementArea.append(achivContentArea);
+                teamAchievementArea.append(eachTeamAchievementArea)
+            });
         }
     })
 }
