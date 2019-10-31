@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.turing.professional_website.dao.TeamMemberMapper" >
+  <resultMap id="BaseResultMap" type="com.turing.professional_website.entity.TeamMember" >
+    <id column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+    <result column="member_name" property="memberName" jdbcType="VARCHAR" />
+    <result column="member_direction" property="memberDirection" jdbcType="VARCHAR" />
+    <result column="member_icon" property="memberIcon" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    member_id, team_id, member_name, member_direction, member_icon
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.turing.professional_website.entity.TeamMemberExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from team_member
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from team_member
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from team_member
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.turing.professional_website.entity.TeamMemberExample" >
+    delete from team_member
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.turing.professional_website.entity.TeamMember" >
+    <selectKey resultType="java.lang.Integer" keyProperty="memberId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_member (member_id, team_id, member_name, 
+      member_direction, member_icon)
+    values (#{memberId,jdbcType=INTEGER}, #{teamId,jdbcType=INTEGER}, #{memberName,jdbcType=VARCHAR}, 
+      #{memberDirection,jdbcType=VARCHAR}, #{memberIcon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.turing.professional_website.entity.TeamMember" >
+    <selectKey resultType="java.lang.Integer" keyProperty="memberId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      member_id,
+      <if test="teamId != null" >
+        team_id,
+      </if>
+      <if test="memberName != null" >
+        member_name,
+      </if>
+      <if test="memberDirection != null" >
+        member_direction,
+      </if>
+      <if test="memberIcon != null" >
+        member_icon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{memberId,jdbcType=INTEGER},
+      <if test="teamId != null" >
+        #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberDirection != null" >
+        #{memberDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIcon != null" >
+        #{memberIcon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.turing.professional_website.entity.TeamMemberExample" resultType="java.lang.Integer" >
+    select count(*) from team_member
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update team_member
+    <set >
+      <if test="record.memberId != null" >
+        member_id = #{record.memberId,jdbcType=INTEGER},
+      </if>
+      <if test="record.teamId != null" >
+        team_id = #{record.teamId,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberName != null" >
+        member_name = #{record.memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberDirection != null" >
+        member_direction = #{record.memberDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberIcon != null" >
+        member_icon = #{record.memberIcon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update team_member
+    set member_id = #{record.memberId,jdbcType=INTEGER},
+      team_id = #{record.teamId,jdbcType=INTEGER},
+      member_name = #{record.memberName,jdbcType=VARCHAR},
+      member_direction = #{record.memberDirection,jdbcType=VARCHAR},
+      member_icon = #{record.memberIcon,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.turing.professional_website.entity.TeamMember" >
+    update team_member
+    <set >
+      <if test="teamId != null" >
+        team_id = #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberDirection != null" >
+        member_direction = #{memberDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIcon != null" >
+        member_icon = #{memberIcon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.turing.professional_website.entity.TeamMember" >
+    update team_member
+    set team_id = #{teamId,jdbcType=INTEGER},
+      member_name = #{memberName,jdbcType=VARCHAR},
+      member_direction = #{memberDirection,jdbcType=VARCHAR},
+      member_icon = #{memberIcon,jdbcType=VARCHAR}
+    where member_id = #{memberId,jdbcType=INTEGER}
+  </update>
+</mapper>

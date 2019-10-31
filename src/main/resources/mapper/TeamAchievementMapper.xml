@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.turing.professional_website.dao.TeamAchievementMapper" >
+  <resultMap id="BaseResultMap" type="com.turing.professional_website.entity.TeamAchievement" >
+    <id column="achievement_id" property="achievementId" jdbcType="INTEGER" />
+    <result column="achievement_content" property="achievementContent" jdbcType="VARCHAR" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    achievement_id, achievement_content, team_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.turing.professional_website.entity.TeamAchievementExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from team_achievement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from team_achievement
+    where achievement_id = #{achievementId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from team_achievement
+    where achievement_id = #{achievementId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.turing.professional_website.entity.TeamAchievementExample" >
+    delete from team_achievement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.turing.professional_website.entity.TeamAchievement" >
+    <selectKey resultType="java.lang.Integer" keyProperty="achievementId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_achievement (achievement_id, achievement_content, 
+      team_id)
+    values (#{achievementId,jdbcType=INTEGER}, #{achievementContent,jdbcType=VARCHAR}, 
+      #{teamId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.turing.professional_website.entity.TeamAchievement" >
+    <selectKey resultType="java.lang.Integer" keyProperty="achievementId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_achievement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      achievement_id,
+      <if test="achievementContent != null" >
+        achievement_content,
+      </if>
+      <if test="teamId != null" >
+        team_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{achievementId,jdbcType=INTEGER},
+      <if test="achievementContent != null" >
+        #{achievementContent,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null" >
+        #{teamId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.turing.professional_website.entity.TeamAchievementExample" resultType="java.lang.Integer" >
+    select count(*) from team_achievement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update team_achievement
+    <set >
+      <if test="record.achievementId != null" >
+        achievement_id = #{record.achievementId,jdbcType=INTEGER},
+      </if>
+      <if test="record.achievementContent != null" >
+        achievement_content = #{record.achievementContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamId != null" >
+        team_id = #{record.teamId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update team_achievement
+    set achievement_id = #{record.achievementId,jdbcType=INTEGER},
+      achievement_content = #{record.achievementContent,jdbcType=VARCHAR},
+      team_id = #{record.teamId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.turing.professional_website.entity.TeamAchievement" >
+    update team_achievement
+    <set >
+      <if test="achievementContent != null" >
+        achievement_content = #{achievementContent,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null" >
+        team_id = #{teamId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where achievement_id = #{achievementId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.turing.professional_website.entity.TeamAchievement" >
+    update team_achievement
+    set achievement_content = #{achievementContent,jdbcType=VARCHAR},
+      team_id = #{teamId,jdbcType=INTEGER}
+    where achievement_id = #{achievementId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -12,9 +12,9 @@
 
         <!--配置数据库连接信息-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/professional_website?characterEncoding=utf-8&amp;serverTimezone=UTC"
+                        connectionURL="jdbc:mysql://120.79.229.14:3306/professional_website?characterEncoding=utf-8&amp;serverTimezone=UTC"
                         userId="root"
-                        password="root">
+                        password="Aa3692581470;">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -40,10 +40,25 @@
 <!--        <table tableName="teach_background" domainObjectName="TeachBackground">-->
 <!--            <columnOverride column="background_content" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
 <!--        </table>-->
-        <table tableName="teacher" domainObjectName="Teacher">
-            <columnOverride column="teacher_research" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="teacher_scientific_research" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="teacher_award_introduction" javaType="java.lang.String" jdbcType="VARCHAR"/>
+<!--        <table tableName="teacher" domainObjectName="Teacher">-->
+<!--            <columnOverride column="teacher_research" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+<!--            <columnOverride column="teacher_scientific_research" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+<!--            <columnOverride column="teacher_award_introduction" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+<!--        </table>-->
+<!--        <table tableName="team" domainObjectName="Team">-->
+<!--            <generatedKey column="team_id" sqlStatement="MySql"/>-->
+<!--        </table>-->
+<!--        <table tableName="team_member" domainObjectName="TeamMember">-->
+<!--            <generatedKey column="member_id" sqlStatement="MySql"/>-->
+<!--        </table>-->
+<!--        <table tableName="team_achievement" domainObjectName="TeamAchievement">-->
+<!--            <generatedKey column="achievement_id" sqlStatement="Mysql"/>-->
+<!--        </table>-->
+<!--        <table tableName="team_environment" domainObjectName="TeamEnvironment">-->
+<!--            <generatedKey column="environment_id" sqlStatement="Mysql"/>-->
+<!--        </table>-->
+        <table tableName="team_achievement_photo" domainObjectName="TeamAchievementPhoto">
+            <generatedKey column="photo_id" sqlStatement="Mysql"/>
         </table>
     </context>
 </generatorConfiguration>
