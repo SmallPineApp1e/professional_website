@@ -214,8 +214,8 @@
      SELECT team.*,teacher.* FROM team,teacher,team_teacher WHERE team.`team_id`=team_teacher.`team_id` AND teacher.`teacher_id` = team_teacher.`teacher_id`
   </select>
   <select id="selectTeamById" resultMap="BaseResultMapWithTeacherAchievementMemberEnvironment">
-SELECT * FROM team LEFT JOIN team_teacher  ON team.`team_id`=team_teacher.`team_id` LEFT JOIN team_member ON team.`team_id`=team_member.`team_id`
+SELECT * FROM team LEFT JOIN team_teacher  ON team.`team_id`=team_teacher.`team_id` LEFT JOIN teacher ON team_teacher.`teacher_id`=teacher.`teacher_id` LEFT JOIN team_member ON team.`team_id`=team_member.`team_id`
 LEFT JOIN team_environment ON team.`team_id`=team_environment.`team_id` LEFT JOIN team_achievement ON team_achievement.`team_id`=team.`team_id`
-LEFT JOIN team_achievement_photo ON team_achievement.`achievement_id`=team_achievement_photo.`ahievement_id` WHERE team.`team_id`=#{teamId}
+LEFT JOIN team_achievement_photo ON team_achievement.`achievement_id`=team_achievement_photo.`ahievement_id` WHERE team.`team_id`=#{TeamId}
   </select>
 </mapper>
