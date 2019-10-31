@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/head.css">
     <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/jquery.js"></script>
     <script src="/static/js/time.js"></script>
+    <script src="/static/js/team.js"></script>
     <title>图灵智能创新团队</title>
     <style>
+        a{
+            cursor: pointer;
+        }
         /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
         .body {
             overflow: hidden;
@@ -232,45 +237,23 @@
         </div>
         <div class="body">
             <!-- 左边导航栏 -->
-            <div class="sidebar-left">
+            <div class="sidebar-left" id="team-sidebar-left">
                 <div id="title-left">
                     <strong>创新团队</strong>
                 </div>
-                <ul>
-                    <li>
-                        <a href="#">图灵智能创新团队</a>
-                    </li>
-                    <li>
-                        <a href="#">电子创新团队</a>
-                    </li>
-                    <li>
-                        <a href="#">海智团队</a>
-                    </li>
-                    <li>
-                        <a href="#">海创团队</a>
-                    </li>
-                </ul>
             </div>
             <!-- 右边导航栏 -->
             <div class="sidebar-right">
-                <div class="title-right">
-                    <strong>团队简介</strong>
-                </div>
-                <div class="content">
-                    图灵智能创新团队是一支研究当今最热门的人工智能技术的创新创业团队 ，秉承"用创新点缀人生，让智能融入生活"的发展理念、
-                    “勇于创新，追求卓越”的团队精神，立足于计算机视觉，自然语言处理和前端&后台三大领域研究和开发。团队拥有完善的管理机制，
-                    合理的人员配置和多项专利技术，已在学科专业竞赛中，取得多项省赛和国家级奖励和优异成绩 。
-                </div>
+                <div class="title-right"><strong>团队简介</strong></div>
+                <div class="content" id="team-introduction"></div>
                 <br/>
-                <div class="title-right">
-                    <strong>取得成效</strong>
-                </div>
-                <div class="content">
-                    近三年，团队 2017 年开始负责农业工程与信息化技术硕士点建设，2018 年
-                    立项信息与通信工程学科。依托这两个平台，本专业建设了电子信息工程特色专
-                    业建设团队、电子技术基础课程教学团队、智慧海洋传感网及其装备工程技术研
-                    究中心团队，目前发展状态良好。
-                </div>
+                <div class="title-right"><strong>团队人员</strong></div>
+                <strong>团队指导老师</strong>
+                <div class="content" id="teacher-content"></div>
+                <strong>团队成员</strong>
+                <div></div>
+                <div class="content" id="student-content"></div>
+                <div class="title-right"><strong>团队成果</strong></div>
             </div>
         </div>
 

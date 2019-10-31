@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/guest")
 @Api(tags = "前台获取团队信息接口")
-public class TeamController {
+public class  TeamController {
 
     @Autowired
     private TeamService teamService;
