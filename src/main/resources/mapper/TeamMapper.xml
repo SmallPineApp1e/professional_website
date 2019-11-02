@@ -35,6 +35,10 @@
         <result column="photo_path" property="photoPath" jdbcType="VARCHAR"/>
       </collection>
     </collection>
+    <collection property="teamEnvironments" javaType="java.util.List" ofType="com.turing.professional_website.entity.TeamEnvironment">
+      <id column="environment_id" property="environmentId" jdbcType="INTEGER"/>
+      <result column="environment_path" property="environmentPath" jdbcType="VARCHAR"/>
+    </collection>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

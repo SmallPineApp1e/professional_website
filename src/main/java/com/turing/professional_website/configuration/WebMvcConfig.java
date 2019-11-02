@@ -16,7 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Value("${teacher.requestImgPath}")
-    private String requestImgPath;
+    private String requestTeacherImgPath;
+    @Value("${team.requestImgPath}")
+    private String requestTeamImgPath;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -48,7 +50,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/fonts/");
 
         registry.addResourceHandler("/static/icon/**")
-                .addResourceLocations(requestImgPath);
+                .addResourceLocations(requestTeacherImgPath);
+
+        registry.addResourceHandler("/static/team/**")
+                .addResourceLocations(requestTeamImgPath);
 
         registry.addResourceHandler("/error/**")
                 .addResourceLocations("classpath:/error/");

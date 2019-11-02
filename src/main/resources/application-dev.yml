@@ -34,6 +34,9 @@ pagehelper:
 teacher:
   ImgPath: D:\upload\img\
   requestImgPath: file:D:\upload\img\
+team:
+  ImgPath: D:\upload\team\
+  requestImgPath: file:D:\upload\team\
 #打印sql语句
 logging:
   level:
