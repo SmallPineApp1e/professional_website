@@ -1,6 +1,7 @@
 package com.turing.professional_website.entity;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Team {
     private Integer teamId;
@@ -74,5 +75,24 @@ public class Team {
 
     public void setTeamAchievements(List<TeamAchievement> teamAchievements) {
         this.teamAchievements = teamAchievements;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return teamId.equals(team.teamId) &&
+                Objects.equals(teamName, team.teamName) &&
+                Objects.equals(teamIntroduction, team.teamIntroduction) &&
+                Objects.equals(teachers, team.teachers) &&
+                Objects.equals(teamMembers, team.teamMembers) &&
+                Objects.equals(teamEnvironments, team.teamEnvironments) &&
+                Objects.equals(teamAchievements, team.teamAchievements);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(teamId, teamName, teamIntroduction, teachers, teamMembers, teamEnvironments, teamAchievements);
     }
 }

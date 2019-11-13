@@ -4,6 +4,7 @@ import com.turing.professional_website.dao.TeamMapper;
 import com.turing.professional_website.entity.Team;
 import com.turing.professional_website.service.guest.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +21,16 @@ public class TeamServiceImpl implements TeamService {
     private TeamMapper teamMapper;
 
     @Override
+    @Cacheable(cacheNames = "{team}")
     public List<Team> findAllTeams() {
-        return teamMapper.selectTeamList();
+        List<Team> teams= teamMapper.selectTeamList();
+        return teams;
     }
 
     @Override
+    @Cacheable(cacheNames = "{team}")
     public Team findTeamById(Integer teamId) {
-        return teamMapper.selectTeamById(teamId);
+        Team team= teamMapper.selectTeamById(teamId);
+        return team;
     }
 }

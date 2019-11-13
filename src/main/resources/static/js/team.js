@@ -1,6 +1,7 @@
 /**
  * @author Zeng
  */
+var teamId=1;
 $(document).ready(function () {
     $.ajax({
         type: "GET",
@@ -18,6 +19,7 @@ $(document).ready(function () {
                 li.append(a);
                 ul.append(li).appendTo($("#team-sidebar-left"));
             }
+            showTeamInfo(1);
         }
     })
 })
