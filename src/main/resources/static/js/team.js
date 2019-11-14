@@ -1,8 +1,10 @@
 /**
  * @author Zeng
  */
-var teamId=1;
+var teamId;
 $(document).ready(function () {
+    teamId=getTeamId();
+    console.log(teamId)
     $.ajax({
         type: "GET",
         url: "/guest/teams",
@@ -19,10 +21,23 @@ $(document).ready(function () {
                 li.append(a);
                 ul.append(li).appendTo($("#team-sidebar-left"));
             }
-            showTeamInfo(1);
+            showTeamInfo(teamId);
         }
     })
 })
+
+/**
+ * 截取团队
+ */
+function getTeamId() {
+    var url = window.location.href;
+    if (url.indexOf("?") == -1) {
+        return 1;
+    } else {
+        var str = url.substring(url.indexOf("=") + 1);
+        return parseInt(str);
+    }
+}
 
 function showTeamInfo(teamId) {
     var teamNameArea = $("#team-name");

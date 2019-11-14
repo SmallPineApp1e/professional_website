@@ -34,3 +34,7 @@ pagehelper:
 teacher:
   ImgPath: /profession_website/upload/img/
   requestImgPath: /profession_website/upload/img/
+  requestPdfPath: /profession_website/upload/pdf/
+team:
+  ImgPath: /profession_website/upload/team
+  requestImgPath: /profession_website/upload/team
