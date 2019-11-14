@@ -8,15 +8,9 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/head.css">
     <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/team_lunbo.css">
-    <script src="/static/js/jquery.js"></script>
     <script src="/static/js/time.js"></script>
-    <title>图灵智能创新团队</title>
+    <title>认证文件</title>
     <style>
-        a {
-            cursor: pointer;
-        }
-
         /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
         .body {
             overflow: hidden;
@@ -73,26 +67,6 @@
             color: black;
         }
 
-        /*右边导航栏团队名称*/
-        #team-name {
-            text-align: center;
-            margin: 0 auto;
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .teamImgArea {
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        /*团队照片显示样式*/
-        .teamImgArea img {
-            width: 200px;
-            height: 150px;
-            margin: 0px 15px 10px 0px;
-        }
-
         /*内容*/
         .content {
             font-size: 18px;
@@ -131,22 +105,6 @@
                     <button class="dropbtn">网站首页</button>
                 </a>
             </div>
-<<<<<<< HEAD
-            <div class="head_nav">
-                <div class="dropdown">
-                    <a href="index.html">
-                        <button class="dropbtn">网站首页</button>
-                    </a>
-                </div>
-                <div class="dropdown">
-                    <a href="#">
-                        <button class="dropbtn">专业概况</button>
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="http://localhost:8081/html/teacher_info.html?teacherId=44">专业负责人</a>
-                        <a href="professional_profile.html">专业简介</a>
-                    </div>
-=======
             <div class="dropdown">
                 <a href="professional_profile.html">
                     <button class="dropbtn">专业概况</button>
@@ -154,7 +112,6 @@
                 <div class="dropdown-content">
                     <a href="#">专业负责人</a>
                     <a href="#">专业简介</a>
->>>>>>> baee205927e604c7b01e58b5a513ccc3abe30783
                 </div>
             </div>
             <div class="dropdown">
@@ -178,9 +135,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="team_teaching.html">
-                    <button class="dropbtn">师资队伍</button>
-                </a>
+                <button class="dropbtn">师资队伍</button>
             </div>
             <div class="dropdown">
                 <button class="dropbtn">培养方案</button>
@@ -277,34 +232,39 @@
         </div>
         <div class="body">
             <!-- 左边导航栏 -->
-            <div class="sidebar-left" id="team-sidebar-left">
+            <div class="sidebar-left">
                 <div id="title-left">
-                    <strong>创新团队</strong>
+                    <strong>认证文件</strong>
                 </div>
+                <ul>
+                    <li>
+                        <a href="certified_documents.html">专业类认证委员会管理办法</a>
+                    </li>
+                    <li>
+                        <a href="engineering_education_certification.html">工程教育认证办法</a>
+                    </li>
+                    <li>
+                        <a href="new_engineering_educatioin_Certification.html">工程教育认证
+                            新增认证专业（专业类）管理规定</a>
+                    </li>
+                    <li>
+                        <a href="engineering_education_and_certification.html">
+                            工程教育认证专家管理办法
+                        </a>
+                    </li>
+                </ul>
             </div>
             <!-- 右边导航栏 -->
             <div class="sidebar-right">
-                <div id="team-name"></div>
-                <div class="title-right"><strong>团队简介</strong></div>
-                <div class="content" id="team-introduction"></div>
-                <br>
-                <div class="title-right"><strong>团队人员</strong></div>
-                <br>
-                <strong>团队指导老师</strong>
-                <div class="content" id="teacher-content"></div>
-                <br>
-                <strong>团队成员</strong>
-                <div class="content" id="student-content"></div>
-                <br>
-                <div class="title-right"><strong>团队成果</strong></div>
-                <br>
-                <div class="teamImgArea" id="team-achievement"></div>
-                <div class="title-right"><strong>团队环境</strong></div>
-                <div id="lunbo">
-                    <ul id="list">
-
-                    </ul>
+                <div class="title-right">
+                    <strong>专业类认证委员会管理办法</strong>
                 </div>
+                <div class="content">
+                    <object data="/static/pdf/专业类认证委员会管理办法.pdf" type="application/pdf" width="500" height="600">
+<!--                        <a href="data/test.pdf">test.pdf</a>-->
+                    </object>
+                </div>
+                <br/>
             </div>
         </div>
 
@@ -313,5 +273,5 @@
         </div>
     </div>
 </body>
-<script src="/static/js/team.js"></script>
+
 </html>
