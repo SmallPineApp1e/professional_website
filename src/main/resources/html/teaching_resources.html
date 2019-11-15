@@ -91,20 +91,123 @@
 </style>
 <script>
 
-    $(function () {
-        getData("卓越方案");
-    });
-
-    function getData(obj) {
-        var url = null
-        switch (obj) {
-            case "卓越方案":
-                url = "/guest/content/8";
-                break;
-            case "普通方案":
-                url = "/guest/content/9";
-                break;
+    function getTypeId() {
+        var url = window.location.href;
+        if (url.indexOf("?") == -1) {
+            return 10;
+        } else {
+            var str = url.substring(url.indexOf("=") + 1);
+            return parseInt(str);
         }
+    };
+
+    $(function () {
+        getCourses();
+        var typeId = getTypeId();
+        if(typeId  == 10){
+            getTeachingProgram(typeId);
+        }else{
+            getCoursewareOrTeachingPlan(typeId,"2");
+        }
+    });
+    
+    function getCourses() {
+        $.ajax({
+            url:"/guest/courses",
+            success:function (result) {
+                var teachPlanCourses = $("#teachPlanCourses");
+                var coursewareCourses = $("#coursewareCourses");
+                var greatCourses = $("#greatCourses");
+                var courses = result.extended.courses;
+                $.each(courses, function (index, course) {
+                    var courseName = course.courseName;
+                    var a_label = $("<a href='#' onclick='getCoursewareOrTeachingPlan(11,\""+(course.courseId)+"\")'></a>").append(courseName);
+                    li = $("<li></li>").append(a_label);
+                    teachPlanCourses.append(li);
+                    a_label = $("<a href='#' onclick='getCoursewareOrTeachingPlan(12,\""+(course.courseId)+"\")'></a>").append(courseName);
+                    li = $("<li></li>").append(a_label);
+                    coursewareCourses.append(li);
+                    if(course.courseName == "电路分析"){
+                        a_label = $("<a href='http://www1.gdou.edu.cn/xxxy/dljc/index.html'></a>").append(courseName);
+                    }else if(course.courseName == "Matlab语言及应用"){
+                        a_label = $("<a href='http://210.38.137.11:10086/MatlabCourse/'></a>").append(courseName);
+                    }else{
+                        a_label  =  $("<a href='#'></a>").append(courseName);
+                    }
+                    li = $("<li></li>").append(a_label);
+                    greatCourses.append(li);
+                })
+            }
+        })
+    }
+
+    function getCoursewareOrTeachingPlan(typeId, cId) {
+        var url = "/guest/courseware";
+        var data = {
+            contentTypeId:typeId,
+            courseId:cId
+        }
+        if(typeId == 12){
+            $.ajax({
+                url: url,
+                type: "get",
+                data: data,
+                success:function (result) {
+                    var coursewares = result.extended.coursewares;
+                    var sidebarRight = $("#sidebar-right");
+                    sidebarRight.html('');
+                    if(coursewares.length == 0){
+                        sidebarRight.append("待上传资料数据......");
+                        return ;
+                    }
+                    $.each(coursewares, function (index, courseware) {
+                        var coursewareLoc = courseware.coursewareLoc;
+                        var a_label = $("<a href='\""+coursewareLoc+"\"'></a>");
+                        a_label.append(coursewareLoc.slice(coursewareLoc.lastIndexOf("/")+1,coursewareLoc.lastIndexOf(".")));
+                        a_label.attr("href", coursewareLoc);
+                        sidebarRight.append(a_label);
+                        sidebarRight.append($("<br>"));
+                    });
+                },
+                error:function (result) {
+                    alert("服务异常!请稍候再试");
+                }
+            })
+        }else{
+            $.ajax({
+                url: url,
+                type: "get",
+                data: data,
+                success:function (result) {
+                    var coursewares = result.extended.coursewares;
+                    var sidebarRight = $("#sidebar-right");
+                    sidebarRight.html('');
+                    if(coursewares.length == 0){
+                        sidebarRight.append("待上传资料数据......");
+                        return ;
+                    }
+                    $.each(coursewares, function (index, courseware) {
+                        var coursewareLoc = courseware.coursewareLoc;
+                        var contentTitle = coursewareLoc.slice(coursewareLoc.lastIndexOf("/")+1,coursewareLoc.lastIndexOf("."));
+                        var contentTitleDiv = $("<div class='title-right'></div>").append(contentTitle);
+                        var contentDetailDiv = $("<div class='content'></div>");
+                        var pdf = $("<object type='application/pdf' width='550px' height='700'></object>");
+                        pdf.attr("data",coursewareLoc);
+                        contentDetailDiv.append(pdf);
+                        sidebarRight.append(contentTitleDiv);
+                        sidebarRight.append(contentDetailDiv);
+                    })
+                },
+                error:function (result) {
+                    alert("服务异常!请稍候再试");
+                }
+            })
+        }
+
+    }
+
+    function getTeachingProgram(obj) {
+        var url = "/guest/content/"+obj;
         $.ajax({
             url: url,
             type: "get",
@@ -273,11 +376,22 @@
             <!-- 左边导航栏 -->
             <div class="sidebar-left">
                 <div id="title-left">
-                    <strong>培养方案</strong>
+                    <strong>教学资源</strong>
                 </div>
                 <ul id="sidebar-left-ul">
-                    <li><a href="#" onclick="getData('卓越方案')">卓越培养方案</a></li>
-                    <li><a href="#" onclick="getData('普通方案')">普通培养方案</a></li>
+                    <li><a href="#" onclick="getTeachingProgram(10)">教学大纲</a></li>
+                    <li><a href="#">授课计划</a></li>
+                    <li style="list-style-type: none">
+                        <ul id="teachPlanCourses"></ul>
+                    </li>
+                    <li><a href="#">精品精课</a></li>
+                    <li style="list-style-type: none">
+                        <ul id="greatCourses"></ul>
+                    </li>
+                    <li><a href="#">教学课件</a></li>
+                    <li style="list-style-type: none">
+                        <ul id="coursewareCourses"></ul>
+                    </li>
                 </ul>
             </div>
             <!-- 右边导航栏 -->
