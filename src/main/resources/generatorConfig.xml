@@ -15,6 +15,7 @@
                         connectionURL="jdbc:mysql://120.79.229.14:3306/professional_website?characterEncoding=utf-8&amp;serverTimezone=UTC"
                         userId="root"
                         password="Aa3692581470;">
+            <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -57,8 +58,15 @@
 <!--        <table tableName="team_environment" domainObjectName="TeamEnvironment">-->
 <!--            <generatedKey column="environment_id" sqlStatement="Mysql"/>-->
 <!--        </table>-->
-        <table tableName="team_achievement_photo" domainObjectName="TeamAchievementPhoto">
-            <generatedKey column="photo_id" sqlStatement="Mysql"/>
+<!--        <table tableName="team_achievement_photo" domainObjectName="TeamAchievementPhoto">-->
+<!--            <generatedKey column="photo_id" sqlStatement="Mysql"/>-->
+<!--        </table>-->
+        <table tableName="content" domainObjectName="Content">
+            <generatedKey column="id" sqlStatement="Mysql"/>
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </table>
+        <table tableName="content_type" domainObjectName="ContentType">
+            <generatedKey column="id" sqlStatement="Mysql"/>
         </table>
     </context>
 </generatorConfiguration>

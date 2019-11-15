@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/css/head.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/time.js"></script>
-    <title>出版教材</title>
+    <title>论文著作</title>
     <style>
         /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
         .body {
@@ -234,23 +234,28 @@
             <!-- 左边导航栏 -->
             <div class="sidebar-left">
                 <div id="title-left">
-                    <strong>出版教材</strong>
+                    <strong>认证文件</strong>
                 </div>
                 <ul>
                     <li>
-                        <a href="public_teaching_material.html">出版教材</a>
+                        <a href="teacher_achievement.html">论文著作</a>
+                    </li>
+                    <li>
+                        <a href="teacher_achievement.html?typeId=28">出版教材</a>
+                    </li>
+                    <li>
+                        <a href="teacher_achievement.html?typeId=30">获奖情况</a>
                     </li>
                 </ul>
             </div>
             <!-- 右边导航栏 -->
             <div class="sidebar-right">
                 <div class="title-right">
-                    <strong>出版教材</strong>
+                    <strong id="title"></strong>
                 </div>
-                <div class="content">
-                    <object data="/static/pdf/出版教材.pdf" type="application/pdf" width="500" height="600">
-                    </object>
+                <div class="content" id="content">
                 </div>
+                <br/>
             </div>
         </div>
 
@@ -259,5 +264,6 @@
         </div>
     </div>
 </body>
-
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<script src="/static/js/teacher_achievement.js"></script>
 </html>
