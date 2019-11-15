@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/css/head.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/time.js"></script>
-    <title>工程教育认证办法</title>
+    <title>专业认证</title>
     <style>
         /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
         .body {
@@ -234,35 +234,29 @@
             <!-- 左边导航栏 -->
             <div class="sidebar-left">
                 <div id="title-left">
-                    <strong>认证文件</strong>
+                    <strong>专业认证</strong>
                 </div>
                 <ul>
                     <li>
-                        <a href="certified_documents.html">专业类认证委员会管理办法</a>
+                        <a href="professional_certification.html?typeId=18">认证文件</a>
                     </li>
                     <li>
-                        <a href="engineering_education_certification.html">工程教育认证办法</a>
+                        <a href="professional_certification.html.html?typeId=19">认证政策</a>
                     </li>
                     <li>
-                        <a href="new_engineering_educatioin_Certification.html">工程教育认证
-                            新增认证专业（专业类）管理规定</a>
+                        <a href="professional_certification.html.html?typeId=20">认证申报书</a>
                     </li>
                     <li>
-                        <a href="engineering_education_and_certification.html">
-                            工程教育认证专家管理办法
-                        </a>
+                        <a href="professional_certification.html.html?typeId=21">认证方案</a>
                     </li>
                 </ul>
             </div>
             <!-- 右边导航栏 -->
             <div class="sidebar-right">
                 <div class="title-right">
-                    <strong>工程教育认证办法</strong>
+                    <strong id="title"></strong>
                 </div>
-                <div class="content">
-                    <object data="/static/pdf/工程教育认证办法.pdf" type="application/pdf" width="500" height="600">
-                        <!--                        <a href="data/test.pdf">test.pdf</a>-->
-                    </object>
+                <div class="content" id="content">
                 </div>
                 <br/>
             </div>
@@ -273,5 +267,6 @@
         </div>
     </div>
 </body>
-
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<script src="/static/js/professional_certification.js.js"></script>
 </html>
