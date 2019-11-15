@@ -227,4 +227,7 @@
       is_file = #{isFile,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByContentTypeId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT content.* FROM content,content_type WHERE content_type.`id`=#{conentTypeId}  AND content.`content_type`=content_type.`id`
+  </select>
 </mapper>
