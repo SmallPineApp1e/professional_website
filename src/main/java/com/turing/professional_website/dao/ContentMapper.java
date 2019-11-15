@@ -2,10 +2,17 @@ package com.turing.professional_website.dao;
 
 import com.turing.professional_website.entity.Content;
 import com.turing.professional_website.entity.ContentExample;
+<<<<<<< HEAD
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+=======
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+>>>>>>> f7b55bc21105ec2acf2f7a0d8d4f7c9b60de3116
 @Mapper
 public interface ContentMapper {
     int countByExample(ContentExample example);
@@ -29,6 +36,9 @@ public interface ContentMapper {
     int updateByPrimaryKeySelective(Content record);
 
     int updateByPrimaryKey(Content record);
+<<<<<<< HEAD
 
     Content selectByContentTypeId(Integer contentTypeId);
+=======
+>>>>>>> f7b55bc21105ec2acf2f7a0d8d4f7c9b60de3116
 }
