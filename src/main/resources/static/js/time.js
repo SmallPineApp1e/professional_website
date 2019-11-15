@@ -1,4 +1,5 @@
 /**
+ * @Author Meng
     * 定时器
     */
 window.onload = function () {

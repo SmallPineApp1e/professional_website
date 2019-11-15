@@ -3,6 +3,7 @@
  */
 var teamId;
 $(document).ready(function () {
+    teamId=getTeamId();
     $.ajax({
         type: "GET",
         url: "/guest/teams",
@@ -10,15 +11,15 @@ $(document).ready(function () {
             var teams = result.extended.teams;
             var ul = $("<ul></ul>");
             for (var index = 0; index < teams.length; index++) {
-                var teamId = teams[index].teamId;
                 var teamName = teams[index].teamName;
                 var li = $("<li></li>");
                 var a = $("<a></a>");
-                a.attr('onClick', 'showTeamInfo(' + teamId + ')');
+                a.attr('href', 'uring_team.html?teamId=' + teams[index].teamId );
                 a.append(teamName);
                 li.append(a);
                 ul.append(li).appendTo($("#team-sidebar-left"));
             }
+            console.log(teamId)
             showTeamInfo(teamId);
         }
     })
@@ -36,6 +37,7 @@ function showTeamInfo(teamId) {
     teacherContentArea.html("");
     studentContentArea.html("");
     teamAchievementArea.html("");
+    console.log(teamId)
     $.ajax({
         type: "GET",
         url: "/guest/team/" + teamId,
@@ -95,5 +97,18 @@ function showEnvironment(teamEnvironments) {
             var li = $("<li></li>").append(img);
             li.appendTo($("#list"));
         })
+    }
+}
+
+/**
+ * 截取团队id
+ */
+function getTeamId() {
+    var url = window.location.href;
+    if (url.indexOf("?") == -1) {
+        return 1;
+    } else {
+        var str = url.substring(url.indexOf("=") + 1);
+        return parseInt(str);
     }
 }

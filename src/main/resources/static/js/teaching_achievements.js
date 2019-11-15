@@ -1,3 +1,7 @@
+/**
+ * @author Meng
+ * @date 2019-07-11
+ */
 var TypeId = 29
 var arr = new Array(28, 29, 30, 31, 32, 33, 34,35);
 $(document).ready(function () {
