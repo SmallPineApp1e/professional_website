@@ -1,5 +1,5 @@
-var TypeId = 18
-var arr = new Array(18, 19, 20, 21);
+var TypeId = 22
+var arr = new Array(22,23);
 $(document).ready(function () {
     TypeId = checkId(getTypeId())?getTypeId():TypeId;
     $.ajax({
@@ -34,7 +34,7 @@ function checkId(id) {
 function getTypeId() {
     var url = window.location.href;
     if (url.indexOf("?") == -1) {
-        return 18;
+        return 22;
     } else {
         var str = url.substring(url.indexOf("=") + 1);
         return parseInt(str);

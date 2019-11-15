@@ -3,8 +3,6 @@
  */
 var teamId;
 $(document).ready(function () {
-    teamId=getTeamId();
-    console.log(teamId)
     $.ajax({
         type: "GET",
         url: "/guest/teams",
@@ -26,18 +24,6 @@ $(document).ready(function () {
     })
 })
 
-/**
- * 截取团队
- */
-function getTeamId() {
-    var url = window.location.href;
-    if (url.indexOf("?") == -1) {
-        return 1;
-    } else {
-        var str = url.substring(url.indexOf("=") + 1);
-        return parseInt(str);
-    }
-}
 
 function showTeamInfo(teamId) {
     var teamNameArea = $("#team-name");
@@ -102,6 +88,7 @@ function showTeamInfo(teamId) {
  * @param teamEnvironments
  */
 function showEnvironment(teamEnvironments) {
+    $("#list").empty();
     for (var i = 0; i < 2; i++) {
         $.each(teamEnvironments, function (index, item) {
             var img = $("<img width='165' height='104'>").attr("src", item.environmentPath);
