@@ -1,7 +1,7 @@
-var TypeId = 35
-var arr = new Array(35);
+var TypeId = 29
+var arr = new Array(28, 29, 30, 31, 32, 33, 34,35);
 $(document).ready(function () {
-    TypeId = checkId(getTypeId())?getTypeId():TypeId;
+    TypeId = checkId(getTypeId()) ? getTypeId() : TypeId;
     $.ajax({
         url: "/guest/content/" + TypeId,
         dataType: "JSON",
@@ -34,7 +34,7 @@ function checkId(id) {
 function getTypeId() {
     var url = window.location.href;
     if (url.indexOf("?") == -1) {
-        return 35;
+        return 31;
     } else {
         var str = url.substring(url.indexOf("=") + 1);
         return parseInt(str);

@@ -27,7 +27,6 @@ public class TeacherServiceImpl implements TeacherService {
     private String ImgDir;
 
     @Override
-    @Cacheable(cacheNames = {"teachers"})
     public List<Teacher> findAllTeachers() {
 
         List<Teacher> teachers = teacherMapper.selectByExample(null);
@@ -36,7 +35,6 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    @Cacheable(cacheNames = {"teacher"})
     public Teacher findTeacherInfo(Integer teacherId) {
 
         TeacherExample teacherExample = new TeacherExample();
