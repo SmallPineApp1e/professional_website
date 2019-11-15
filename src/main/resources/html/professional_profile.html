@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/time.js"></script>
+    <script src="/static/js/professional_profile.js"></script>
     <title>专业概况</title>
     <style>
         /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
@@ -89,37 +90,7 @@
         }
     </style>
 </head>
-<script>
-    $(function () {
-        initData();
-    })
 
-    function initData() {
-        $.ajax({
-            url: "/guest/professionalProfile",
-            type:"get",
-            success:function (result) {
-                var ul = $("#sidebar-left-ul");
-                var sidebarRight = $("#sidebar-right");
-                var contents = result.extended.contents;
-                $.each(contents, function (index, content) {
-                    var contentTitle = content.contentTitle;
-                    var contentDetail = content.content;
-                    var a = $("<a href='#'></a>").append(contentTitle);
-                    var li = $("<li></li>").append(a);
-                    ul.append(li);
-                    var titleRightDiv = $("<div class='title-right'></div>");
-                    var contentTitleStrong = $("<strong></strong>").append(contentTitle);
-                    titleRightDiv.append(contentTitleStrong);
-                    sidebarRight.append(titleRightDiv);
-                    var contentDetailDiv = $("<div class='content'></div>").append(contentDetail);
-                    sidebarRight.append(contentDetailDiv);
-                    sidebarRight.append("<br/>");
-                })
-            }
-        });
-    }
-</script>
 <body>
 <div class="warp">
     <div class="head">
@@ -148,20 +119,19 @@
                 <button class="dropbtn">专业建设</button>
                 <div class="dropdown-content">
                     <div class="dropdown-2">
-                        <a class="dropbtn-2" href="//www.runoob.com">特色专业建设</a>
+                        <a class="dropbtn-2" href="professional_building.html">特色专业建设</a>
                         <div class="dropdown-content-2">
-                            <a href="#">制度建设</a>
-                            <a href="#">建设成果</a>
+                            <a href="professional_building.html">制度建设</a>
+                            <a href="professional_building.html">建设成果</a>
                         </div>
                     </div>
                     <div class="dropdown-2">
-                        <a class="dropbtn-2" href="//www.runoob.com">双一流专业建设 </a>
+                        <a class="dropbtn-2" href="professional_building.html">双一流专业建设 </a>
                         <div class="dropdown-content-2">
-                            <a href="#">制度建设</a>
-                            <a href="#">建设成果</a>
+                            <a href="professional_building.html">制度建设</a>
+                            <a href="professional_building.html">建设成果</a>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="dropdown">
@@ -172,8 +142,8 @@
             <div class="dropdown">
                 <button class="dropbtn">培养方案</button>
                 <div class="dropdown-content">
-                    <a href="#">卓越方案</a>
-                    <a href="#">普通方案</a>
+                    <a href="training_program.html">卓越方案</a>
+                    <a href="training_program.html">普通方案</a>
                 </div>
             </div>
             <div class="dropdown">

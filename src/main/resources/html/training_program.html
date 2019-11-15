@@ -1,94 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/head.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <script src="/static/js/time.js"></script>
-    <title>专业负责人</title>
-    <style>
-        /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
-        .body {
-            overflow: hidden;
-        }
-
-        /*左边导航栏*/
-        .sidebar-left {
-            width: 32%;
-            height: 100%;
-            border-color: lightblue;
-            border-style: solid;
-            padding: 25px;
-            float: left;
-        }
-
-        .sidebar-left ul li {
-            padding-top: 10px;
-            font-size: 16px;
-        }
-
-        .sidebar-left ul li a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .sidebar-left ul li a:hover {
-            color: lightblue;
-        }
-
-        /*左边导航栏的标题*/
-        #title-left {
-            border-bottom: solid lightblue 2px;
-            width: 100%;
-        }
-
-        #title-left strong {
-            font-size: 18px;
-        }
-
-        /*右边导航栏*/
-        .sidebar-right {
-            width: 65%;
-            height: 100%;
-            border-color: lightblue;
-            border-style: solid;
-            padding: 25px;
-            float: right;
-        }
-
-        /*右边导航栏的标题*/
-        .title-right {
-            background: linear-gradient(to bottom, white, lightblue);
-            font-size: 18px;
-            color: black;
-        }
-
-        /*内容*/
-        .content {
-            font-size: 18px;
-            text-indent: 2em;
-            padding-top: 20px;
-        }
-
-        /*底部版权信息*/
-        .footer {
-            background-color: #E3F0F0;
-            height: 88px;
-            margin-top: 10px;
-        }
-
-        .footer p {
-            text-align: center;
-            line-height: 27px;
-            padding-top: 20px;
-        }
-    </style>
+    <title>培养方案</title>
 </head>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/static/css/head.css">
+<link rel="stylesheet" href="/static/css/footer.css">
+<script src="/static/js/jquery.js"></script>
+<style>
+    /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
+    .body {
+        overflow: hidden;
+    }
 
+    /*左边导航栏*/
+    .sidebar-left {
+        width: 32%;
+        height: 100%;
+        border-color: lightblue;
+        border-style: solid;
+        padding: 25px;
+        float: left;
+    }
+
+    .sidebar-left ul li {
+        padding-top: 10px;
+        font-size: 16px;
+    }
+
+    .sidebar-left ul li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .sidebar-left ul li a:hover {
+        color: lightblue;
+    }
+
+    /*左边导航栏的标题*/
+    #title-left {
+        border-bottom: solid lightblue 2px;
+        width: 100%;
+    }
+
+    #title-left strong {
+        font-size: 18px;
+    }
+
+    /*右边导航栏*/
+    .sidebar-right {
+        width: 65%;
+        height: 100%;
+        border-color: lightblue;
+        border-style: solid;
+        padding: 25px;
+        float: right;
+    }
+
+    /*右边导航栏的标题*/
+    .title-right {
+        background: linear-gradient(to bottom, white, lightblue);
+        font-size: 18px;
+        color: black;
+    }
+
+    #sidebar-left-ul li{
+        padding-top: 5px;
+    }
+
+    /*内容*/
+    .content {
+        font-size: 18px;
+        text-indent: 2em;
+        padding-top: 20px;
+    }
+
+    /*底部版权信息*/
+    .footer {
+        background-color: #E3F0F0;
+        height: 88px;
+        margin-top: 10px;
+    }
+
+    .footer p {
+        text-align: center;
+        line-height: 27px;
+        padding-top: 20px;
+    }
+</style>
+<script>
+
+    $(function () {
+        getData("卓越方案");
+    });
+
+    function getData(obj) {
+        var url = null
+        switch (obj) {
+            case "卓越方案":
+                url = "/guest/content/8";
+                break;
+            case "普通方案":
+                url = "/guest/content/9";
+                break;
+        }
+        $.ajax({
+            url: url,
+            type: "get",
+            success:function (result) {
+                var sidebarRight = $("#sidebar-right");
+                sidebarRight.html('');
+                var content = result.extended.content;
+                var contentTitle = content.contentTitle;
+                var contentDetail = content.content;
+                var contentTitleDiv = $("<div class='title-right'></div>").append(contentTitle);
+                var contentDetailDiv = $("<div class='content'></div>");
+                var pdf = $("<object type='application/pdf' width='550px' height='700'></object>");
+                pdf.attr("data",contentDetail);
+                contentDetailDiv.append(pdf);
+                sidebarRight.append(contentTitleDiv);
+                sidebarRight.append(contentDetailDiv);
+            },
+            error:function (result) {
+                alert("请求失败!请重新尝试!");
+            }
+        })
+    }
+
+</script>
+</head>
 <body>
 <div class="warp">
     <div class="head">
@@ -105,7 +146,9 @@
                 </a>
             </div>
             <div class="dropdown">
-                <a href="#"><button class="dropbtn">专业概况</button></a>
+                <a href="#">
+                    <button class="dropbtn">专业概况</button>
+                </a>
                 <div class="dropdown-content">
                     <a href="http://localhost:8081/html/teacher_info.html?teacherId=44">专业负责人</a>
                     <a href="professional_profile.html">专业简介</a>
@@ -138,12 +181,12 @@
             <div class="dropdown">
                 <button class="dropbtn">培养方案</button>
                 <div class="dropdown-content">
-                    <a href="training_program.html">卓越方案</a>
-                    <a href="training_program.html">普通方案</a>
+                    <a href="#">卓越方案</a>
+                    <a href="#">普通方案</a>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">实践资源</button>
+                <button class="dropbtn">教学资源</button>
                 <div class="dropdown-content">
                     <a href="//www.runoob.com">教学大纲</a>
                     <a href="//www.runoob.com">授课计划</a>
@@ -154,10 +197,11 @@
             <div class="dropdown">
                 <button class="dropbtn">创新团队</button>
                 <div class="dropdown-content">
-                    <a href="#">图灵智能创新团队</a>
-                    <a href="#">机器人创新团队</a>
+                    <a href="turing_team.html?teamId=1">图灵智能创新团队</a>
+                    <a href="turing_team.html?teamId=2">电子创新团队</a>
+                    <a href="#">海智团队</a>
+                    <a href="#">海创团队</a>
                 </div>
-
             </div>
             <div class="dropdown">
                 <button class="dropbtn">教研成果</button>
@@ -229,56 +273,15 @@
             <!-- 左边导航栏 -->
             <div class="sidebar-left">
                 <div id="title-left">
-                    <strong>专业负责人</strong>
+                    <strong>培养方案</strong>
                 </div>
-                <ul>
-                    <li>
-                        <a href="#">专业定位</a>
-                    </li>
-                    <li>
-                        <a href="#">历史沿革</a>
-                    </li>
-                    <li>
-                        <a href="#">特色优势</a>
-                    </li>
+                <ul id="sidebar-left-ul">
+                    <li><a href="#" onclick="getData('卓越方案')">卓越培养方案</a></li>
+                    <li><a href="#" onclick="getData('普通方案')">普通培养方案</a></li>
                 </ul>
             </div>
             <!-- 右边导航栏 -->
-            <div class="sidebar-right">
-                <div class="title-right">
-                    <strong>专业定位</strong>
-                </div>
-                <div class="content">
-                    本专业培养适应社会主义现代化建设过程中信息产业需求的，德、智、体、
-                    美全面发展的，具有“厚理论基础、宽技能口径、实践能力强、专业素质高”
-                    的复合型海洋特色信息类人才，即打造具有社会主义核心价值观并能从事电子
-                    工程领域科研、生产以及具有创新能力的海洋特色“新工科”高级技术人才。
-                </div>
-                <br/>
-                <div class="title-right">
-                    <strong>历史沿革</strong>
-                </div>
-                <div class="content">
-                    1979 年获准第一届应用电子技术专业本科招生；1997 年成立广东海洋大学
-                    电子工程系（工程学院），1999 年计算机科学与技术本科专业以本专业为依托
-                    开始首届招生；2004 年电子工程系分出通信工程、自动化与电气工程及其自动
-                    化三个本科专业；2016 年获批广东省特色专业建设学科立项建设，2017 年获批
-                    信息与通信工程一级培育重点学科建设，同时获准负责农业工程与信息化二级
-                    学科硕士点建设，至今学科专业建设效果良好，2018 招收 8 名研究生，2019 年
-                    招收 16 名研究生。
-                </div>
-                <br/>
-                <div class="title-right">
-                    <strong>特色优势 </strong>
-                </div>
-                <div class="content">
-                    密切结合广东海洋大学的专业特色（海洋）和区域优势（港口航运与粤西
-                    国际航空中心），开展智慧海洋模式下的智慧港（口）航（运）传感网信息处
-                    理与人工智能技术研究，利用独有的研究优势与学科特色，培养面向智慧海洋
-                    工程的新工科框架下电子信息类应用型人才，形成国内独有的智慧港（口）航
-                    （运）的海洋特色的电子信息工程专业。
-                </div>
-            </div>
+            <div class="sidebar-right" id="sidebar-right"></div>
         </div>
 
         <div class="footer">
@@ -286,5 +289,4 @@
         </div>
     </div>
 </body>
-
 </html>

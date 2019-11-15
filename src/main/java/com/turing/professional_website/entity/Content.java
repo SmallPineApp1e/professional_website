@@ -1,6 +1,7 @@
 package com.turing.professional_website.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -13,9 +14,9 @@ public class Content {
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT-5")
     private Date uploadTime;
-
+    @JsonIgnore
     private Integer contentType;
-
+    @JsonIgnore
     private Boolean isFile;
 
     public Integer getId() {
