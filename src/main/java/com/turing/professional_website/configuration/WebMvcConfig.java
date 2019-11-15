@@ -21,6 +21,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private String requestTeamImgPath;
     @Value("${teacher.requestPdfPath}")
     private String requestPdfPath;
+    @Value("${course.requestPPTPath}")
+    private String requestPPTPath;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -59,6 +61,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/pdf/**")
                 .addResourceLocations(requestPdfPath);
+
+        registry.addResourceHandler("/static/ppt/**")
+                .addResourceLocations(requestPPTPath);
 
         registry.addResourceHandler("/error/**")
                 .addResourceLocations("classpath:/error/");

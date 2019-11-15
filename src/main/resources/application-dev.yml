@@ -39,6 +39,8 @@ teacher:
 team:
   ImgPath: D:\upload\team\
   requestImgPath: file:D:\upload\team\
+course:
+  requestPPTPath: file:D:\upload\ppt\
 #打印sql语句
 logging:
   level:
