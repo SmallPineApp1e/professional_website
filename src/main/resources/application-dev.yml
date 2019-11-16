@@ -41,6 +41,7 @@ teacher:
   ImgPath: D:\upload\img\
   requestImgPath: file:D:\upload\img\
 pdfPath: D:\upload\pdf\
+powerPointPath: D:\upload\ppt\
 requestPdfPath: file:D:\upload\pdf\
 team:
   ImgPath: D:\upload\team\

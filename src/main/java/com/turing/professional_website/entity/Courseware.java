@@ -1,12 +1,14 @@
 package com.turing.professional_website.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Courseware {
     private Integer coursewareId;
 
     private String coursewareLoc;
-
+    @JsonIgnore
     private Integer courseId;
-
+    @JsonIgnore
     private Integer contentType;
 
     public Integer getCoursewareId() {

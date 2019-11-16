@@ -124,7 +124,7 @@
                     var a_label = $("<a href='#' onclick='getCoursewareOrTeachingPlan(11,\""+(course.courseId)+"\")'></a>").append(courseName);
                     li = $("<li></li>").append(a_label);
                     teachPlanCourses.append(li);
-                    a_label = $("<a href='#' onclick='getCoursewareOrTeachingPlan(12,\""+(course.courseId)+"\")'></a>").append(courseName);
+                    a_label = $("<a href='#' onclick='getCoursewareOrTeachingPlan(13,\""+(course.courseId)+"\")'></a>").append(courseName);
                     li = $("<li></li>").append(a_label);
                     coursewareCourses.append(li);
                     if(course.courseName == "电路分析"){
@@ -147,7 +147,7 @@
             contentTypeId:typeId,
             courseId:cId
         }
-        if(typeId == 12){
+        if(typeId == 13){
             $.ajax({
                 url: url,
                 type: "get",
@@ -295,7 +295,7 @@
                     <a href="teaching_resources.html?=10">教学大纲</a>
                     <a href="teaching_resources.html?=11">授课计划</a>
                     <a href="teaching_resources.html">精品精课</a>
-                    <a href="teaching_resources.html?=12">教学课件</a>
+                    <a href="teaching_resources.html?=13">教学课件</a>
                 </div>
             </div>
             <div class="dropdown">
