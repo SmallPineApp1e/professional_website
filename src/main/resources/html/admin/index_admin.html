@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>资料上传</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+
+    <link type="text/css" rel="stylesheet" href="/static/css/jquery-ui-1.10.4.custom.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/animate.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/all.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/style-responsive.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/zabuto_calendar.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/pace.css">
+</head>
+
+<body>
+<div>
+    <!--BEGIN TOPBAR-->
+    <div id="header-topbar-option-demo" class="page-header-topbar">
+        <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3"
+             class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target=".sidebar-collapse"
+                        class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span
+                        class="icon-bar"></span><span class="icon-bar"></span><span
+                        class="icon-bar"></span></button>
+                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span
+                        class="logo-text">后台管理页面</span><span style="display: none"
+                                                             class="logo-text-icon">µ</span></a></div>
+            <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                <form id="topbar-search" action="" method="" class="hidden-sm hidden-xs">
+                    <div class="input-icon right text-white"><a href="#"><i class="fa fa-search"></i></a><input
+                            type="text" placeholder="请输入内容" class="form-control text-white"/></div>
+                </form>
+
+                <ul class="nav navbar navbar-top-links navbar-right mbn">
+                    <li class="dropdown topbar-user"><a data-hover="dropdown" href="index.html" class="dropdown-toggle"><img
+                            name="teacherImg" src="" alt="" class="img-responsive img-circle"/>&nbsp;<span
+                            id="loginname"
+                            class="hidden-xs"></span>&nbsp;<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-user pull-right">
+                            <li><a href="index.html"><i class="fa fa-user"></i>我的信息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="updatepassword.html"><i class="fa fa-lock"></i>修改密码</a></li>
+                            <li><a href="" id="signout"><i class="fa fa-key"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <!--END TOPBAR-->
+    <div id="wrapper">
+        <!--BEGIN SIDEBAR MENU-->
+        <nav id="sidebar" role="navigation" data-step="2"
+             data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;" data-position="right"
+             class="navbar-default navbar-static-side">
+            <div class="sidebar-collapse menu-scroll">
+                <ul id="side-menu" class="nav">
+
+                    <div class="clearfix"></div>
+                    <li><a href="index.html"><i class="fa fa-edit fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">个人信息</span></a></li>
+                    <li><a href="updatepassword.html"><i class="fa fa-th-list fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">修改密码</span></a>
+                    </li>
+                    <li><a href="teacher.html"><i class="fa fa-th-list fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">教师管理</span></a>
+                    </li>
+                    <li><a href="data_upload.html"><i class="fa fa-th-list fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">资料上传</span></a>
+                    </li>
+                    <li class="active"><a href="data_upload.html"><i class="fa fa-th-list fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">首页管理</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--END SIDEBAR MENU-->
+
+        <!--BEGIN PAGE WRAPPER-->
+        <div id="page-wrapper">
+            <!--BEGIN TITLE & BREADCRUMB PAGE-->
+            <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                <div class="page-header pull-left">
+                    <div class="page-title">
+                        资料上传
+                    </div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    </li>
+                    <li class="hidden">>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    </li>
+                    <li class="active"><a href="index.html">资料上传</a></li>
+                </ol>
+                <div class="clearfix">
+                </div>
+            </div>
+            <!--END TITLE & BREADCRUMB PAGE-->
+            <!--BEGIN CONTENT-->
+            <div class="page-content">
+
+                <table style="margin:0 auto;border-collapse:separate; border-spacing:0px 10px;">
+                    <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <select id="select">
+                                <option value="36">首页左边轮播管理</option>
+                                <option value="37">首页下面轮播管理</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>当前内容</td>
+                        <td id="content"></td>
+                    </tr>
+                    <tr>
+                        <td>预览</td>
+                        <td id="view">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input multiple="multiple" type="file" id="img" accept="image/gif,image/png,image/jpg,iamge/jpeg" onchange="loadImageFile();"></td>
+                        <td><input type="button" id="upload" value="提交"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!--END CONTENT-->
+            <!--BEGIN FOOTER-->
+            <div id="footer">
+                <div class="copyright">
+                    <a href="/html/index.html">点击可直接跳转到广东海洋大学电子信息工程特色专业网站</a></div>
+            </div>
+            <!--END FOOTER-->
+        </div>
+        <!--END PAGE WRAPPER-->
+    </div>
+</div>
+</body>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/jquery-ui.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-hover-dropdown.js"></script>
+<script src="/static/js/html5shiv.js"></script>
+<script src="/static/js/respond.min.js"></script>
+<script src="/static/js/jquery.metisMenu.js"></script>
+<script src="/static/js/jquery.slimscroll.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
+<script src="/static/js/icheck.min.js"></script>
+<script src="/static/js/custom.min.js"></script>
+
+<script src="/static/js/jquery.menu.js"></script>
+<script src="/static/js/pace.min.js"></script>
+<script src="/static/js/holder.js"></script>
+<script src="/static/js/responsive-tabs.js"></script>
+
+<script src="/static/js/zabuto_calendar.min.js"></script>
+<script src="/static/js/icon.js"></script>
+<script src="/static/js/index_admin.js"></script>
+</html>

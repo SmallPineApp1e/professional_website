@@ -4,9 +4,11 @@ import com.turing.professional_website.dao.TeacherMapper;
 import com.turing.professional_website.entity.Teacher;
 import com.turing.professional_website.entity.TeacherExample;
 import com.turing.professional_website.util.MD5Util;
+import com.turing.professional_website.util.PdfUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,6 +21,8 @@ public class ProfessionalWebsiteApplicationTests {
 
     @Autowired
     TeacherMapper teacherMapper;
+    @Value("${pdfPath}")
+    String pdf;
 
     @Test
     public void contextLoads() {
@@ -61,7 +65,8 @@ public class ProfessionalWebsiteApplicationTests {
 
     @Test
     public void test(){
-        System.out.println(tableSizeFor(257));
+        PdfUtil pdfUtil=new PdfUtil();
+        pdfUtil.deletePdf("049a1b2ece7446b3.pdf");
     }
 
 }

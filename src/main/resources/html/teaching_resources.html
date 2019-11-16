@@ -163,6 +163,7 @@
                     $.each(coursewares, function (index, courseware) {
                         var coursewareLoc = courseware.coursewareLoc;
                         var a_label = $("<a href='\""+coursewareLoc+"\"'></a>");
+                        a_label.attr("download","download");
                         a_label.append(coursewareLoc.slice(coursewareLoc.lastIndexOf("/")+1,coursewareLoc.lastIndexOf(".")));
                         a_label.attr("href", coursewareLoc);
                         sidebarRight.append(a_label);

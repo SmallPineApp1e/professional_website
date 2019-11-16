@@ -19,7 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private String requestTeacherImgPath;
     @Value("${team.requestImgPath}")
     private String requestTeamImgPath;
-    @Value("${teacher.requestPdfPath}")
+    @Value("${requestPdfPath}")
     private String requestPdfPath;
     @Value("${course.requestPPTPath}")
     private String requestPPTPath;
