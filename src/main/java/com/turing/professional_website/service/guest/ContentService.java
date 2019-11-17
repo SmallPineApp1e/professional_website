@@ -12,4 +12,8 @@ public interface ContentService {
     Content findContentByContentTypeId(Integer contentTypeId);
 
     List<Content> findContentsByContentTypeId(Integer contentTypeId);
+
+    Content findContentById(Integer id);
+
+    List<Content> findContentsById(Integer id);
 }

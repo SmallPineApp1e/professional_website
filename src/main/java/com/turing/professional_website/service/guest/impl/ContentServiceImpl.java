@@ -32,4 +32,19 @@ public class ContentServiceImpl implements ContentService {
         criteria.andContentTypeEqualTo(contentTypeId);
         return contentMapper.selectByExample(contentExample);
     }
+
+    @Override
+    public Content findContentById(Integer id) {
+        return contentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Content> findContentsById(Integer id) {
+        ContentExample contentExample=new ContentExample();
+        contentExample.setOrderByClause("upload_time DESC");
+        ContentExample.Criteria criteria=contentExample.createCriteria();
+        criteria.andContentTypeEqualTo(id);
+        List<Content> contents = contentMapper.selectByExample(contentExample);
+        return contents;
+    }
 }

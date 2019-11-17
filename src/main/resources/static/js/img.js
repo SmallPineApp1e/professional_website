@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "/guest/contents/"+37,
+        url: "/guest/contents/" + 37,
         success: function (result) {
             var contents = result.extended.contents;
             $("#list").empty();
@@ -18,10 +18,9 @@ $(document).ready(function () {
         }
     })
     $.ajax({
-        type:"GET",
-        url:"/guest/contents/"+36,
-        success:function(data) {
-            console.log(data)
+        type: "GET",
+        url: "/guest/contents/" + 36,
+        success: function (data) {
             var contents = data.extended.contents;
             $.each(contents, function (index, item) {
                 var div = $("<div class='swiper-slide'></div>");
@@ -31,17 +30,53 @@ $(document).ready(function () {
         }
     })
     $.ajax({
-        type:"GET",
-        dataType:"JSON",
-        url:"/guest/content/25",
-        success:function(data){
-            var contents=data.extended.content;
-            $.each(contents,function(index,item){
-                var li=$("<li></li>").text(item.contentTitle);
-                var td=$("<td></td>").append(li);
-                var td1=$("<td align='right'></td>");
-                var tr
-            })
+        type: "GET",
+        dataType: "JSON",
+        url: "/guest/contents/25",
+        success: function (data) {
+            var contents = data.extended.contents;
+            for (var i = contents.length-1; i > contents.length-8; i--) {
+                var li = $("<li></li>").text(contents[i].contentTitle);
+                var a=$("<a></a>").attr("href","content.html?id="+contents[i].id);
+                a.append(li);
+                var td = $("<td></td>").append(a);
+                var td1 = $("<td align='right'></td>").text(contents[i].uploadTime + "".substring(5, 10));
+                var tr = $("<tr></tr>").append(td).append(td1)
+                tr.appendTo($("#announcement"));
+            }
+        }
+    })
+    $.ajax({
+        type: "GET",
+        dataType: "JSON",
+        url: "/guest/contents/26",
+        success: function (data) {
+            var contents = data.extended.contents;
+            for (var i = contents.length-1; i > contents.length-7; i--) {
+                var li = $("<li></li>").text(contents[i].contentTitle);
+                var a=$("<a></a>").attr("href","content.html?id="+contents[i].id);
+                a.append(li);
+                var td = $("<td colspan='2'></td>").append(a);
+                var tr = $("<tr></tr>").append(td);
+                tr.appendTo($("#cooperate"));
+            }
+        }
+    })
+    $.ajax({
+        type: "GET",
+        dataType: "JSON",
+        url: "/guest/contents/27",
+        success: function (data) {
+            var contents = data.extended.contents;
+            for (var i = contents.length-1; i > contents.length-10; i--) {
+                var li = $("<li></li>").text(contents[i].contentTitle);
+                var a=$("<a></a>").attr("href","content.html?id="+contents[i].id);
+                a.append(li);
+                var td = $("<td width='400'></td>").append(a);
+                var td1 = $("<td align='right'></td>").text(contents[i].uploadTime + "".substring(0,10));
+                var tr = $("<tr></tr>").append(td).append(td1)
+                tr.appendTo($("#information"));
+            }
         }
     })
 })
