@@ -30,8 +30,8 @@ function build_contents_table(data) {
         var contentTilte = $("<td align='left'></td>").append(item.contentTitle);
         var content = $("<td align='left'></td>").append(item.content);
         var uploadTime = $("<td align='left'></td>").append(item.uploadTime);
-        var showbtn = $("<button></button>").addClass("btn btn-primary btn-lg active").append("查看");
-        var deletebtn = $("<button></button>").addClass("btn btn-primary btn-lg danger").append("删除");
+        var showbtn = $("<button></button>").addClass("btn btn-primary btn-lg ").append("查看");
+        var deletebtn = $("<button></button>").addClass("btn btn-danger btn-lg ").append("删除");
         showbtn.click(function () {
             id=item.id;
             $("#showContentModal").modal({

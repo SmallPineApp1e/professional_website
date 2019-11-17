@@ -18,7 +18,6 @@ $("#type").change(function () {
                 $("#title").text("无");
                 $("#pdf").text("无");
             }else{
-                console.log(content);
                 var title=$("<input>").attr("type","text").attr("value",content.contentTitle).attr("id","titleText");
                 title.appendTo($("#title"))
                 var object=$("<object></object>").attr("type","application/pdf").attr("data",content.content).attr("width",500).attr("height",600);
