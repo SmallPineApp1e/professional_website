@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/css/head.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/professional_building.js"></script>
     <style>
         /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
         .body {
@@ -88,54 +89,7 @@
             padding-top: 20px;
         }
     </style>
-    <script>
 
-        $(function () {
-            getData("双一流专业制度建设");
-        });
-
-        function getData(obj) {
-            var url = "/guest/professionalBuilding";
-            var data = null;
-            switch (obj) {
-                case "双一流专业制度建设":
-                    data = {contentTypeId:"4"};
-                    break;
-                case "双一流专业建设成果":
-                    data = {contentTypeId:"5"};
-                    break;
-                case "特色专业制度建设":
-                    data = {contentTypeId:"2"};
-                    break;
-                case "特色专业建设成果":
-                    data = {contentTypeId:"3"};
-                    break;
-            }
-            $.ajax({
-                url: url,
-                type: "get",
-                data: data,
-                success:function (result) {
-                    var sidebarRight = $("#sidebar-right");
-                    sidebarRight.html('');
-                    var content = result.extended.contents[0];
-                    var contentTitle = content.contentTitle;
-                    var contentDetail = content.content;
-                    var contentTitleDiv = $("<div class='title-right'></div>").append(contentTitle);
-                    var contentDetailDiv = $("<div class='content'></div>");
-                    var pdf = $("<object type='application/pdf' width='550px' height='700'></object>");
-                    pdf.attr("data",contentDetail);
-                    contentDetailDiv.append(pdf);
-                    sidebarRight.append(contentTitleDiv);
-                    sidebarRight.append(contentDetailDiv);
-                },
-                error:function (result) {
-                    alert("请求失败!请重新尝试!");
-                }
-            })
-        }
-
-    </script>
 </head>
 <body>
 <div class="warp">
@@ -157,7 +111,7 @@
                     <button class="dropbtn">专业概况</button>
                 </a>
                 <div class="dropdown-content">
-                    <a href="http://localhost:8081/html/teacher_info.html?teacherId=44">专业负责人</a>
+                    <a href="teacher_info.html?teacherId=44">专业负责人</a>
                     <a href="professional_profile.html">专业简介</a>
                 </div>
             </div>
@@ -316,5 +270,6 @@
             <p>版权所有：广东海洋大学 © 电子信息与工程学院电子信息工程特色专业 地址：广东省湛江市麻章区海大路1号</p>
         </div>
     </div>
+</div>
 </body>
 </html>
