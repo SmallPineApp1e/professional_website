@@ -33,6 +33,13 @@ public class ImageUtil {
 
     }
 
+    public boolean isPhoto(MultipartFile[] files){
+        for(MultipartFile file:files){
+            if(!isPhoto(file))return false;
+        }
+        return true;
+    }
+
     /**
      * 将图片存储到本地
      * @param file 文件

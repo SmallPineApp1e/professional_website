@@ -1,7 +1,9 @@
 /**
  * @Author Meng
  */
+var contentTypeId=38;
 $("#select").change(function () {
+    $("#content").empty();
     var select = document.getElementById("select")
     var index = select.selectedIndex;
     contentTypeId = select.options[index].value;
@@ -53,8 +55,36 @@ function loadImageFile(){
         var reader=new FileReader();
         reader.readAsDataURL(img);
         reader.onload=function(e){
-            var imgElement=$("<img width='100' height='100'>").attr("src",e.target.result);
+            var imgElement=$("<img width='150' height='150'>").attr("src",e.target.result);
             imgElement.appendTo($("#view"));
         }
     }
 }
+
+$("#upload").click(function(){
+    var formData=new FormData();
+    var imgs=document.getElementById("img").files;
+    formData.append("contentTypeId",contentTypeId);
+    for(var i=0;i<imgs.length;i++){
+        formData.append("data",imgs[i]);
+    }
+    formData.append("contentTitle","");
+    $.ajax({
+        url:"/admin/contents",
+        data:formData,
+        dataType:"JSON",
+        method:"POST",
+        async:false,
+        processData:false,
+        contentType:false,
+        success:function(data){
+            console.log(data);
+            if(data.code==200){
+                alert("操作成功");
+                window.location.reload();
+            }else{
+                alert("操作错误");
+            }
+        }
+    })
+})

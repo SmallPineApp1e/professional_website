@@ -112,9 +112,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.turing.professional_website.entity.Content">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
+
     insert into content
     <trim prefix="(" suffix=")" suffixOverrides=",">
       id,

@@ -14,4 +14,15 @@ public interface AdminContentService {
 
     Content findContentByContentTypeId(Integer contentTypeId);
 
+    boolean updateContentsById(Integer contentTypeId, String contentTitle, MultipartFile[] data);
+
+    List<Content> findContentsByContentTypeId(Integer contentTypeId);
+
+    Content findContentById(Integer id);
+
+    void saveContent(Content content);
+
+    void deleteContentById(Integer id);
+
+    void updateContentById(Content content);
 }
