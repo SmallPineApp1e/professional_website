@@ -55,7 +55,7 @@ function build_page_info(data) {
 
 function build_page_nav(data) {
     $("#page_info_nav").empty();
-    var ul = $("<ul></ul>").addClass("pagination")
+    var ul = $("<ul id='pagination'></ul>").addClass("pagination");
     var firstPageLi = $("<li></li>").append($("<a></a>").append("首页"));
     var prePageLi = $("<li></li>").append($("<a></a>").append("前一页").append("&laquo;"));
     if (data.extended.pageinfo.hasPreviousPage == false) {

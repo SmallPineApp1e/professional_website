@@ -37,7 +37,7 @@ $(document).ready(function () {
             var contents = data.extended.contents;
             for (var i = contents.length-1; i > contents.length-8; i--) {
                 var li = $("<li></li>").text(contents[i].contentTitle);
-                var a=$("<a></a>").attr("href","content.html?id="+contents[i].id);
+                var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td></td>").append(a);
                 var td1 = $("<td align='right'></td>").text(contents[i].uploadTime + "".substring(5, 10));
@@ -54,7 +54,7 @@ $(document).ready(function () {
             var contents = data.extended.contents;
             for (var i = contents.length-1; i > contents.length-7; i--) {
                 var li = $("<li></li>").text(contents[i].contentTitle);
-                var a=$("<a></a>").attr("href","content.html?id="+contents[i].id);
+                var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td colspan='2'></td>").append(a);
                 var tr = $("<tr></tr>").append(td);
@@ -70,7 +70,7 @@ $(document).ready(function () {
             var contents = data.extended.contents;
             for (var i = contents.length-1; i > contents.length-10; i--) {
                 var li = $("<li></li>").text(contents[i].contentTitle);
-                var a=$("<a></a>").attr("href","content.html?id="+contents[i].id);
+                var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td width='400'></td>").append(a);
                 var td1 = $("<td align='right'></td>").text(contents[i].uploadTime + "".substring(0,10));
