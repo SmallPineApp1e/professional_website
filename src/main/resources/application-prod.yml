@@ -35,7 +35,7 @@ teacher:
   ImgPath: /profession_website/upload/img
   requestImgPath: file:///profession_website/upload/img/
 pdfPath: /profession_website/upload/pdf
-powerPointPath: /profession_website/upload/ppt
+powerPointPath: file:///profession_website/upload/ppt
 requestPdfPath: file:///profession_website/upload/pdf
 team:
   ImgPath: /profession_website/upload/team
