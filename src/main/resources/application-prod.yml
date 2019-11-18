@@ -1,6 +1,12 @@
 server:
   port: 8081
 spring:
+  #文件上传大小
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 200MB
   #数据源
   datasource:
     username: root
@@ -35,7 +41,7 @@ teacher:
   ImgPath: /profession_website/upload/img/
   requestImgPath: file:///profession_website/upload/img/
 pdfPath: /profession_website/upload/pdf/
-powerPointPath: file:///profession_website/upload/ppt/
+powerPointPath: /profession_website/upload/ppt/
 requestPdfPath: file:///profession_website/upload/pdf/
 team:
   ImgPath: /profession_website/upload/team/

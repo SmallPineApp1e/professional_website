@@ -70,8 +70,10 @@ public class AdminTeachingResourceServiceImpl implements AdminTeachingResourceSe
                 coursewareMapper.insert(dbCourseware);
             } catch (IOException e) {
                 flag = false;
+                System.out.println(e.getLocalizedMessage());
                 break;
             }
+
         }
         return flag;
     }
