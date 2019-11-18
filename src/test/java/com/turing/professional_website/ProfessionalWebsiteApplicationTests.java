@@ -21,8 +21,22 @@ public class ProfessionalWebsiteApplicationTests {
 
     @Autowired
     TeacherMapper teacherMapper;
-    @Value("${pdfPath}")
-    String pdf;
+    @Value("${teacher.requestImgPath}")
+    private String requestTeacherImgPath;
+    @Value("${team.requestImgPath}")
+    private String requestTeamImgPath;
+    @Value("${requestPdfPath}")
+    private String requestPdfPath;
+    @Value("${course.requestPPTPath}")
+    private String requestPPTPath;
+
+    @Test
+    public void path(){
+        System.out.println(requestTeacherImgPath);
+        System.out.println(requestTeamImgPath);
+        System.out.println(requestPdfPath);
+        System.out.println(requestPPTPath);
+    }
 
     @Test
     public void contextLoads() {

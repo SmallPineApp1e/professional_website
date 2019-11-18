@@ -14,7 +14,7 @@ $(document).ready(function () {
                 var teamName = teams[index].teamName;
                 var li = $("<li></li>");
                 var a = $("<a></a>");
-                a.attr('href', 'uring_team.html?teamId=' + teams[index].teamId );
+                a.attr('href', 'turing_team.html?teamId=' + teams[index].teamId );
                 a.append(teamName);
                 li.append(a);
                 ul.append(li).appendTo($("#team-sidebar-left"));
@@ -61,7 +61,7 @@ function showTeamInfo(teamId) {
                 var memberId = teamMember.memberId;
                 var memberName = teamMember.memberName;
                 a_label = $("<a style='margin-right:15px'></a>").append(memberName);
-                a_label.attr('href', '#');
+                a_label.attr('href', 'team_member.html?memberId='+teamMember.memberId);
                 studentContentArea.append(a_label);
             });
             var teamAchievements = team.teamAchievements;
