@@ -86,7 +86,6 @@ public class AdminContentServiceImpl implements AdminContentService {
         contentExample.createCriteria().andContentTypeEqualTo(contentTypeId);
         List<Content> contents = contentMapper.selectByExample(contentExample);
         int i = 0;
-        System.out.println(contents.size());
         for (Content content : contents) {
             String suffix = imageUtil.getSuffix(datas[i]);
             String prefix = imageUtil.getUUIDName();
@@ -94,7 +93,6 @@ public class AdminContentServiceImpl implements AdminContentService {
             String fileRealPath = imgDir + fileName;
             File uploadFile = new File(fileRealPath);
             try {
-                System.out.println(imgDir + imageUtil.getFileName(content.getContent()));
                 imageUtil.deletePhoto(imageUtil.getFileName(content.getContent()));
                 imageUtil.uploadPhoto(datas[i], uploadFile);
             } catch (IOException e) {
@@ -108,7 +106,6 @@ public class AdminContentServiceImpl implements AdminContentService {
             newContent.setContentTitle(contentTitle);
             newContent.setIsFile(true);
             contentMapper.insertSelective(newContent);
-            System.out.println(newContent.getId());
             i++;
         }
         return true;
