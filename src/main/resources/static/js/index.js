@@ -12,7 +12,6 @@ $(document).ready(function () {
         url: "/teacher/getTeacherId",
         type: "GET",
         success: function (data) {
-            console.log(data);
             if (data.code == 200) {
                 teacherId = data.extended.teacherId;
                 build_icon(teacherId);
@@ -31,7 +30,6 @@ function build_information(id) {
         url: "/teacher/" + id,
         dataType: "JSON",
         success: function (data) {
-            console.log(data);
             var teacher = data.extended.teacher;
             if (data.code == 200) {
                 $("#teacherName").val(teacher.teacherName);
@@ -60,7 +58,6 @@ function build_information(id) {
                                 type: 'POST',
                                 data: { _method: "DELETE" },
                                 success: function (data) {
-                                    console.log(data);
                                     if (data.code == 200) {
                                         window.location.reload();
                                     }
@@ -87,7 +84,6 @@ function build_information(id) {
                                 type: 'POST',
                                 data: { _method: "DELETE" },
                                 success: function (data) {
-                                    console.log(data);
                                     if (data.code == 200) {
                                         window.location.reload();
                                     }
@@ -125,14 +121,12 @@ $("#addteachBackgrounds").click(function () {
             var backgroundStartTime = $("#backgroundStartTime").val();
             var backgroundEndTime = $("#backgroundEndTime").val();
             var backgroundContent = $("#backgroundContent").val();
-            console.log(backgroundStartTime);
             $.ajax({
                 url: "/teacher/teachBack",
                 type: "POST",
                 dataType: "JSON",
                 data: { backgroundStartTime: backgroundStartTime, backgroundEndTime: backgroundEndTime, backgroundContent: backgroundContent, teacherId: teacherId },
                 success: function (data) {
-                    console.log(data);
                     if (data.code == 200) {
                         window.location.reload();
                     }
@@ -161,14 +155,12 @@ $("#addteachAwards").click(function () {
         else {
             var awardsTime = format($("#awardsTime").val());
             var awardsName = $("#awardsName").val();
-            console.log(awardsTime);
             $.ajax({
                 url: "/teacher/award",
                 type: "POST",
                 dataType: "JSON",
                 data: { awardsTime: awardsTime, awardsName: awardsName, teacherId: teacherId },
                 success: function (data) {
-                    console.log(data);
                     if (data.code == 200) {
                         window.location.reload();
                     }
@@ -201,7 +193,6 @@ $("#updateteacherImg").click(function () {
             processData: false,
             contentType: false,
             success:function(data){
-                console.log(data);
                 if(data.code==200){
                     window.location.reload();
                 }

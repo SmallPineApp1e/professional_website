@@ -9,7 +9,6 @@ $(document).ready(function () {
         dataType: "JSON",
         Type: "GET",
         success: function (data) {
-            console.log(data)
             if (data.code == 200) {
                 var member = data.extended.TeamMember;
                 if(member==null){

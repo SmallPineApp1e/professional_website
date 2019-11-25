@@ -1,5 +1,21 @@
 var contentTypeId = 25;
 var id;
+var teacherId;
+/**
+ * 获取登录的教师id
+ */
+$(document).ready(function () {
+    $.ajax({
+        url: "/teacher/getTeacherId",
+        type: "GET",
+        success: function (data) {
+            if (data.code == 200) {
+                teacherId = data.extended.teacherId;
+                build_icon(teacherId);
+            }
+        }
+    });
+});
 $("#select").change(function () {
     $("#content").empty();
     var select = document.getElementById("select")
@@ -114,9 +130,7 @@ function build_page_nav(data) {
 }
 
 function build_content_detail_information(data) {
-    console.log(data)
     var content = data.extended.content;
-    console.log(content)
     $("#showContentTitle").val(content.contentTitle);
     $("#showContent").val(content.content);
     $("#showUploadTime").val(content.uploadTime);

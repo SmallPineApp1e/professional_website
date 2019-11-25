@@ -12,7 +12,6 @@ $(document).ready(function () {
         url: "/teacher/getTeacherId",
         type: "GET",
         success: function (data) {
-            console.log(data);
             if (data.code == 200) {
                 teacherId = data.extended.teacherId;
                 build_icon(teacherId);
