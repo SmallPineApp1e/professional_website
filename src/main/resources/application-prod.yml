@@ -10,9 +10,9 @@ spring:
   #数据源
   datasource:
     username: root
-    password: Aa3692581470;
+    password: Meng&Zeng_1120&1202_professional_website
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://120.79.229.14:3306/professional_website?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://210.38.139.201:3306/professional_website?characterEncoding=UTF-8&serverTimezone=UTC
     type: com.zaxxer.hikari.HikariDataSource
   http:
     encoding:
