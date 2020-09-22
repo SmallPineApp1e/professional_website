@@ -11,11 +11,13 @@ function getData(obj) {
         case "普通方案":
             url = "/guest/content/9";
             break;
+        case "制度文件":
+            url = "/guest/content/38"
     }
     $.ajax({
         url: url,
         type: "get",
-        success:function (result) {
+        success: function (result) {
             var sidebarRight = $("#sidebar-right");
             sidebarRight.html('');
             var content = result.extended.content;
@@ -24,12 +26,12 @@ function getData(obj) {
             var contentTitleDiv = $("<div class='title-right'></div>").append(contentTitle);
             var contentDetailDiv = $("<div class='content'></div>");
             var pdf = $("<object type='application/pdf' width='550px' height='700'></object>");
-            pdf.attr("data",contentDetail);
+            pdf.attr("data", contentDetail);
             contentDetailDiv.append(pdf);
             sidebarRight.append(contentTitleDiv);
             sidebarRight.append(contentDetailDiv);
         },
-        error:function (result) {
+        error: function (result) {
             alert("请求失败!请重新尝试!");
         }
     })
