@@ -12,7 +12,7 @@ public class Content {
 
     private String content;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT-5")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT")
     private Date uploadTime;
     @JsonIgnore
     private Integer contentType;

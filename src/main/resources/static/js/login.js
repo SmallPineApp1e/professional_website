@@ -32,7 +32,6 @@ $(document).ready(function() {
             dataType:"JSON",
             data:{username:username,password:password},
             success:function(data){
-                console.log(data);
                 if(data.code==100){
                     $("#loginerror").html("<font color='red'><b>"+data.extended.error+"</b></font>");
                 }

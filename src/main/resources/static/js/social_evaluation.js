@@ -11,7 +11,6 @@ $(document).ready(function () {
         dataType: "JSON",
         Type: "GET",
         success: function (data) {
-            console.log(data);
             if (data.code == 200) {
                 var content = data.extended.content;
                 build_content_information(content);

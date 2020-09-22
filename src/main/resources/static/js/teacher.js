@@ -10,7 +10,6 @@ $(document).ready(function () {
         type: "GET",
         dataType: "JSON",
         success: function (data) {
-            console.log(data);
             if (data.code == 200) {
                 var teachers = data.extended.teachers;
                 $.each(teachers, function (index, item) {

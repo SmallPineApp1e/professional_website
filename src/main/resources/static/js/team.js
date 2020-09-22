@@ -19,7 +19,6 @@ $(document).ready(function () {
                 li.append(a);
                 ul.append(li).appendTo($("#team-sidebar-left"));
             }
-            console.log(teamId)
             showTeamInfo(teamId);
         }
     })
@@ -37,7 +36,6 @@ function showTeamInfo(teamId) {
     teacherContentArea.html("");
     studentContentArea.html("");
     teamAchievementArea.html("");
-    console.log(teamId)
     $.ajax({
         type: "GET",
         url: "/guest/team/" + teamId,
@@ -79,7 +77,6 @@ function showTeamInfo(teamId) {
                 teamAchievementArea.append(eachTeamAchievementArea)
             });
             var teamEnvironments = team.teamEnvironments;
-            console.log(teamEnvironments);
             showEnvironment(teamEnvironments);
         }
     })

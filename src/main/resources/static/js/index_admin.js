@@ -2,6 +2,22 @@
  * @Author Meng
  */
 var contentTypeId=38;
+var teacherId;
+/**
+ * 获取登录的教师id
+ */
+$(document).ready(function () {
+    $.ajax({
+        url: "/teacher/getTeacherId",
+        type: "GET",
+        success: function (data) {
+            if (data.code == 200) {
+                teacherId = data.extended.teacherId;
+                build_icon(teacherId);
+            }
+        }
+    });
+});
 $("#select").change(function () {
     $("#content").empty();
     var select = document.getElementById("select")
@@ -78,7 +94,6 @@ $("#upload").click(function(){
         processData:false,
         contentType:false,
         success:function(data){
-            console.log(data);
             if(data.code==200){
                 alert("操作成功");
                 window.location.reload();

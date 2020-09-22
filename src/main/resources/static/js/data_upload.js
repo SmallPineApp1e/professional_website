@@ -1,6 +1,22 @@
 /**
  * @Author Meng
  */
+var teacherId;
+/**
+ * 获取登录的教师id
+ */
+$(document).ready(function () {
+    $.ajax({
+        url: "/teacher/getTeacherId",
+        type: "GET",
+        success: function (data) {
+            if (data.code == 200) {
+                teacherId = data.extended.teacherId;
+                build_icon(teacherId);
+            }
+        }
+    });
+});
 var contentTypeId=1;
 $("#type").change(function () {
     var select=document.getElementById("type")
@@ -28,7 +44,6 @@ $("#type").change(function () {
 })
 
 $("#upload").click(function () {
-    console.log($("#titleText").val())
     var data=document.getElementById("data").files[0];
     var formdata=new FormData();
     formdata.append("contentTypeId",contentTypeId);
