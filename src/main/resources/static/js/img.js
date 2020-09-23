@@ -25,7 +25,7 @@ $(document).ready(function () {
             var contents = data.extended.contents;
             $.each(contents, function (index, item) {
                 var div = $("<div class='swiper-slide'></div>");
-                var img = $("<img alt='' style='width:280px;height:210px;'>").attr("src", item.content);
+                var img = $("<img alt='' style='width:500px;height:320px;'>").attr("src", item.content);
                 div.append(img).appendTo($("#lunboleft"));
             })
         }
@@ -37,7 +37,8 @@ $(document).ready(function () {
         success: function (data) {
             var contents = data.extended.contents;
             for (var i = contents.length-1; i > contents.length-8; i--) {
-                var li = $("<li></li>").text(contents[i].contentTitle);
+                var li = $("<li></li>").text(fun(contents[i].contentTitle));
+                console.log(fun(contents[i].contentTitle))
                 var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td></td>").append(a);
@@ -54,7 +55,7 @@ $(document).ready(function () {
         success: function (data) {
             var contents = data.extended.contents;
             for (var i = contents.length-1; i > contents.length-7; i--) {
-                var li = $("<li></li>").text(contents[i].contentTitle);
+                var li = $("<li></li>").text(fun(contents[i].contentTitle));
                 var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td colspan='2'></td>").append(a);
@@ -70,7 +71,7 @@ $(document).ready(function () {
         success: function (data) {
             var contents = data.extended.contents;
             for (var i = contents.length-1; i > contents.length-10; i--) {
-                var li = $("<li></li>").text(contents[i].contentTitle);
+                var li = $("<li></li>").text(fun(contents[i].contentTitle));
                 var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td width='400'></td>").append(a);
@@ -81,3 +82,9 @@ $(document).ready(function () {
         }
     })
 })
+
+
+function fun(str){
+
+    return str.length<=15?str:str.substring(0,16)+".....";
+}
