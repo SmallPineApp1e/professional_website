@@ -5,8 +5,8 @@
 
 .head {
     background: url("/static/img/Snipaste1.png") no-repeat;
-    height: 325px;
-    background-size: 100% 232px;
+    height: 360px;
+    background-size: 100% 259px;
 }
 
 .head_top {
@@ -38,7 +38,7 @@
     text-align: center;
     display: inline;
     float: left;
-    padding-top: 212px;
+    padding-top: 240px;
     width: 100%;
 }
 
