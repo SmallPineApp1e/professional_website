@@ -41,7 +41,7 @@ $(document).ready(function () {
                 var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td></td>").append(a);
-                var td1 = $("<td align='right'></td>").text(contents[i].uploadTime + "".substring(5, 10));
+                var td1 = $("<td align='right'></td>").text(contents[i].uploadTime.split(" ")[0] + "".substring(5, 10));
                 var tr = $("<tr></tr>").append(td).append(td1)
                 tr.appendTo($("#announcement"));
             }
@@ -74,7 +74,7 @@ $(document).ready(function () {
                 var a=$("<a style=\"text-decoration:none;color:black\"></a>").attr("href","content.html?id="+contents[i].id);
                 a.append(li);
                 var td = $("<td width='400'></td>").append(a);
-                var td1 = $("<td align='right'></td>").text(contents[i].uploadTime + "".substring(0,10));
+                var td1 = $("<td align='right'></td>").text(contents[i].uploadTime.split(" ")[0] + "".substring(0,10));
                 var tr = $("<tr></tr>").append(td).append(td1)
                 tr.appendTo($("#information"));
             }

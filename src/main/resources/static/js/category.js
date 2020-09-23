@@ -26,7 +26,7 @@ function build_category(data) {
         var tr=$("<tr></tr>");
         var a=$("<a></a>").attr("href","content.html?id="+item.id).text(item.contentTitle);
         var td=$("<td align='left'></td>").append(a);
-        var td1=$("<td align='right'></td>").text(item.uploadTime);
+        var td1=$("<td align='right'></td>").text(item.uploadTime.split(" ")[0]);
         tr.append(td).append(td1).appendTo($("#content"));
     })
 }
