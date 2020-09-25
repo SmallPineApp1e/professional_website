@@ -26,6 +26,7 @@ $(document).ready(function () {
             $.each(contents, function (index, item) {
                 var div = $("<div class='swiper-slide'></div>");
                 var img = $("<img alt='' style='width:500px;height:320px;'>").attr("src", item.content);
+                img.attr("title", item.content.split('/')[3].split('.')[0]);
                 div.append(img).appendTo($("#lunboleft"));
             })
         }
