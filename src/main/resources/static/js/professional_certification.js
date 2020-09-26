@@ -5,7 +5,7 @@
 var TypeId = 18
 var arr = new Array(18, 19, 20, 21);
 $(document).ready(function () {
-    TypeId = checkId(getTypeId())?getTypeId():TypeId;
+    TypeId = getTypeId();
     $.ajax({
         url: "/guest/content/" + TypeId,
         dataType: "JSON",
