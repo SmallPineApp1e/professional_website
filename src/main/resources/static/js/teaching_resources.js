@@ -141,7 +141,7 @@
 // }
 
 
-var TypeId = 41
+var TypeId = 42
 var arr = new Array(41, 42, 43, 44, 45, 46, 47);
 $(document).ready(function () {
     TypeId = checkId(getTypeId()) ? getTypeId() : TypeId;
@@ -176,7 +176,7 @@ function checkId(id) {
 function getTypeId() {
     var url = window.location.href;
     if (url.indexOf("?") == -1) {
-        return 41;
+        return 42;
     } else {
         var str = url.substring(url.indexOf("=") + 1);
         return parseInt(str);

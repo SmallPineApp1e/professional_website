@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/static/css/head.css">
 <link rel="stylesheet" href="/static/css/footer.css">
 <script src="/static/js/jquery.js"></script>
+<script src="/static/js/time.js"></script>
 <script src="/static/js/teaching_resources.js"></script>
 <style>
     /*主体内容部分, 设置溢出防止因为浮动而产生父div高度为0*/
@@ -215,15 +216,6 @@
                 <tbody>
                 <tr>
                     <td align="left" id="time"></td>
-                    <td align="right">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="search">全文检索</label>
-                                <input type="text" id="search" placeholder="请输入内容...">
-                                <button class="btn btn-default" type="submit">检索</button>
-                            </div>
-                        </form>
-                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -238,32 +230,27 @@
                     <li><a href="#" onclick="getTeachingProgram(10)">教学大纲</a></li>
                     <li style="list-style-type: none">
                         <ul>
-                            <li><a href="teaching_resources.html?typeId=42">一类</a></li>
+                            <li><a href="teaching_resources.html?typeId=42">通识教育核心课</a></li>
                         </ul>
                     </li>
                     <li style="list-style-type: none">
                         <ul>
-                            <li><a href="teaching_resources.html?typeId=43">二类</a></li>
+                            <li><a href="teaching_resources.html?typeId=43">跨学科基础课</a></li>
                         </ul>
                     </li>
                     <li style="list-style-type: none">
                         <ul>
-                            <li><a href="teaching_resources.html?typeId=44">三类</a></li>
+                            <li><a href="teaching_resources.html?typeId=44">专业教育核心课</a></li>
                         </ul>
                     </li>
                     <li style="list-style-type: none">
                         <ul>
-                            <li><a href="teaching_resources.html?typeId=45">四类</a></li>
+                            <li><a href="teaching_resources.html?typeId=45">学科专业拓展课</a></li>
                         </ul>
                     </li>
                     <li style="list-style-type: none">
                         <ul>
-                            <li><a href="teaching_resources.html?typeId=46">五类</a></li>
-                        </ul>
-                    </li>
-                    <li style="list-style-type: none">
-                        <ul>
-                            <li><a href="teaching_resources.html?typeId=47">六类</a></li>
+                            <li><a href="teaching_resources.html?typeId=46">专业综合实践课</a></li>
                         </ul>
                     </li>
 <!--                    <li><a href="#">授课计划</a></li>-->
@@ -281,7 +268,14 @@
                 </ul>
             </div>
             <!-- 右边导航栏 -->
-            <div class="sidebar-right" id="sidebar-right"></div>
+            <div class="sidebar-right" id="sidebar-right">
+                <div class="title-right">
+                    <strong id="title"></strong>
+                </div>
+                <div class="content" id="content">
+                </div>
+                <br/>
+            </div>
         </div>
 
         <div class="footer">
