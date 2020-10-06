@@ -25,6 +25,16 @@ public class Teacher {
 
     private String teacherImg;
 
+    private String teacherPdf;
+
+    public String getTeacherPdf() {
+        return teacherPdf;
+    }
+
+    public void setTeacherPdf(String teacherPdf) {
+        this.teacherPdf = teacherPdf;
+    }
+
     private List<TeachBackground> teachBackgrounds;
 
     public List<TeachBackground> getTeachBackgrounds() {

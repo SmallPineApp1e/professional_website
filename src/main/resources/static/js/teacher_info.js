@@ -11,14 +11,19 @@ $(document).ready(function () {
         Type: "GET",
         success: function (data) {
             if (data.code == 200) {
-                var teacher = data.extended.teacher;
-                if (teacher == null) {
-                    window.location.href = "/html/teacher.html";
-                } else {
-                    build_teacher_information(teacher);
-                    build_teacher_backgrounds(teacher.teachBackgrounds);
-                    build_teacher_awards(teacher.awards);
-                }
+                var pdf = $("<object type='application/pdf' style='margin:0 auto;width: 1000px;' width='1000px' height='800'></object>");
+                pdf.attr("data", data.extended.teacher.teacherPdf);
+                $(".body").append(pdf);
+                // var teacher = data.extended.teacher;
+                // if (teacher == null) {
+                //     window.location.href = "/html/teacher.html";
+                // } else {
+                //     build_teacher_information(teacher);
+                //     build_teacher_backgrounds(teacher.teachBackgrounds);
+                //     build_teacher_awards(teacher.awards);
+                // }
+
+
             }
         },
         error: function () {
