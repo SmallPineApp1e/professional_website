@@ -12,11 +12,14 @@ function getData(obj) {
         case "双一流专业建设成果":
             data = {contentTypeId:"5"};
             break;
-        case "特色专业制度建设":
+        case "特色专业登记书":
             data = {contentTypeId:"2"};
             break;
-        case "特色专业建设成果":
+        case "特色专业实证材料":
             data = {contentTypeId:"3"};
+            break;
+        case "特色专业申报书":
+            data = {contentTypeId:"49"};
             break;
     }
     $.ajax({
