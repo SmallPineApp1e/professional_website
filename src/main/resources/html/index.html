@@ -22,6 +22,7 @@
             font-size: 18px;
             line-height: 2.4
         }
+
         /*网站导航栏*/
         .head_nav {
             border-bottom: 1px solid;
@@ -60,7 +61,9 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="professional_building.html"> <button class="dropbtn">专业建设</button></a>
+                <a href="professional_building.html">
+                    <button class="dropbtn">专业建设</button>
+                </a>
                 <div class="dropdown-content">
                     <div class="dropdown-2">
                         <a class="dropbtn-2" href="professional_building.html">特色专业建设</a>
@@ -85,20 +88,26 @@
                 </a>
             </div>
             <div class="dropdown">
-                <a href="training_program.html"><button class="dropbtn">培养方案</button></a>
+                <a href="training_program.html">
+                    <button class="dropbtn">培养方案</button>
+                </a>
                 <div class="dropdown-content">
                     <a href="training_program.html">2017培养方案</a>
                     <a href="training_program.html">2013培养方案</a>
                 </div>
             </div>
             <div class="dropdown">
-                <a href="teaching_resources.html"><button class="dropbtn">教学资源</button></a>
+                <a href="teaching_resources.html">
+                    <button class="dropbtn">教学资源</button>
+                </a>
                 <div class="dropdown-content">
                     <a href="teaching_resources.html?=10">教学大纲</a>
                 </div>
             </div>
             <div class="dropdown">
-                <a href="turing_team.html?teamId=2"><button class="dropbtn">创新团队</button></a>
+                <a href="turing_team.html?teamId=2">
+                    <button class="dropbtn">创新团队</button>
+                </a>
                 <div class="dropdown-content">
                     <a href="turing_team.html?teamId=2">电子创新团队</a>
                     <a href="turing_team.html?teamId=1">图灵智能创新团队</a>
@@ -108,7 +117,9 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="teaching_achievements.html?typeId=29"><button class="dropbtn">教研成果</button></a>
+                <a href="teaching_achievements.html?typeId=29">
+                    <button class="dropbtn">教研成果</button>
+                </a>
                 <div class="dropdown-content">
                     <div class="dropdown-2">
                         <a href="teaching_achievements.html?typeId=29" class="dropbtn-2">教学成果</a>
@@ -129,7 +140,9 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="professional_certification.html?typeId=39"><button class="dropbtn">认证材料</button></a>
+                <a href="professional_certification.html?typeId=39">
+                    <button class="dropbtn">认证材料</button>
+                </a>
                 <div class="dropdown-content">
                     <div class="dropdown-2">
                         <a href="professional_certification.html?typeId=39" class="dropbtn-2">认证文件</a>
@@ -145,7 +158,9 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="social_evaluation.html?typeId=22"><button class="dropbtn">社会评价</button></a>
+                <a href="social_evaluation.html?typeId=22">
+                    <button class="dropbtn">社会评价</button>
+                </a>
                 <div class="dropdown-content">
                     <a href="social_evaluation.html?typeId=22">企业评价</a>
                     <a href="social_evaluation.html?typeId=23">校友评价</a>
@@ -171,10 +186,16 @@
                 <td width="500">
                     <div class="swiper-container" style="width:500px;margin:0 auto;">
                         <div class="swiper-wrapper" id="lunboleft">
+                            <div class='swiper-slide' id="a"></div>
+                            <div class='swiper-slide' id="b"></div>
+                            <div class='swiper-slide' id="c"></div>
+                            <div class='swiper-slide' id="d"></div>
+                            <div class='swiper-slide' id="e"></div>
+                            <div class='swiper-slide' id="f"></div>
+                            <div class='swiper-slide' id="g"></div>
+                            <div class='swiper-slide' id="h"></div>
+                            <div class='swiper-slide' id="i"></div>
                         </div>
-                        <!-- 如果需要分页器 -->
-                        <div class="swiper-pagination"></div>
-
                         <!-- 如果需要导航按钮 -->
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
@@ -207,7 +228,7 @@
             </tr>
             <tr>
                 <td align="center" valign="top">
-                    <table width="495"  style="margin-left: 5px;margin-right: 10px;">
+                    <table width="495" style="margin-left: 5px;margin-right: 10px;">
                         <thead>
                         <tr>
                             <th>
@@ -257,15 +278,14 @@
 </body>
 <script src="/static/js/jquery.js"></script>
 <script src="/static/js/img.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script src="/static/js/swiper.js"></script>
+<script src="/static/js/swiper.min.js"></script>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         /**
          * 轮播图
          */
         var mySwiper = new Swiper('.swiper-container', {
-            loop: true,
             // 如果需要前进后退按钮
             navigation: {
                 nextEl: '.swiper-button-next',
