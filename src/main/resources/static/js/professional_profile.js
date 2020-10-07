@@ -48,7 +48,11 @@ function initData() {
                     var contentTitleStrong = $("<strong></strong>").append(contentTitle);
                     titleRightDiv.append(contentTitleStrong);
                     sidebarRight.append(titleRightDiv);
-                    var contentDetailDiv = $("<div class='content'></div>").append(contentDetail);
+                    var contentDetailDiv = $("<div class='content'></div>");
+                    if (contentTitle == "历史沿革") {
+                        contentDetailDiv.append($("<img src='../static/img/发展历程.jpg' style='width: 530px'>"))
+                    }
+                    contentDetailDiv.append(contentDetail);
                     sidebarRight.append(contentDetailDiv);
                     sidebarRight.append("<br/>");
                 })
