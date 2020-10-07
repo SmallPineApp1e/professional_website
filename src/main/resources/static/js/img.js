@@ -10,7 +10,7 @@ $(document).ready(function () {
             $("#list").empty();
             for (var i = 0; i < 2; i++) {
                 $.each(contents, function (index, item) {
-                    var img = $("<img>").attr("src", item.content).attr("title", "这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字");
+                    var img = $("<img>").attr("src", item.content).attr("title", "实验室环境");
                     var a = $("<a href='#'>").append(img);
                     var li = $("<li></li>").append(a);
                     li.appendTo($("#list"));
