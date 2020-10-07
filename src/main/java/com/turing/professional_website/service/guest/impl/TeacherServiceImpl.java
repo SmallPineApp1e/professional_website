@@ -28,8 +28,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public List<Teacher> findAllTeachers() {
-
-        List<Teacher> teachers = teacherMapper.selectByExample(null);
+        TeacherExample teacherExample=new TeacherExample();
+        teacherExample.setOrderByClause("sort");
+        List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
         return teachers;
 
     }

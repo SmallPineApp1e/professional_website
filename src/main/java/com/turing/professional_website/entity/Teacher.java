@@ -27,6 +27,16 @@ public class Teacher {
 
     private String teacherPdf;
 
+    private Integer sort;
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     public String getTeacherPdf() {
         return teacherPdf;
     }

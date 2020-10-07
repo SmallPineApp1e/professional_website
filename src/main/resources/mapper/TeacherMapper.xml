@@ -14,6 +14,7 @@
     <result column="teacher_award_introduction" property="teacherAwardIntroduction" jdbcType="VARCHAR" />
     <result column="teacher_img" property="teacherImg" jdbcType="VARCHAR" />
     <result column="teacher_pdf" property="teacherPdf" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -76,7 +77,7 @@
   <sql id="Base_Column_List" >
     teacher_id, teacher_name, teacher_email, teacher_born, teacher_job, teacher_graduation, 
     teacher_position, teacher_research, teacher_scientific_research, teacher_award_introduction, 
-    teacher_img,teacher_pdf
+    teacher_img,teacher_pdf,sort
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.turing.professional_website.entity.TeacherExample" >
     select
