@@ -5,6 +5,7 @@
     <id column="team_id" property="teamId" jdbcType="INTEGER" />
     <result column="team_name" property="teamName" jdbcType="VARCHAR" />
     <result column="team_introduction" property="teamIntroduction" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="BaseResultMapWithTeacher" type="com.turing.professional_website.entity.Team">
     <id column="team_id" property="teamId" jdbcType="INTEGER" />
@@ -215,7 +216,7 @@
     where team_id = #{teamId,jdbcType=INTEGER}
   </update>
   <select id="selectTeamList" resultMap="BaseResultMapWithTeacher">
-    select * from team
+    select * from team ORDER BY sort
   </select>
   <select id="selectTeamById" resultMap="BaseResultMapWithTeacherAchievementMemberEnvironment">
 SELECT * FROM team LEFT JOIN team_teacher  ON team.`team_id`=team_teacher.`team_id` LEFT JOIN teacher ON team_teacher.`teacher_id`=teacher.`teacher_id` LEFT JOIN team_member ON team.`team_id`=team_member.`team_id`

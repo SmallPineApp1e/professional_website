@@ -10,6 +10,8 @@ public class Team {
 
     private String teamIntroduction;
 
+    private Integer sort;
+
     private List<Teacher> teachers;
 
     private List<TeamMember> teamMembers;
@@ -77,14 +79,25 @@ public class Team {
         this.teamAchievements = teamAchievements;
     }
 
+
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Team team = (Team) o;
-        return teamId.equals(team.teamId) &&
+        return Objects.equals(teamId, team.teamId) &&
                 Objects.equals(teamName, team.teamName) &&
                 Objects.equals(teamIntroduction, team.teamIntroduction) &&
+                Objects.equals(sort, team.sort) &&
                 Objects.equals(teachers, team.teachers) &&
                 Objects.equals(teamMembers, team.teamMembers) &&
                 Objects.equals(teamEnvironments, team.teamEnvironments) &&
@@ -93,6 +106,6 @@ public class Team {
 
     @Override
     public int hashCode() {
-        return Objects.hash(teamId, teamName, teamIntroduction, teachers, teamMembers, teamEnvironments, teamAchievements);
+        return Objects.hash(teamId, teamName, teamIntroduction, sort, teachers, teamMembers, teamEnvironments, teamAchievements);
     }
 }
