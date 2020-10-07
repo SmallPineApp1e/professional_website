@@ -21,8 +21,8 @@ $(document).ready(function () {
 
 function build_content_information(content) {
     $("#title").text(content.contentTitle);
-    // $("<object></object>").attr("data", content.content).attr("type", "application/pdf").attr("width", 500).attr("height", 600).appendTo($("#content"));
-    $("<p></p>").html(content.content).appendTo("#content");
+    $("<object></object>").attr("data", content.content).attr("type", "application/pdf").attr("width", 500).attr("height", 600).appendTo($("#content"));
+    // $("<p></p>").html(content.content).appendTo("#content");
 }
 
 function checkId(id) {
