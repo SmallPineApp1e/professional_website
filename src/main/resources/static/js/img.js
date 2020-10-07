@@ -35,10 +35,9 @@ $(document).ready(function () {
                 "2020年9月22日最后一天修改并提交自评报告"
             ]
             $.each(contents, function (index, item) {
-                var div = $("<div class='swiper-slide'></div>");
                 var img = $("<img alt='' style='width:500px;height:320px;'>").attr("src", item.content);
                 img.attr("title", arr[index]);
-                div.append(img).appendTo($("#lunboleft"));
+                $("#" + (String.fromCharCode(97 + index))).append(img).appendTo($("#lunboleft"));
             })
         }
     })
