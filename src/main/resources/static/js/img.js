@@ -10,7 +10,7 @@ $(document).ready(function () {
             $("#list").empty();
             for (var i = 0; i < 2; i++) {
                 $.each(contents, function (index, item) {
-                    var img = $("<img>").attr("src", item.content).attr("title", "这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字这是文字");
+                    var img = $("<img>").attr("src", item.content).attr("title", "实验室环境");
                     var a = $("<a href='#'>").append(img);
                     var li = $("<li></li>").append(a);
                     li.appendTo($("#list"));
@@ -23,10 +23,21 @@ $(document).ready(function () {
         url: "/guest/contents/" + 36,
         success: function (data) {
             var contents = data.extended.contents;
+            var arr = [
+                "2019年9月21日海滨学院教室讨论申报书的撰写",
+                "2019年12月27日王骥主任和徐国保副主任在成都参加受理专业培训会",
+                "2020年1月3日邀请北京科技大学李擎教授指导工程认证",
+                "2020年1月11日海滨学院实验室集中讨论人才培养方案修订",
+                "2020年4月5日科技楼516集中修改自评报告",
+                "2020年7月15-20日在河池集中撰写自评报告",
+                "2020年7月31日-10日在海滨学院101集中修改自评报告",
+                "2020年9月22日提交自评报告一刻",
+                "2020年9月22日最后一天修改并提交自评报告"
+            ]
             $.each(contents, function (index, item) {
                 var div = $("<div class='swiper-slide'></div>");
                 var img = $("<img alt='' style='width:500px;height:320px;'>").attr("src", item.content);
-                img.attr("title", item.content.split('/')[3].split('.')[0]);
+                img.attr("title", arr[index]);
                 div.append(img).appendTo($("#lunboleft"));
             })
         }
